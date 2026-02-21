@@ -177,16 +177,18 @@
       text-transform: uppercase;
     }
 
-    .logo-img {
-      width: 50px;
-      height: 50px;
-      border-radius: 30px;
-      object-fit: cover;
-      border: 1px solid rgba(255,255,255,0.18);
-      box-shadow: 0 4px 24px rgba(200,0,26,0.35), 0 0 0 1px rgba(255,29,53,0.12);
-      flex: 0 0 auto;
-      background: rgba(255,255,255,0.04);
-    }
+    .logo-img{
+  width: 56px;
+  height: 56px;
+  border-radius: 0;          /* not rounded */
+  object-fit: contain;       /* keep full logo */
+  border: 0;                 /* remove border */
+  box-shadow: none;          /* remove glow */
+  background: transparent;
+  display: block;
+  .logo-img{ width: 64px; height: 64px; }
+
+}
 
     .brand-text { display: flex; flex-direction: column; line-height: 1; }
     .brand-name { font-size: 15px; letter-spacing: 3px; }
@@ -1183,12 +1185,9 @@
   <header class="nav" id="nav">
     <div class="wrap">
       <div class="nav-inner">
-        <a class="brand" href="#" data-page="home">
-          <img class="logo-img" src="assets/logo.png" alt="CENTINATION Logo"/>
-          <div class="brand-text">
-            
-          </div>
-        </a>
+        <a class="brand brand-logo-only" href="#" data-page="home" aria-label="CENTINATION Home">
+  <img class="logo-img" src="assets/logo.png" alt="CENTINATION Logo"/>
+</a>
 
         <nav class="nav-links">
           <a href="#" data-page="home" class="nav-link active">Home</a>

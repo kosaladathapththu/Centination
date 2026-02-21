@@ -1150,28 +1150,108 @@
     .social-link:hover { background: var(--surface2); color: var(--text); transform: translateY(-2px); }
 
     /* ============================================================
-       FOOTER
-    ============================================================ */
-    .footer {
-      border-top: 1px solid var(--border);
-      padding: 32px 0 40px;
-      position: relative; z-index: 1;
-    }
-    .footer-inner {
-      display: flex; justify-content: space-between; align-items: center;
-      gap: 16px; flex-wrap: wrap;
-    }
-    .footer-brand {
-      font-family: var(--font-ui); font-weight: 800; font-size: 14px;
-      letter-spacing: 2px; text-transform: uppercase;
-    }
-    .footer-copy { font-size: 13px; color: var(--muted); }
-    .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
-    .footer-links a {
-      font-size: 13px; color: var(--muted); font-family: var(--font-ui); font-weight: 600;
-      transition: color 0.2s;
-    }
-    .footer-links a:hover { color: var(--text); }
+   PROFESSIONAL FOOTER
+============================================================ */
+.footer{
+  background: #0b0b0f;
+  padding: 70px 0 25px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.footer-grid{
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 50px;
+}
+
+.footer-col h4{
+  font-family: var(--font-ui);
+  font-size: 14px;
+  margin-bottom: 18px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.footer-col a{
+  display: block;
+  margin-bottom: 10px;
+  font-size: 13px;
+  color: var(--muted);
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.footer-col a:hover{
+  color: var(--text);
+}
+
+.footer-desc{
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 18px 0 22px;
+  max-width: 280px;
+}
+
+.footer-logo{
+  height: 50px;
+  width: auto;
+}
+
+.footer-social{
+  display: flex;
+  gap: 14px;
+}
+
+.footer-social a{
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.05);
+  color: var(--text);
+  transition: 0.3s;
+}
+
+.footer-social a:hover{
+  background: var(--accent2);
+  color: #fff;
+}
+
+.footer-col p{
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.footer-col i{
+  margin-right: 8px;
+  color: var(--accent2);
+}
+
+.footer-bottom{
+  border-top: 1px solid rgba(255,255,255,0.08);
+  margin-top: 50px;
+  padding-top: 18px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* Responsive */
+@media (max-width: 992px){
+  .footer-grid{
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px){
+  .footer-grid{
+    grid-template-columns: 1fr;
+  }
+}
 
     /* Back to top */
     .back-top {
@@ -1291,7 +1371,7 @@
         <div class="hero-content">
           <div class="hero-eyebrow anim-up">
             <span class="live-dot"></span>
-            Sri Lanka's Premier Show Distributor
+            Sri Lanka’s Premier Experience Distributor
           </div>
 
           <h1 class="anim-up d1">
@@ -1894,21 +1974,64 @@
     </div>
   </main>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="wrap">
-      <div class="footer-inner">
-        <div class="footer-brand">CENTINATION</div>
-        <div class="footer-links">
-          <a href="#" data-page="about">About</a>
-          <a href="#" data-page="services">Services</a>
-          <a href="#" data-page="projects">Projects</a>
-          <a href="#" data-page="contact">Contact</a>
+ <!-- PROFESSIONAL FOOTER -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+
+      <!-- Company Info -->
+      <div class="footer-col">
+        <img src="assets/logo.png" class="footer-logo" alt="Centination Logo">
+        <p class="footer-desc">
+          CENTINATION distributes, produces and delivers world-class musical shows,
+          concerts and premium live event experiences across Sri Lanka and beyond.
+        </p>
+
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
         </div>
-        <div class="footer-copy">© <span id="yr"></span> CENTINATION. All rights reserved.</div>
       </div>
+
+      <!-- Quick Links -->
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <a href="#" data-page="home">Home</a>
+        <a href="#" data-page="about">About</a>
+        <a href="#" data-page="services">Services</a>
+        <a href="#" data-page="projects">Projects</a>
+        <a href="#" data-page="contact">Contact</a>
+      </div>
+
+      <!-- Services -->
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="#">Musical Shows</a>
+        <a href="#">Concert Production</a>
+        <a href="#">Event Branding</a>
+        <a href="#">Stage & Lighting</a>
+        <a href="#">Live Experiences</a>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p><i class="fas fa-map-marker-alt"></i> Colombo, Sri Lanka</p>
+        <p><i class="fas fa-phone"></i> +94 77 123 4567</p>
+        <p><i class="fas fa-envelope"></i> info@centination.lk</p>
+      </div>
+
     </div>
-  </footer>
+
+    <!-- Bottom -->
+    <div class="footer-bottom">
+      <p>© <span id="yr"></span> CENTINATION. All rights reserved.</p>
+    </div>
+
+  </div>
+</footer>
 
   <!-- Modal -->
   <div class="modal" id="modal" role="dialog" aria-modal="true">
@@ -2123,7 +2246,7 @@ Message: ${d.get('message')||'-'}`;
     // TYPING EFFECT
     // =====================================================================
     const typingEl = document.getElementById('typingText');
-    const typeWords = ["MUSIC", "SHOWS", "EVENTS", "EXPERIENCES"];
+    const typeWords = ["CREATIVE", "UNIQUE", "EXPERIENCES"];
     let w = 0, c = 0, del = false;
 
     function runTyping() {

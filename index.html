@@ -13,7 +13,7 @@
 
   <!-- Font Awesome (fas fa icons) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-   <link rel="icon" href="/assets/logo.jpg" type="image/jpg">
+  <link rel="icon" href="/assets/logo.jpg" type="image/jpg">
 
   <style>
     /* ============================================================
@@ -50,7 +50,7 @@
       color: var(--text);
       background: var(--bg);
       overflow-x: hidden;
-      cursor: none; /* hide default cursor — we use custom */
+      cursor: none;
     }
 
     a { color: inherit; text-decoration: none; }
@@ -177,7 +177,6 @@
       text-transform: uppercase;
     }
 
-    /* LOGO IMAGE before name (replace assets/logo.png) */
     .logo-img {
       width: 50px;
       height: 50px;
@@ -302,13 +301,13 @@
     .mnav a:hover { color: var(--text); padding-left: 34px; }
 
     /* ============================================================
-       PAGE SYSTEM — single HTML, section-based routing
+       PAGE SYSTEM
     ============================================================ */
     .page { display: none; padding-top: var(--nav-h); }
     .page.active { display: block; }
 
     /* ============================================================
-       SECTION HEADING COMPONENT
+       SECTION HEADING
     ============================================================ */
     .sh { margin-bottom: 52px; }
     .sh-eyebrow {
@@ -341,7 +340,7 @@
     }
 
     /* ============================================================
-       GLASS CARD COMPONENT
+       GLASS
     ============================================================ */
     .glass {
       background:
@@ -385,6 +384,10 @@
       0%, 100% { opacity: 0.6; }
       50% { opacity: 1; }
     }
+    @keyframes blink {
+      0%, 45% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
 
     .anim-up { animation: fadeUp 0.8s cubic-bezier(0.22,1,0.36,1) both; }
     .d1 { animation-delay: 0.1s; }
@@ -392,7 +395,7 @@
     .d3 { animation-delay: 0.3s; }
     .d4 { animation-delay: 0.4s; }
 
-    /* Reveal on scroll */
+    /* Reveal */
     .reveal {
       opacity: 0;
       transform: translateY(28px);
@@ -405,22 +408,34 @@
     .reveal-delay-4 { transition-delay: 0.4s; }
 
     /* ============================================================
-       PAGE: HOME
+       HOME
     ============================================================ */
     #page-home { min-height: 100vh; }
 
-    /* HERO: full image background like sample website */
+    /* HERO: background slider with crossfade */
     .hero {
       position: relative;
       min-height: calc(100vh - var(--nav-h));
       display: flex; align-items: center;
       padding: 60px 0 80px;
       overflow: hidden;
-
-      /* Replace this path with your image path */
       background: url("assets/hero-bg.jpg") center/cover no-repeat;
       background-attachment: fixed;
     }
+
+    .hero-bg-layer {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      transform: scale(1.03);
+      transition: opacity 1.2s ease;
+      opacity: 0;
+      z-index: 0;
+    }
+    .hero-bg-layer.active { opacity: 1; }
+
     .hero::before{
       content:"";
       position:absolute;
@@ -431,30 +446,30 @@
         rgba(0,0,0,0.65) 65%,
         rgba(0,0,0,0.78) 100%
       );
-      z-index:0;
+      z-index:1;
     }
     .hero::after{
       content:"";
       position:absolute;
       inset:0;
       background: radial-gradient(circle at 70% 30%, rgba(200,0,26,0.22), transparent 55%);
-      z-index:0;
+      z-index:1;
       pointer-events:none;
     }
     .hero .wrap,
     .hero-content{
       position:relative;
-      z-index:1;
+      z-index:2;
     }
 
-    /* Orbiting circle decoration */
+    /* Orbit */
     .hero-orbit {
       position: absolute;
       right: -80px; top: 50%;
       width: 700px; height: 700px;
       transform: translateY(-50%);
       pointer-events: none;
-      z-index: 0;
+      z-index: 1;
       opacity: 0.9;
     }
     .orbit-ring {
@@ -494,7 +509,7 @@
       animation: glow-pulse 4s ease-in-out infinite;
     }
 
-    .hero-content { position: relative; z-index: 1; max-width: 720px; }
+    .hero-content { position: relative; z-index: 2; max-width: 720px; }
 
     .hero-eyebrow {
       display: inline-flex; align-items: center; gap: 10px;
@@ -523,10 +538,24 @@
     }
     .hero h1 .line1 { display: block; color: var(--text); }
     .hero h1 .line2 {
-      display: block;
+      display: inline-block;
       background: linear-gradient(90deg, var(--accent) 0%, var(--accent2) 50%, #ff8094 100%);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      position: relative;
+      padding-right: 10px;
+      min-height: 1em;
     }
+    .type-cursor {
+      display: inline-block;
+      width: 10px;
+      height: 0.85em;
+      transform: translateY(0.08em);
+      margin-left: 6px;
+      background: rgba(240,238,255,0.85);
+      border-radius: 2px;
+      animation: blink 1s infinite;
+    }
+
     .hero h1 .line3 { display: block; color: rgba(240,238,255,0.55); }
 
     .hero-desc {
@@ -539,7 +568,7 @@
 
     .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 52px; }
 
-    /* Stat bar */
+    /* Stats */
     .hero-stats {
       display: flex; gap: 0;
       border: 1px solid rgba(255,255,255,0.09);
@@ -567,7 +596,7 @@
       font-family: var(--font-ui);
     }
 
-    /* Marquee strip */
+    /* Marquee */
     .marquee-strip {
       position: relative; padding: 20px 0;
       border-top: 1px solid var(--border);
@@ -602,7 +631,7 @@
       background: var(--accent2); opacity: 0.6;
     }
 
-    /* Feature strip on home */
+    /* Features */
     .features-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -641,7 +670,7 @@
       font-size: 14px; line-height: 1.7; color: var(--muted);
     }
 
-    /* Big CTA band */
+    /* CTA band */
     .cta-band { padding: 80px 0; position: relative; }
     .cta-band-inner { padding: 60px; text-align: center; position: relative; overflow: hidden; }
     .cta-band-inner::before {
@@ -658,7 +687,7 @@
     .cta-band p { font-size: 16px; color: var(--muted); margin-bottom: 36px; max-width: 48ch; margin-left: auto; margin-right: auto; }
 
     /* ============================================================
-       PAGE: ABOUT
+       ABOUT
     ============================================================ */
     #page-about { padding-bottom: 100px; }
 
@@ -746,7 +775,7 @@
     .team-card span { font-size: 13px; color: var(--muted); }
 
     /* ============================================================
-       PAGE: SERVICES
+       SERVICES
     ============================================================ */
     #page-services { padding-bottom: 100px; }
     .services-hero { padding: 80px 0 60px; }
@@ -815,7 +844,7 @@
     .pstep p { font-size: 13px; color: var(--muted); line-height: 1.6; }
 
     /* ============================================================
-       PAGE: PROJECTS
+       PROJECTS
     ============================================================ */
     #page-projects { padding-bottom: 100px; }
     .projects-hero { padding: 80px 0 40px; }
@@ -942,7 +971,7 @@
     .modal-close:hover { background: rgba(255,255,255,0.1); }
 
     /* ============================================================
-       PAGE: CLIENTS
+       CLIENTS
     ============================================================ */
     #page-clients { padding-bottom: 100px; }
     .clients-hero { padding: 80px 0 60px; }
@@ -991,7 +1020,7 @@
     .logo-item:hover { color: rgba(240,238,255,0.55); }
 
     /* ============================================================
-       PAGE: CONTACT
+       CONTACT
     ============================================================ */
     #page-contact { padding-bottom: 100px; }
     .contact-hero { padding: 80px 0 60px; }
@@ -1091,9 +1120,7 @@
     }
     .footer-links a:hover { color: var(--text); }
 
-    /* ============================================================
-       BACK TO TOP
-    ============================================================ */
+    /* Back to top */
     .back-top {
       position: fixed; right: 22px; bottom: 22px;
       width: 48px; height: 48px; border-radius: 50%;
@@ -1152,14 +1179,11 @@
 
   <div class="noise"></div>
 
-  <!-- ============================================================
-       NAVIGATION
-  ============================================================ -->
+  <!-- NAV -->
   <header class="nav" id="nav">
     <div class="wrap">
       <div class="nav-inner">
         <a class="brand" href="#" data-page="home">
-          <!-- Replace with your logo file -->
           <img class="logo-img" src="assets/logo.jpg" alt="CENTINATION Logo"/>
           <div class="brand-text">
             <span class="brand-name">CENTINATION</span>
@@ -1206,12 +1230,15 @@
   </nav>
 
   <!-- ============================================================
-       PAGE: HOME
+       HOME
   ============================================================ -->
   <main id="page-home" class="page active">
-    <!-- Hero -->
     <section class="hero">
-      <div class="wrap" style="position:relative;z-index:1;width:100%">
+      <!-- Two layers for crossfade -->
+      <div class="hero-bg-layer active" id="heroBgA"></div>
+      <div class="hero-bg-layer" id="heroBgB"></div>
+
+      <div class="wrap" style="position:relative;z-index:2;width:100%">
         <div class="hero-content">
           <div class="hero-eyebrow anim-up">
             <span class="live-dot"></span>
@@ -1220,7 +1247,7 @@
 
           <h1 class="anim-up d1">
             <span class="line1">WE MAKE</span>
-            <span class="line2">MUSIC</span>
+            <span class="line2"><span id="typingText"></span><span class="type-cursor"></span></span>
             <span class="line3">HAPPEN.</span>
           </h1>
 
@@ -1242,22 +1269,21 @@
 
           <div class="hero-stats anim-up d4">
             <div class="hstat">
-              <div class="hstat-num">50+</div>
+              <div class="hstat-num" data-count="50" data-suffix="+">0</div>
               <div class="hstat-label">Shows Delivered</div>
             </div>
             <div class="hstat">
-              <div class="hstat-num">100%</div>
+              <div class="hstat-num" data-count="100" data-suffix="%">0</div>
               <div class="hstat-label">Client Satisfaction</div>
             </div>
             <div class="hstat">
-              <div class="hstat-num">2026</div>
+              <div class="hstat-num" data-count="2026">0</div>
               <div class="hstat-label">Established</div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Orbiting decoration -->
       <div class="hero-orbit" aria-hidden="true">
         <div class="orbit-ring"></div>
         <div class="orbit-ring-2"></div>
@@ -1269,7 +1295,6 @@
       </div>
     </section>
 
-    <!-- Marquee -->
     <div class="marquee-strip" aria-hidden="true">
       <div class="marquee-track" id="mtrack">
         <span class="marquee-item"><span class="dot-sep"></span>Concert Production</span>
@@ -1291,7 +1316,6 @@
       </div>
     </div>
 
-    <!-- Feature Cards -->
     <section style="padding:0 0 20px">
       <div class="wrap">
         <div class="features-grid">
@@ -1319,7 +1343,6 @@
       </div>
     </section>
 
-    <!-- Big CTA -->
     <section class="cta-band">
       <div class="wrap">
         <div class="glass cta-band-inner reveal">
@@ -1336,7 +1359,7 @@
   </main>
 
   <!-- ============================================================
-       PAGE: ABOUT
+       ABOUT
   ============================================================ -->
   <main id="page-about" class="page">
     <div class="about-hero">
@@ -1428,7 +1451,7 @@
   </main>
 
   <!-- ============================================================
-       PAGE: SERVICES
+       SERVICES
   ============================================================ -->
   <main id="page-services" class="page">
     <div class="services-hero">
@@ -1543,7 +1566,7 @@
   </main>
 
   <!-- ============================================================
-       PAGE: PROJECTS
+       PROJECTS
   ============================================================ -->
   <main id="page-projects" class="page">
     <div class="projects-hero">
@@ -1618,7 +1641,7 @@
   </main>
 
   <!-- ============================================================
-       PAGE: CLIENTS
+       CLIENTS
   ============================================================ -->
   <main id="page-clients" class="page">
     <div class="clients-hero">
@@ -1703,7 +1726,7 @@
   </main>
 
   <!-- ============================================================
-       PAGE: CONTACT
+       CONTACT
   ============================================================ -->
   <main id="page-contact" class="page">
     <div class="contact-hero">
@@ -1808,7 +1831,7 @@
             <p style="font-family:var(--font-ui);font-weight:700;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:12px;">Social Media</p>
             <div class="social-links">
               <a class="social-link" href="#"><i class="fab fa-instagram"></i>Instagram</a>
-              <a class="social-link" href=https://www.facebook.com/p/Centination-Entertainment-61583882785598><i class="fab fa-facebook"></i>Facebook</a>
+              <a class="social-link" href="https://www.facebook.com/p/Centination-Entertainment-61583882785598"><i class="fab fa-facebook"></i>Facebook</a>
               <a class="social-link" href="#"><i class="fab fa-youtube"></i>YouTube</a>
             </div>
           </div>
@@ -1822,9 +1845,7 @@
     </div>
   </main>
 
-  <!-- ============================================================
-       FOOTER
-  ============================================================ -->
+  <!-- FOOTER -->
   <footer class="footer">
     <div class="wrap">
       <div class="footer-inner">
@@ -2048,6 +2069,106 @@ Message: ${d.get('message')||'-'}`;
     // FOOTER YEAR
     // =====================================================================
     document.getElementById('yr').textContent = new Date().getFullYear();
+
+    // =====================================================================
+    // TYPING EFFECT
+    // =====================================================================
+    const typingEl = document.getElementById('typingText');
+    const typeWords = ["MUSIC", "SHOWS", "EVENTS", "EXPERIENCES"];
+    let w = 0, c = 0, del = false;
+
+    function runTyping() {
+      const word = typeWords[w];
+      if (!del) {
+        typingEl.textContent = word.slice(0, c + 1);
+        c++;
+        if (c === word.length) {
+          del = true;
+          setTimeout(runTyping, 1100);
+          return;
+        }
+      } else {
+        typingEl.textContent = word.slice(0, c - 1);
+        c--;
+        if (c === 0) {
+          del = false;
+          w = (w + 1) % typeWords.length;
+        }
+      }
+      setTimeout(runTyping, del ? 60 : 120);
+    }
+    runTyping();
+
+    // =====================================================================
+    // COUNTING EFFECT (when stats enter view)
+    // =====================================================================
+    function animateCounter(el) {
+      const target = Number(el.dataset.count || "0");
+      const suffix = el.dataset.suffix || "";
+      const duration = 1800;
+      const start = performance.now();
+
+      function frame(now) {
+        const p = Math.min(1, (now - start) / duration);
+        const value = Math.floor(target * (0.15 + 0.85 * p)); // smoother start
+        el.textContent = (p >= 1 ? target : value) + suffix;
+        if (p < 1) requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+    }
+
+    const statObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          statObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.6 });
+
+    document.querySelectorAll('.hstat-num').forEach(el => statObserver.observe(el));
+
+    // =====================================================================
+    // HERO BACKGROUND SLIDER (crossfade)
+    // =====================================================================
+    const heroBgA = document.getElementById('heroBgA');
+    const heroBgB = document.getElementById('heroBgB');
+
+    const heroImages = [
+      "assets/hero-bg.jpg",
+      "assets/hero-bg2.jpg",
+      "assets/hero-bg3.jpg"
+    ];
+
+    // preload
+    heroImages.forEach(src => { const i = new Image(); i.src = src; });
+
+    let bgIndex = 0;
+    let usingA = true;
+
+    function setLayer(el, src) {
+      el.style.backgroundImage = `url('${src}')`;
+    }
+
+    // init
+    setLayer(heroBgA, heroImages[0]);
+    heroBgA.classList.add('active');
+
+    setInterval(() => {
+      bgIndex = (bgIndex + 1) % heroImages.length;
+      const nextSrc = heroImages[bgIndex];
+
+      if (usingA) {
+        setLayer(heroBgB, nextSrc);
+        heroBgB.classList.add('active');
+        heroBgA.classList.remove('active');
+      } else {
+        setLayer(heroBgA, nextSrc);
+        heroBgA.classList.add('active');
+        heroBgB.classList.remove('active');
+      }
+      usingA = !usingA;
+    }, 6500);
   </script>
 </body>
 </html>

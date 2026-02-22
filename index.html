@@ -776,6 +776,7 @@
   function setLayer(el,src){el.style.backgroundImage=`url('${src}')`;}
   setLayer(heroBgA,heroImages[0]);heroBgA.classList.add('active');
   setInterval(()=>{bgIndex=(bgIndex+1)%heroImages.length;if(usingA){setLayer(heroBgB,heroImages[bgIndex]);heroBgB.classList.add('active');heroBgA.classList.remove('active');}else{setLayer(heroBgA,heroImages[bgIndex]);heroBgA.classList.add('active');heroBgB.classList.remove('active');}usingA=!usingA;},6500);
+  document.addEventListener("contextmenu", e => e.preventDefault());
   </script>
 </body>
 </html>

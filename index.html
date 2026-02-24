@@ -269,51 +269,87 @@
     .pstep h4 { font-family:var(--font-ui); font-weight:800; font-size:15px; margin-bottom:8px; }
     .pstep p { font-size:13px; color:var(--muted); line-height:1.6; }
 
-    /* ========== PROJECTS — NEW LAYOUT ========== */
-    #page-projects { padding-bottom:100px; }
-    .filter-bar { display:flex; align-items:center; gap:10px; flex-wrap:wrap; padding-bottom:32px; }
-    .fchip { padding:9px 18px; border-radius:999px; border:1px solid var(--border2); background:var(--surface); font-family:var(--font-ui); font-weight:700; font-size:13px; letter-spacing:.3px; color:rgba(240,238,255,.7); cursor:none; transition:all .2s; }
-    .fchip:hover { background:var(--surface2); color:var(--text); }
-    .fchip.active { background:linear-gradient(135deg,rgba(200,0,26,.9),rgba(255,29,53,.5)); border-color:rgba(255,29,53,.35); color:#fff; }
-
-    /* Project entry block */
-    .proj-entry { display:grid; grid-template-columns:1fr 1fr; gap:0; border-radius:var(--radius2); overflow:hidden; margin-bottom:28px; border:1px solid rgba(255,255,255,.1); transition:box-shadow .3s; }
-    .proj-entry:hover { box-shadow:0 24px 70px rgba(0,0,0,.55); }
-
-    /* Left: photo pair */
-    .proj-photos { display:grid; grid-template-columns:1fr 1fr; gap:0; }
-    .proj-photo-wrap { position:relative; overflow:hidden; }
-    .proj-photo-wrap img { width:100%; height:300px; object-fit:cover; filter:saturate(.85) brightness(.7); transition:transform .5s cubic-bezier(.25,.46,.45,.94), filter .4s; display:block; }
-    .proj-entry:hover .proj-photo-wrap img { transform:scale(1.05); filter:saturate(1) brightness(.8); }
-    /* Thin divider between the two photos */
-    .proj-photos .proj-photo-wrap:first-child { border-right:2px solid rgba(4,4,8,.9); }
-
-    /* Swipeable photo strip inside each half */
-    .proj-photo-swiper { position:relative; width:100%; height:300px; overflow:hidden; }
-    .proj-photo-slides { position:relative; width:100%; height:100%; }
-    .proj-photo-slide { position:absolute; inset:0; background-size:cover; background-position:center; filter:saturate(.85) brightness(.7); opacity:0; transition:opacity .5s ease, filter .4s; }
-    .proj-photo-slide.active { opacity:1; }
-    .proj-entry:hover .proj-photo-slide.active { filter:saturate(1) brightness(.8); }
-    .pps-arrow { position:absolute; top:50%; transform:translateY(-50%); width:28px; height:28px; border-radius:50%; border:1px solid rgba(255,255,255,.2); background:rgba(4,4,8,.6); color:#fff; font-size:11px; display:flex; align-items:center; justify-content:center; cursor:none; z-index:5; opacity:0; transition:opacity .2s; pointer-events:none; }
-    .pps-prev { left:8px; }
-    .pps-next { right:8px; }
-    .proj-photo-wrap:hover .pps-arrow { opacity:1; pointer-events:auto; }
-    .pps-arrow:hover { background:rgba(200,0,26,.7); }
-    .pps-dots { position:absolute; bottom:8px; left:50%; transform:translateX(-50%); display:flex; gap:4px; z-index:5; }
-    .pps-dot { width:5px; height:5px; border-radius:50%; background:rgba(255,255,255,.3); transition:background .2s, transform .2s; }
-    .pps-dot.active { background:#fff; transform:scale(1.3); }
-
-    /* Right: description */
-    .proj-desc { padding:36px 40px; background:linear-gradient(140deg,rgba(255,255,255,.06) 0%,rgba(255,255,255,.01) 100%); display:flex; flex-direction:column; justify-content:center; gap:0; }
-    .proj-desc-eyebrow { display:inline-flex; align-items:center; gap:8px; font-family:var(--font-ui); font-size:11px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:var(--accent2); margin-bottom:14px; }
-    .proj-desc-eyebrow::before { content:''; display:block; width:18px; height:1.5px; background:var(--accent2); }
-    .proj-desc h3 { font-family:var(--font-display); font-size:clamp(28px,3vw,42px); letter-spacing:1.5px; line-height:.95; margin-bottom:16px; }
-    .proj-desc p { font-size:14px; line-height:1.8; color:var(--muted); margin-bottom:24px; }
-    .proj-desc-tags { display:flex; flex-wrap:wrap; gap:7px; margin-bottom:28px; }
-    .proj-desc-tag { padding:5px 12px; border-radius:999px; border:1px solid rgba(255,255,255,.1); background:rgba(255,255,255,.03); font-family:var(--font-ui); font-size:11px; font-weight:700; letter-spacing:.3px; color:rgba(240,238,255,.6); }
-    .proj-desc-link { display:inline-flex; align-items:center; gap:8px; font-family:var(--font-ui); font-weight:700; font-size:13px; color:var(--accent2); letter-spacing:.3px; transition:gap .2s; cursor:none; }
-    .proj-desc-link:hover { gap:12px; }
-    .proj-desc-link i { font-size:12px; }
+    /* ===== NEW PROJECTS (2 DIV LAYOUT) ===== */
+    #page-projects { padding-bottom: 100px; }
+    .project-list { display: grid; gap: 18px; padding: 10px 0 0; }
+    .project-row {
+      padding: 22px;
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 22px;
+      align-items: start;
+    }
+    .project-photos {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+    .pimg {
+      border: 0;
+      padding: 0;
+      height: 240px;
+      border-radius: 18px;
+      overflow: hidden;
+      cursor: none;
+      background: rgba(255,255,255,.02);
+      border: 1px solid rgba(255,255,255,.1);
+      position: relative;
+    }
+    .pimg::before{
+      content:"";
+      position:absolute; inset:0;
+      background-image: var(--bg);
+      background-size: cover;
+      background-position: center;
+      filter: saturate(.9) brightness(.7);
+      transform: scale(1.02);
+      transition: transform .5s ease, filter .35s ease;
+    }
+    .pimg::after{
+      content:"";
+      position:absolute; inset:0;
+      background: linear-gradient(135deg, rgba(200,0,26,.18), transparent 60%);
+      opacity: .9;
+    }
+    .pimg:hover::before{
+      transform: scale(1.07);
+      filter: saturate(1.05) brightness(.78);
+    }
+    .project-info { padding: 6px 4px; }
+    .project-kicker {
+      font-family: var(--font-ui);
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-size: 12px;
+      color: rgba(240,238,255,.65);
+      margin-bottom: 10px;
+    }
+    .project-title {
+      font-family: var(--font-ui);
+      font-weight: 900;
+      font-size: 22px;
+      letter-spacing: -.2px;
+      margin-bottom: 10px;
+    }
+    .project-desc {
+      font-size: 14.5px;
+      line-height: 1.8;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .project-pills { display:flex; flex-wrap:wrap; gap:8px; }
+    .project-pill{
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      font-size: 12px;
+      font-weight: 800;
+      font-family: var(--font-ui);
+      letter-spacing: .3px;
+      color: rgba(240,238,255,.72);
+    }
 
     /* MODAL */
     .modal { position:fixed; inset:0; background:rgba(0,0,0,.8); backdrop-filter:blur(12px); z-index:300; display:none; place-items:center; padding:24px; }
@@ -709,140 +745,100 @@
     </div>
   </main>
 
-  <!-- ===================== PROJECTS ===================== -->
+    <!-- ===== PROJECTS ===== -->
   <main id="page-projects" class="page">
     <div class="page-hero">
       <div class="page-hero-bg" style="background-image:url('assets/rusiri-2.jpeg')"></div>
       <div class="page-hero-overlay"></div>
       <div class="wrap">
-        <div class="sh anim-up"><div class="sh-eyebrow">Portfolio</div><h2>OUR<br>PROJECTS</h2><p>A curated showcase of our work — photos on the left, story on the right.</p></div>
+        <div class="sh anim-up">
+          <div class="sh-eyebrow">Portfolio</div>
+          <h2>OUR<br>RECENT PROJECTS</h2>
+          <p>Three signature projects. Each one shows our planning, production quality, and on-ground execution.</p>
+        </div>
       </div>
     </div>
-    <div class="wrap" style="padding-top:20px; padding-bottom:20px">
-      <div class="filter-bar">
-        <button class="fchip active" data-filter="all">All Projects</button>
-        <button class="fchip" data-filter="concert">Concerts</button>
-        <button class="fchip" data-filter="award">Award Ceremonies</button>
-        <button class="fchip" data-filter="csr">CSR / Community</button>
-      </div>
 
-      <!-- ── PROJECT 1: Rusiri Concert ── -->
-      <div class="proj-entry reveal" data-type="concert">
-        <div class="proj-photos">
-          <!-- Photo A -->
-          <div class="proj-photo-wrap">
-            <div class="proj-photo-swiper">
-              <div class="proj-photo-slides">
-                <div class="proj-photo-slide active" style="background-image:url('assets/rusiri-1.jpeg')"></div>
-                <div class="proj-photo-slide" style="background-image:url('assets/rusiri-2.jpeg')"></div>
-              </div>
-              <button class="pps-arrow pps-prev" aria-label="Prev"><i class="fas fa-chevron-left"></i></button>
-              <button class="pps-arrow pps-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
-              <div class="pps-dots"><span class="pps-dot active"></span><span class="pps-dot"></span></div>
-            </div>
-          </div>
-          <!-- Photo B -->
-          <div class="proj-photo-wrap">
-            <div class="proj-photo-swiper">
-              <div class="proj-photo-slides">
-                <div class="proj-photo-slide active" style="background-image:url('assets/rusiri-2.jpeg')"></div>
-                <div class="proj-photo-slide" style="background-image:url('assets/rusiri-1.jpeg')"></div>
-              </div>
-              <button class="pps-arrow pps-prev" aria-label="Prev"><i class="fas fa-chevron-left"></i></button>
-              <button class="pps-arrow pps-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
-              <div class="pps-dots"><span class="pps-dot active"></span><span class="pps-dot"></span></div>
-            </div>
-          </div>
-        </div>
-        <div class="proj-desc">
-          <div class="proj-desc-eyebrow">Concert Production</div>
-          <h3>RUSIRI: THE CENTINATIONZ LIVE EXPERIENCE</h3>
-          <p>CENTINATION delivered a complete 360° event management solution for this landmark concert. From the initial creative vision and stage design to the final technical execution, we managed every detail — lighting direction, sound engineering, crowd flow, and artist coordination — to ensure a high-energy, flawless, and truly unforgettable live experience.</p>
-          <div class="proj-desc-tags">
-            <span class="proj-desc-tag">Stage Design</span>
-            <span class="proj-desc-tag">Lighting Direction</span>
-            <span class="proj-desc-tag">Audio Production</span>
-            <span class="proj-desc-tag">Artist Coordination</span>
-            <span class="proj-desc-tag">360° Production</span>
-          </div>
-          <a class="proj-desc-link" href="#" data-page="contact">Enquire about this service <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
+    <div class="wrap" style="padding-top:20px">
+      <div class="project-list">
 
-      <!-- ── PROJECT 2: Award Ceremony ── -->
-      <div class="proj-entry reveal" data-type="award">
-        <div class="proj-photos">
-          <div class="proj-photo-wrap">
-            <div class="proj-photo-swiper">
-              <div class="proj-photo-slides">
-                <!-- Replace with real award ceremony images when available -->
-                <div class="proj-photo-slide active" style="background-image:url('assets/rusiri-1.jpeg')"></div>
-              </div>
+        <!-- PROJECT 1: Rusiri Concert -->
+        <article class="glass project-row reveal"
+          data-title="Rusiri: The CentigradZ Live Experience"
+          data-sub="A full 360° concert production. Creative direction, stage build, audio & lighting, rehearsal planning, show calling, and live execution.">
+          <div class="project-photos">
+            <button class="pimg" type="button" aria-label="Open photo" style="--bg:url('assets/rusiri-1.jpeg')"></button>
+            <button class="pimg" type="button" aria-label="Open photo" style="--bg:url('assets/rusiri-2.jpeg')"></button>
+          </div>
+          <div class="project-info">
+            <div class="project-kicker">Concert • 360° Production</div>
+            <div class="project-title">Rusiri: The CentigradZ Live Experience</div>
+            <div class="project-desc">
+              We delivered a full end-to-end concert experience — from concept planning and stage design to technical
+              rehearsals and flawless show-day execution. Our team handled audience flow, artist coordination, lighting
+              cues, sound engineering, and real-time direction to keep every moment sharp and high-energy.
+            </div>
+            <div class="project-pills">
+              <span class="project-pill">Stage & Set</span>
+              <span class="project-pill">Audio</span>
+              <span class="project-pill">Lighting</span>
+              <span class="project-pill">Show Calling</span>
             </div>
           </div>
-          <div class="proj-photo-wrap">
-            <div class="proj-photo-swiper">
-              <div class="proj-photo-slides">
-                <div class="proj-photo-slide active" style="background-image:url('assets/rusiri-2.jpeg')"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="proj-desc">
-          <div class="proj-desc-eyebrow">Award Ceremony</div>
-          <h3>EXCELLENCE AWARDS NIGHT</h3>
-          <p>An evening of prestige and precision. CENTINATION conceptualized and executed a full-scale award ceremony from the ground up — designing a sophisticated stage, managing immaculate choreography, and orchestrating seamless presenter and recipient transitions. Every lighting cue, every musical interlude, and every visual element was designed to elevate the moment of recognition into something truly memorable for both honorees and guests.</p>
-          <div class="proj-desc-tags">
-            <span class="proj-desc-tag">Stage Production</span>
-            <span class="proj-desc-tag">Choreography</span>
-            <span class="proj-desc-tag">Lighting Design</span>
-            <span class="proj-desc-tag">VIP Coordination</span>
-            <span class="proj-desc-tag">MC Direction</span>
-          </div>
-          <a class="proj-desc-link" href="#" data-page="contact">Plan your award ceremony <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
+        </article>
 
-      <!-- ── PROJECT 3: Education CSR ── -->
-      <div class="proj-entry reveal" data-type="csr">
-        <div class="proj-photos">
-          <div class="proj-photo-wrap">
-            <div class="proj-photo-swiper">
-              <div class="proj-photo-slides">
-                <div class="proj-photo-slide active" style="background-image:url('assets/edu-1.jpeg')"></div>
-                <div class="proj-photo-slide" style="background-image:url('assets/edu-2.jpeg')"></div>
-              </div>
-              <button class="pps-arrow pps-prev" aria-label="Prev"><i class="fas fa-chevron-left"></i></button>
-              <button class="pps-arrow pps-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
-              <div class="pps-dots"><span class="pps-dot active"></span><span class="pps-dot"></span></div>
+        <!-- PROJECT 2: Education CSR -->
+        <article class="glass project-row reveal reveal-delay-2"
+          data-title="Empowering the Future of Sri Lankan Education"
+          data-sub="A CSR initiative focused on meaningful support — planning, sourcing, logistics, and delivery with full accountability.">
+          <div class="project-photos">
+            <button class="pimg" type="button" aria-label="Open photo" style="--bg:url('assets/edu-1.jpeg')"></button>
+            <button class="pimg" type="button" aria-label="Open photo" style="--bg:url('assets/edu-2.jpeg')"></button>
+          </div>
+          <div class="project-info">
+            <div class="project-kicker">CSR • Community Impact</div>
+            <div class="project-title">Empowering the Future of Sri Lankan Education</div>
+            <div class="project-desc">
+              We planned and delivered a CSR program with a clear goal: support students with real, usable resources.
+              From sourcing and transport to on-ground coordination, we ensured smooth distribution and a respectful,
+              well-organized experience for the school community.
+            </div>
+            <div class="project-pills">
+              <span class="project-pill">Logistics</span>
+              <span class="project-pill">Planning</span>
+              <span class="project-pill">Coordination</span>
+              <span class="project-pill">Community</span>
             </div>
           </div>
-          <div class="proj-photo-wrap">
-            <div class="proj-photo-swiper">
-              <div class="proj-photo-slides">
-                <div class="proj-photo-slide active" style="background-image:url('assets/edu-2.jpeg')"></div>
-                <div class="proj-photo-slide" style="background-image:url('assets/edu-1.jpeg')"></div>
-              </div>
-              <button class="pps-arrow pps-prev" aria-label="Prev"><i class="fas fa-chevron-left"></i></button>
-              <button class="pps-arrow pps-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
-              <div class="pps-dots"><span class="pps-dot active"></span><span class="pps-dot"></span></div>
-            </div>
-          </div>
-        </div>
-        <div class="proj-desc">
-          <div class="proj-desc-eyebrow">CSR / Community Initiative</div>
-          <h3>EMPOWERING SRI LANKAN EDUCATION</h3>
-          <p>At CENTINATION, we believe that the heart of a nation lies in its students. We are deeply committed to uplifting the educational landscape of Sri Lanka — providing not just supplies, but opportunity. From restorative relief efforts to sustained support programs, we take full ownership of every community initiative to ensure the next generation has the tools they need to lead, grow, and inspire.</p>
-          <div class="proj-desc-tags">
-            <span class="proj-desc-tag">Community Outreach</span>
-            <span class="proj-desc-tag">Education Support</span>
-            <span class="proj-desc-tag">CSR Initiative</span>
-            <span class="proj-desc-tag">Sustainable Impact</span>
-          </div>
-          <a class="proj-desc-link" href="#" data-page="contact">Partner with us on CSR <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
+        </article>
 
+        <!-- PROJECT 3: Award Ceremony -->
+        <article class="glass project-row reveal reveal-delay-3"
+          data-title="Corporate Awards Night"
+          data-sub="A premium award ceremony with tight timing, strong stage visuals, and smooth guest experience — built for prestige and brand value.">
+          <div class="project-photos">
+            <button class="pimg" type="button" aria-label="Open photo" style="--bg:url('assets/award-1.jpeg')"></button>
+            <button class="pimg" type="button" aria-label="Open photo" style="--bg:url('assets/award-2.jpeg')"></button>
+          </div>
+          <div class="project-info">
+            <div class="project-kicker">Award Ceremony • Premium Delivery</div>
+            <div class="project-title">Corporate Awards Night</div>
+            <div class="project-desc">
+              A high-standard award ceremony is all about timing and atmosphere. We designed the stage layout, LED and
+              lighting looks, walk-up flow, audio clarity, and cue-by-cue run of show to keep the night elegant and smooth.
+              Every trophy moment was supported with proper spotlighting, clean microphone control, camera-friendly angles,
+              and backstage coordination — so the brand, winners, and guests all felt the prestige.
+            </div>
+            <div class="project-pills">
+              <span class="project-pill">LED & Lighting</span>
+              <span class="project-pill">Run of Show</span>
+              <span class="project-pill">VIP Flow</span>
+              <span class="project-pill">Stage Management</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
     </div>
   </main>
 
@@ -901,7 +897,7 @@
               <a class="social-link" href="#"><i class="fab fa-youtube"></i>YouTube</a>
             </div>
           </div>
-          <a class="btn btn-ghost" href="#" data-page="projects" style="justify-content:center"><i class="fas fa-arrow-right"></i> View Our Projects</a>
+          <a class="btn btn-ghost" href="#" data-page="projects" style="justify-content:center"><i class="fas fa-arrow-right"></i> View Our Recent Projects</a>
         </div>
       </div>
     </div>

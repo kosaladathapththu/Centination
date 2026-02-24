@@ -10,7 +10,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Bebas+Neue&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <link rel="icon" href="assets/logo.png" type="image/png">
-
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -40,7 +39,6 @@
     body::after { content: ''; position: fixed; inset: 0; z-index: -2; background-image: linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px); background-size: 80px 80px; mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%); }
     .noise { position: fixed; inset: 0; z-index: -1; opacity: 0.04; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E"); }
 
-    /* LAYOUT */
     .wrap { max-width: var(--max); margin: 0 auto; padding: 0 28px; }
 
     /* NAVBAR */
@@ -97,8 +95,9 @@
     @keyframes marquee { from{transform:translateX(0);} to{transform:translateX(-50%);} }
     @keyframes glow-pulse { 0%,100%{opacity:.6;} 50%{opacity:1;} }
     @keyframes blink { 0%,45%{opacity:1;} 50%,100%{opacity:0;} }
+    @keyframes float { 0%,100%{transform:translateY(0px);} 50%{transform:translateY(-12px);} }
     .anim-up { animation: fadeUp .8s cubic-bezier(.22,1,.36,1) both; }
-    .d1{animation-delay:.1s} .d2{animation-delay:.2s} .d3{animation-delay:.3s} .d4{animation-delay:.4s}
+    .d1{animation-delay:.1s} .d2{animation-delay:.2s} .d3{animation-delay:.3s} .d4{animation-delay:.4s} .d5{animation-delay:.5s} .d6{animation-delay:.6s}
     .reveal { opacity:0; transform:translateY(28px); transition: opacity .85s cubic-bezier(.22,1,.36,1), transform .85s cubic-bezier(.22,1,.36,1); }
     .reveal.visible { opacity:1; transform:translateY(0); }
     .reveal-delay-1{transition-delay:.1s} .reveal-delay-2{transition-delay:.2s} .reveal-delay-3{transition-delay:.3s} .reveal-delay-4{transition-delay:.4s}
@@ -112,7 +111,7 @@
     .page-hero-overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg,rgba(4,4,8,.55) 0%,rgba(4,4,8,.9) 100%); }
     .page-hero .wrap { position: relative; z-index: 2; }
 
-    /* HOME HERO */
+    /* ========== HOME HERO ========== */
     #page-home { min-height: 100vh; }
     .hero { position: relative; min-height: calc(100vh - var(--nav-h)); display: flex; align-items: center; padding: 60px 0 80px; overflow: hidden; }
     .hero-bg-layer { position: absolute; inset: 0; background-size: cover; background-position: center; transform: scale(1.03); transition: opacity 1.2s ease, transform 8s ease; opacity: 0; z-index: 0; }
@@ -121,9 +120,7 @@
     .hero::after { content:''; position:absolute; inset:0; background:radial-gradient(circle at 70% 30%,rgba(200,0,26,.22),transparent 55%); z-index:1; pointer-events:none; }
     .hero .wrap { position:relative; z-index:4; width:100%; }
     .hero-content { position:relative; z-index:4; max-width:720px; }
-
     .home-blind-photo { position:absolute; right:-80px; bottom:-100px; width:480px; opacity:.1; filter:blur(.5px) saturate(.9); pointer-events:none; z-index:1; transform:rotate(-5deg); }
-
     .hero-eyebrow { display:inline-flex; align-items:center; gap:10px; border:1px solid rgba(255,255,255,.1); background:rgba(255,255,255,.04); border-radius:999px; padding:8px 16px; font-family:var(--font-ui); font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(240,238,255,.75); margin-bottom:24px; }
     .live-dot { width:8px; height:8px; border-radius:50%; background:#22c55e; box-shadow:0 0 0 2px rgba(34,197,94,.2); animation:pulse-dot 2s ease-in-out infinite; }
     .hero h1 { font-family:var(--font-display); font-size:clamp(68px,9vw,130px); letter-spacing:3px; line-height:.9; margin-bottom:28px; text-shadow:0 18px 60px rgba(0,0,0,.55); }
@@ -156,8 +153,8 @@
     .marquee-item { display:flex; align-items:center; gap:14px; padding:0 36px; font-family:var(--font-ui); font-size:12px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:rgba(240,238,255,.35); border-right:1px solid var(--border); white-space:nowrap; }
     .marquee-item .dot-sep { width:4px; height:4px; border-radius:50%; background:var(--accent2); opacity:.6; }
 
-    /* FEATURES */
-    .features-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; padding:80px 0; }
+    /* ========== HOME — FEATURES ========== */
+    .features-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; padding:80px 0 40px; }
     .fcard { padding:32px 28px; position:relative; transition:transform .3s; }
     .fcard:hover { transform:translateY(-6px); }
     .fcard:hover .fcard-glow { opacity:1; }
@@ -166,6 +163,59 @@
     .fcard h3 { font-family:var(--font-ui); font-weight:800; font-size:17px; letter-spacing:-.2px; margin-bottom:10px; }
     .fcard p { font-size:14px; line-height:1.7; color:var(--muted); }
 
+    /* ========== HOME — SERVICES PREVIEW ========== */
+    .home-services { padding: 60px 0 80px; }
+    .home-services-header { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:40px; }
+    .home-services-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+    .hsrv-card { padding:28px 22px; border-radius:20px; background:linear-gradient(140deg,rgba(255,255,255,.05) 0%,rgba(255,255,255,.01) 100%); border:1px solid rgba(255,255,255,.09); transition:transform .3s, border-color .3s, background .3s; position:relative; overflow:hidden; }
+    .hsrv-card::before { content:''; position:absolute; inset:0; background:radial-gradient(circle at 0% 0%,rgba(200,0,26,.12),transparent 60%); opacity:0; transition:opacity .3s; }
+    .hsrv-card:hover { transform:translateY(-5px); border-color:rgba(200,0,26,.3); background:linear-gradient(140deg,rgba(200,0,26,.07) 0%,rgba(255,255,255,.01) 100%); }
+    .hsrv-card:hover::before { opacity:1; }
+    .hsrv-icon { width:44px; height:44px; border-radius:12px; background:rgba(200,0,26,.15); border:1px solid rgba(200,0,26,.2); display:grid; place-items:center; font-size:18px; margin-bottom:16px; }
+    .hsrv-card h4 { font-family:var(--font-ui); font-weight:800; font-size:14px; margin-bottom:8px; }
+    .hsrv-card p { font-size:13px; line-height:1.6; color:var(--muted); }
+
+    /* ========== HOME — ABOUT STRIP ========== */
+    .home-about { padding:80px 0; }
+    .home-about-inner { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+    .home-about-visual { position:relative; }
+    .home-about-imgs { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    .home-about-img { border-radius:20px; overflow:hidden; }
+    .home-about-img img { width:100%; height:220px; object-fit:cover; filter:saturate(.8) brightness(.75); transition:transform .5s, filter .4s; display:block; }
+    .home-about-img:hover img { transform:scale(1.05); filter:saturate(1) brightness(.85); }
+    .home-about-img:first-child { margin-top:40px; }
+    .home-about-badge { position:absolute; bottom:-20px; left:50%; transform:translateX(-50%); padding:14px 24px; border-radius:16px; white-space:nowrap; text-align:center; }
+    .home-about-badge .num { font-family:var(--font-display); font-size:42px; letter-spacing:2px; background:linear-gradient(135deg,var(--accent2),#ff8094); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; line-height:1; }
+    .home-about-badge .lbl { font-family:var(--font-ui); font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-top:2px; }
+    .home-about-text h2 { font-family:var(--font-display); font-size:clamp(42px,5vw,72px); letter-spacing:2px; line-height:.92; margin-bottom:20px; }
+    .home-about-text p { font-size:15px; line-height:1.8; color:var(--muted); margin-bottom:14px; }
+    .home-about-text p strong { color:var(--text); }
+    .home-about-pills { display:flex; flex-wrap:wrap; gap:8px; margin:24px 0 32px; }
+    .home-pill { padding:7px 14px; border-radius:999px; border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.04); font-family:var(--font-ui); font-size:12px; font-weight:700; letter-spacing:.5px; color:rgba(240,238,255,.75); }
+
+    /* ========== HOME — PROJECTS PREVIEW ========== */
+    .home-projects { padding:0 0 80px; }
+    .home-projects-header { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:40px; }
+    .home-proj-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    .home-proj-card { border-radius:20px; overflow:hidden; position:relative; cursor:none; }
+    .home-proj-card-img { width:100%; height:260px; object-fit:cover; filter:saturate(.8) brightness(.65); transition:transform .5s, filter .4s; display:block; }
+    .home-proj-card:hover .home-proj-card-img { transform:scale(1.06); filter:saturate(1) brightness(.75); }
+    .home-proj-overlay { position:absolute; inset:0; background:linear-gradient(180deg,transparent 35%,rgba(0,0,0,.85) 100%); }
+    .home-proj-info { position:absolute; left:18px; right:18px; bottom:16px; }
+    .home-proj-tag { display:inline-block; padding:4px 10px; border-radius:999px; border:1px solid rgba(255,255,255,.2); background:rgba(4,4,8,.5); font-family:var(--font-ui); font-size:10px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:8px; }
+    .home-proj-info b { display:block; font-family:var(--font-ui); font-weight:800; font-size:14px; line-height:1.3; }
+    .home-proj-info span { display:block; font-size:12px; color:rgba(240,238,255,.55); margin-top:3px; }
+    .home-proj-card-img-bg { position:absolute; inset:0; background-size:cover; background-position:center; filter:saturate(.8) brightness(.65); transition:transform .5s, filter .4s; }
+    .home-proj-card:hover .home-proj-card-img-bg { transform:scale(1.06); filter:saturate(1) brightness(.75); }
+
+    /* ========== HOME — NUMBERS BAND ========== */
+    .numbers-band { padding:80px 0; border-top:1px solid var(--border); border-bottom:1px solid var(--border); background:rgba(255,255,255,.015); }
+    .numbers-inner { display:grid; grid-template-columns:repeat(4,1fr); gap:0; }
+    .num-item { text-align:center; padding:32px 20px; border-right:1px solid var(--border); }
+    .num-item:last-child { border-right:0; }
+    .num-val { font-family:var(--font-display); font-size:clamp(52px,6vw,80px); letter-spacing:3px; background:linear-gradient(135deg,#f0eeff 0%,var(--accent2) 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; line-height:1; }
+    .num-label { font-family:var(--font-ui); font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-top:8px; }
+
     /* CTA BAND */
     .cta-band { padding:80px 0; }
     .cta-band-inner { padding:60px; text-align:center; position:relative; overflow:hidden; }
@@ -173,7 +223,7 @@
     .cta-band h2 { font-family:var(--font-display); font-size:clamp(48px,7vw,96px); letter-spacing:3px; margin-bottom:16px; }
     .cta-band p { font-size:16px; color:var(--muted); margin-bottom:36px; max-width:48ch; margin-left:auto; margin-right:auto; }
 
-    /* ABOUT */
+    /* ========== ABOUT ========== */
     #page-about { padding-bottom:100px; }
     .about-layout { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; padding:60px 0; }
     .about-visual { position:relative; aspect-ratio:4/5; border-radius:var(--radius2); overflow:hidden; }
@@ -197,7 +247,7 @@
     .team-card h3 { font-family:var(--font-ui); font-weight:800; font-size:16px; margin-bottom:4px; }
     .team-card span { font-size:13px; color:var(--muted); }
 
-    /* SERVICES */
+    /* ========== SERVICES ========== */
     #page-services { padding-bottom:100px; }
     .services-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; padding-bottom:60px; }
     .srv-card { padding:36px 32px; position:relative; overflow:hidden; transition:transform .3s; }
@@ -219,97 +269,51 @@
     .pstep h4 { font-family:var(--font-ui); font-weight:800; font-size:15px; margin-bottom:8px; }
     .pstep p { font-size:13px; color:var(--muted); line-height:1.6; }
 
-    
+    /* ========== PROJECTS — NEW LAYOUT ========== */
+    #page-projects { padding-bottom:100px; }
+    .filter-bar { display:flex; align-items:center; gap:10px; flex-wrap:wrap; padding-bottom:32px; }
+    .fchip { padding:9px 18px; border-radius:999px; border:1px solid var(--border2); background:var(--surface); font-family:var(--font-ui); font-weight:700; font-size:13px; letter-spacing:.3px; color:rgba(240,238,255,.7); cursor:none; transition:all .2s; }
+    .fchip:hover { background:var(--surface2); color:var(--text); }
+    .fchip.active { background:linear-gradient(135deg,rgba(200,0,26,.9),rgba(255,29,53,.5)); border-color:rgba(255,29,53,.35); color:#fff; }
 
+    /* Project entry block */
+    .proj-entry { display:grid; grid-template-columns:1fr 1fr; gap:0; border-radius:var(--radius2); overflow:hidden; margin-bottom:28px; border:1px solid rgba(255,255,255,.1); transition:box-shadow .3s; }
+    .proj-entry:hover { box-shadow:0 24px 70px rgba(0,0,0,.55); }
 
-/* PROJECTS */
-#page-projects { padding-bottom:100px; }
-.filter-bar { display:flex; align-items:center; gap:10px; flex-wrap:wrap; padding-bottom:32px; }
-.fchip { padding:9px 18px; border-radius:999px; border:1px solid var(--border2); background:var(--surface); font-family:var(--font-ui); font-weight:700; font-size:13px; letter-spacing:.3px; color:rgba(240,238,255,.7); cursor:none; transition:all .2s; }
-.fchip:hover { background:var(--surface2); color:var(--text); }
-.fchip.active { background:linear-gradient(135deg,rgba(200,0,26,.9),rgba(255,29,53,.5)); border-color:rgba(255,29,53,.35); color:#fff; }
+    /* Left: photo pair */
+    .proj-photos { display:grid; grid-template-columns:1fr 1fr; gap:0; }
+    .proj-photo-wrap { position:relative; overflow:hidden; }
+    .proj-photo-wrap img { width:100%; height:300px; object-fit:cover; filter:saturate(.85) brightness(.7); transition:transform .5s cubic-bezier(.25,.46,.45,.94), filter .4s; display:block; }
+    .proj-entry:hover .proj-photo-wrap img { transform:scale(1.05); filter:saturate(1) brightness(.8); }
+    /* Thin divider between the two photos */
+    .proj-photos .proj-photo-wrap:first-child { border-right:2px solid rgba(4,4,8,.9); }
 
-.projects-masonry { display:grid; grid-template-columns:repeat(12,1fr); gap:14px; }
+    /* Swipeable photo strip inside each half */
+    .proj-photo-swiper { position:relative; width:100%; height:300px; overflow:hidden; }
+    .proj-photo-slides { position:relative; width:100%; height:100%; }
+    .proj-photo-slide { position:absolute; inset:0; background-size:cover; background-position:center; filter:saturate(.85) brightness(.7); opacity:0; transition:opacity .5s ease, filter .4s; }
+    .proj-photo-slide.active { opacity:1; }
+    .proj-entry:hover .proj-photo-slide.active { filter:saturate(1) brightness(.8); }
+    .pps-arrow { position:absolute; top:50%; transform:translateY(-50%); width:28px; height:28px; border-radius:50%; border:1px solid rgba(255,255,255,.2); background:rgba(4,4,8,.6); color:#fff; font-size:11px; display:flex; align-items:center; justify-content:center; cursor:none; z-index:5; opacity:0; transition:opacity .2s; pointer-events:none; }
+    .pps-prev { left:8px; }
+    .pps-next { right:8px; }
+    .proj-photo-wrap:hover .pps-arrow { opacity:1; pointer-events:auto; }
+    .pps-arrow:hover { background:rgba(200,0,26,.7); }
+    .pps-dots { position:absolute; bottom:8px; left:50%; transform:translateX(-50%); display:flex; gap:4px; z-index:5; }
+    .pps-dot { width:5px; height:5px; border-radius:50%; background:rgba(255,255,255,.3); transition:background .2s, transform .2s; }
+    .pps-dot.active { background:#fff; transform:scale(1.3); }
 
-/* Card shell */
-.proj-card { border-radius:var(--radius2); overflow:hidden; position:relative; cursor:none; transition:transform .35s,box-shadow .35s; }
-.proj-card:hover { transform:scale(1.015) translateY(-4px); z-index:2; box-shadow:0 30px 70px rgba(0,0,0,.6); }
-.proj-card:hover .proj-overlay { opacity:1; }
-.proj-card:hover .proj-cap { transform:translateY(0); }
-.proj-card.s4 { grid-column:span 4; min-height:280px; }
-.proj-card.s8 { grid-column:span 8; min-height:360px; }
-.proj-card.s6 { grid-column:span 6; min-height:320px; }
-.proj-card.s12 { grid-column:span 12; min-height:280px; }
-
-/* SWIPER WRAPPER — fills the whole card */
-.proj-swiper { position:absolute; inset:0; overflow:hidden; border-radius:var(--radius2); }
-.proj-slides { position:relative; width:100%; height:100%; }
-
-/* Each slide */
-.proj-slide { position:absolute; inset:0; background-size:cover; background-position:center;
-  filter:saturate(.85) brightness(.65);
-  opacity:0;
-  transition:opacity .55s ease, transform .55s cubic-bezier(.25,.46,.45,.94), filter .4s; }
-.proj-slide.active { opacity:1; }
-.proj-card:hover .proj-slide.active { filter:saturate(1.1) brightness(.7); transform:scale(1.06); }
-
-/* Slide-in / slide-out directions */
-.proj-slide.slide-in-right  { transform:translateX(100%); opacity:0; }
-.proj-slide.slide-in-left   { transform:translateX(-100%); opacity:0; }
-.proj-slide.slide-out-left  { transform:translateX(-100%); opacity:0; }
-.proj-slide.slide-out-right { transform:translateX(100%); opacity:0; }
-
-/* Arrow buttons */
-.proj-arrow {
-  position:absolute; top:50%; transform:translateY(-50%);
-  width:34px; height:34px; border-radius:50%;
-  border:1px solid rgba(255,255,255,.22);
-  background:rgba(4,4,8,.55); backdrop-filter:blur(8px);
-  color:#fff; font-size:13px;
-  display:flex; align-items:center; justify-content:center;
-  cursor:none; z-index:10;
-  opacity:0; transition:opacity .2s, background .2s, transform .2s;
-  pointer-events:none;
-}
-.proj-arrow-prev { left:12px; }
-.proj-arrow-next { right:12px; }
-.proj-card:hover .proj-arrow { opacity:1; pointer-events:auto; }
-.proj-arrow:hover { background:rgba(200,0,26,.75); border-color:rgba(255,29,53,.4); }
-.proj-arrow-prev:hover { transform:translateY(-50%) scale(1.1); }
-.proj-arrow-next:hover { transform:translateY(-50%) scale(1.1); }
-
-/* Dots */
-.proj-dots {
-  position:absolute; bottom:52px; left:50%; transform:translateX(-50%);
-  display:flex; gap:6px; z-index:10;
-  opacity:0; transition:opacity .2s;
-}
-.proj-card:hover .proj-dots { opacity:1; }
-.proj-dot { width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,.35); transition:background .25s, transform .25s; }
-.proj-dot.active { background:#fff; transform:scale(1.35); }
-
-/* Photo counter badge (top-right) */
-.proj-counter {
-  position:absolute; top:14px; right:14px;
-  padding:4px 10px; border-radius:999px;
-  background:rgba(4,4,8,.55); backdrop-filter:blur(8px);
-  border:1px solid rgba(255,255,255,.14);
-  font-family:var(--font-ui); font-weight:700; font-size:11px;
-  color:rgba(240,238,255,.8); letter-spacing:.5px;
-  z-index:10;
-  opacity:0; transition:opacity .2s;
-}
-.proj-card:hover .proj-counter { opacity:1; }
-
-/* Caption, overlay, border — same as before */
-.proj-base-overlay { position:absolute; inset:0; background:linear-gradient(180deg,rgba(0,0,0,.05) 20%,rgba(0,0,0,.82) 100%); pointer-events:none; }
-.proj-overlay { position:absolute; inset:0; background:radial-gradient(circle at 30% 30%,rgba(200,0,26,.22),transparent 60%); opacity:0; transition:opacity .4s; pointer-events:none; }
-.proj-cap { position:absolute; left:20px; right:20px; bottom:18px; display:flex; justify-content:space-between; align-items:flex-end; gap:12px; transform:translateY(6px); transition:transform .35s; z-index:10; pointer-events:none; }
-.proj-cap b { display:block; font-family:var(--font-ui); font-weight:800; font-size:15px; }
-.proj-cap span { display:block; margin-top:3px; font-size:12.5px; color:rgba(240,238,255,.6); font-weight:500; }
-.proj-badge { padding:6px 12px; border-radius:999px; border:1px solid rgba(255,255,255,.18); background:rgba(4,4,8,.5); backdrop-filter:blur(8px); font-family:var(--font-ui); font-weight:800; font-size:11px; letter-spacing:1.5px; text-transform:uppercase; white-space:nowrap; pointer-events:none; }
-.proj-border { position:absolute; inset:0; border-radius:var(--radius2); border:1px solid rgba(255,255,255,.1); pointer-events:none; z-index:11; }
-
+    /* Right: description */
+    .proj-desc { padding:36px 40px; background:linear-gradient(140deg,rgba(255,255,255,.06) 0%,rgba(255,255,255,.01) 100%); display:flex; flex-direction:column; justify-content:center; gap:0; }
+    .proj-desc-eyebrow { display:inline-flex; align-items:center; gap:8px; font-family:var(--font-ui); font-size:11px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:var(--accent2); margin-bottom:14px; }
+    .proj-desc-eyebrow::before { content:''; display:block; width:18px; height:1.5px; background:var(--accent2); }
+    .proj-desc h3 { font-family:var(--font-display); font-size:clamp(28px,3vw,42px); letter-spacing:1.5px; line-height:.95; margin-bottom:16px; }
+    .proj-desc p { font-size:14px; line-height:1.8; color:var(--muted); margin-bottom:24px; }
+    .proj-desc-tags { display:flex; flex-wrap:wrap; gap:7px; margin-bottom:28px; }
+    .proj-desc-tag { padding:5px 12px; border-radius:999px; border:1px solid rgba(255,255,255,.1); background:rgba(255,255,255,.03); font-family:var(--font-ui); font-size:11px; font-weight:700; letter-spacing:.3px; color:rgba(240,238,255,.6); }
+    .proj-desc-link { display:inline-flex; align-items:center; gap:8px; font-family:var(--font-ui); font-weight:700; font-size:13px; color:var(--accent2); letter-spacing:.3px; transition:gap .2s; cursor:none; }
+    .proj-desc-link:hover { gap:12px; }
+    .proj-desc-link i { font-size:12px; }
 
     /* MODAL */
     .modal { position:fixed; inset:0; background:rgba(0,0,0,.8); backdrop-filter:blur(12px); z-index:300; display:none; place-items:center; padding:24px; }
@@ -322,25 +326,6 @@
     .modal-body p { color:var(--muted); font-size:14px; line-height:1.6; }
     .modal-close { padding:10px 18px; border-radius:14px; border:1px solid var(--border2); background:var(--surface2); color:var(--text); font-family:var(--font-ui); font-weight:700; font-size:13px; cursor:none; transition:all .2s; flex:0 0 auto; }
     .modal-close:hover { background:rgba(255,255,255,.1); }
-
-    /* CLIENTS */
-    #page-clients { padding-bottom:100px; }
-    .testimonials-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; padding-bottom:60px; }
-    .tcard { padding:28px 24px; position:relative; overflow:hidden; transition:transform .3s; }
-    .tcard:hover { transform:translateY(-5px); }
-    .tcard-quote { font-size:15px; line-height:1.8; color:rgba(240,238,255,.82); margin-bottom:24px; position:relative; }
-    .tcard-quote::before { content:'"'; position:absolute; top:-20px; left:-8px; font-family:var(--font-display); font-size:80px; color:rgba(200,0,26,.2); line-height:1; pointer-events:none; }
-    .tcard-author { display:flex; align-items:center; gap:14px; }
-    .tcard-avatar { width:44px; height:44px; border-radius:50%; background:linear-gradient(135deg,rgba(200,0,26,.4),rgba(200,0,26,.1)); border:1px solid rgba(200,0,26,.3); display:grid; place-items:center; font-family:var(--font-ui); font-weight:800; font-size:16px; flex:0 0 auto; }
-    .tcard-info b { display:block; font-family:var(--font-ui); font-weight:800; font-size:14px; }
-    .tcard-info span { display:block; font-size:12.5px; color:var(--muted); margin-top:2px; }
-    .tcard-rating { margin-left:auto; }
-    .stars { color:var(--gold); font-size:13px; letter-spacing:1px; }
-    .logo-cloud { padding:60px 0; border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
-    .logo-cloud p { text-align:center; font-size:12px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--muted); margin-bottom:36px; font-family:var(--font-ui); }
-    .logo-row { display:flex; align-items:center; justify-content:center; gap:48px; flex-wrap:wrap; }
-    .logo-item { font-family:var(--font-display); font-size:24px; letter-spacing:3px; color:rgba(240,238,255,.2); transition:color .3s; cursor:default; }
-    .logo-item:hover { color:rgba(240,238,255,.55); }
 
     /* CONTACT */
     #page-contact { padding-bottom:100px; }
@@ -393,10 +378,14 @@
     @media(max-width:960px) {
       .hero h1 { font-size:clamp(56px,12vw,90px); }
       .hero-orbit { display:none; }
-      .features-grid,.services-grid,.testimonials-grid { grid-template-columns:1fr; }
+      .features-grid,.services-grid { grid-template-columns:1fr; }
+      .home-services-grid { grid-template-columns:repeat(2,1fr); }
+      .home-about-inner,.about-layout,.contact-layout { grid-template-columns:1fr; }
+      .home-proj-grid { grid-template-columns:1fr; }
       .srv-card.featured { grid-template-columns:1fr; grid-column:1; }
-      .about-layout,.contact-layout { grid-template-columns:1fr; }
-      .proj-card.s4,.proj-card.s6,.proj-card.s8,.proj-card.s12 { grid-column:span 12; min-height:260px; }
+      .proj-entry { grid-template-columns:1fr; }
+      .proj-photos { grid-template-columns:1fr 1fr; }
+      .proj-desc { padding:28px 24px; }
       .team-grid { grid-template-columns:1fr 1fr; }
       .process-line { grid-template-columns:repeat(2,1fr); }
       .process-line::before { display:none; }
@@ -406,6 +395,12 @@
       .hstat:last-child { border-bottom:0; }
       .footer-grid { grid-template-columns:1fr 1fr; }
       .home-blind-photo { display:none; }
+      .numbers-inner { grid-template-columns:repeat(2,1fr); }
+      .num-item:nth-child(2) { border-right:0; }
+      .num-item:nth-child(3) { border-top:1px solid var(--border); }
+      .num-item:nth-child(4) { border-top:1px solid var(--border); border-right:0; }
+      .home-about-imgs { grid-template-columns:1fr 1fr; }
+      .home-about-img:first-child { margin-top:0; }
     }
     @media(max-width:600px) {
       :root { --nav-h:64px; }
@@ -415,10 +410,12 @@
       .footer-grid { grid-template-columns:1fr; }
       #cursor-dot,#cursor-ring,#cursor-trail { display:none; }
       body { cursor:auto; }
+      .home-services-grid { grid-template-columns:1fr; }
+      .proj-photos { grid-template-columns:1fr; }
+      .proj-photo-wrap:first-child { border-right:0; border-bottom:2px solid rgba(4,4,8,.9); }
     }
   </style>
 </head>
-
 <body>
   <div id="cursor-dot"></div>
   <div id="cursor-ring"></div>
@@ -440,9 +437,7 @@
           <a href="#" data-page="contact" class="nav-link">Contact</a>
         </nav>
         <div class="nav-cta">
-          <button class="hamburger" id="hamburger" aria-label="Menu">
-            <span></span><span></span><span></span>
-          </button>
+          <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
           <a class="btn btn-ghost" href="#" data-page="projects"><i class="fas fa-layer-group"></i> Our Work</a>
           <a class="btn btn-red" href="#" data-page="contact"><i class="fas fa-paper-plane"></i> Get a Quote <i class="fas fa-arrow-right"></i></a>
         </div>
@@ -458,8 +453,10 @@
     <a href="#" data-page="contact" class="mnav-link">Contact</a>
   </nav>
 
-  <!-- ===== HOME ===== -->
+  <!-- ===================== HOME ===================== -->
   <main id="page-home" class="page active">
+
+    <!-- HERO -->
     <section class="hero">
       <div class="hero-bg-layer active" id="heroBgA"></div>
       <div class="hero-bg-layer" id="heroBgB"></div>
@@ -473,7 +470,7 @@
             <span class="line2"><span id="typingText"></span><span class="type-cursor"></span></span>
             <span class="line3">HAPPEN.</span>
           </h1>
-          <p class="hero-desc anim-up d2">Centination Entertainment PVT Ltd leads the way in event production across Sri Lanka. We don't just organize events — we design seamless, end-to-end experiences that transform vision into reality through creative innovation and technical precision.</p>
+          <p class="hero-desc anim-up d2">Centination Entertainment PVT Ltd leads the way in event production across Sri Lanka. We design seamless, end-to-end experiences that transform vision into reality through creative innovation and technical precision.</p>
           <div class="hero-actions anim-up d3">
             <a class="btn btn-red" href="#" data-page="contact"><i class="fas fa-calendar-check"></i> Book a Consultation <i class="fas fa-arrow-right"></i></a>
             <a class="btn btn-ghost" href="#" data-page="projects"><i class="fas fa-photo-film"></i> Explore Projects</a>
@@ -492,22 +489,135 @@
       </div>
     </section>
 
+    <!-- MARQUEE -->
     <div class="marquee-strip" aria-hidden="true">
       <div class="marquee-track">
         <span class="marquee-item"><span class="dot-sep"></span>Corporate Events</span><span class="marquee-item"><span class="dot-sep"></span>Product Launches</span><span class="marquee-item"><span class="dot-sep"></span>Award Ceremonies</span><span class="marquee-item"><span class="dot-sep"></span>Gala Dinners</span><span class="marquee-item"><span class="dot-sep"></span>Audio Production</span><span class="marquee-item"><span class="dot-sep"></span>Brand Activations</span><span class="marquee-item"><span class="dot-sep"></span>Technical Solutions</span><span class="marquee-item"><span class="dot-sep"></span>Thematic Parties</span><span class="marquee-item"><span class="dot-sep"></span>Corporate Events</span><span class="marquee-item"><span class="dot-sep"></span>Product Launches</span><span class="marquee-item"><span class="dot-sep"></span>Award Ceremonies</span><span class="marquee-item"><span class="dot-sep"></span>Gala Dinners</span><span class="marquee-item"><span class="dot-sep"></span>Audio Production</span><span class="marquee-item"><span class="dot-sep"></span>Brand Activations</span><span class="marquee-item"><span class="dot-sep"></span>Technical Solutions</span><span class="marquee-item"><span class="dot-sep"></span>Thematic Parties</span>
       </div>
     </div>
 
-    <section style="padding:0 0 20px">
+    <!-- PILLARS -->
+    <section style="padding:0 0 0">
       <div class="wrap">
         <div class="features-grid">
-          <div class="glass fcard reveal"><div class="fcard-glow"></div><div class="fcard-icon"><i class="fas fa-lightbulb"></i></div><h3>CREATIVE DIRECTION</h3><p>We architect the narrative of your event. Beyond just a schedule, we design the overarching theme, audience flow, and atmospheric mood — crafting immersive, memorable moments that align with your brand's vision.</p></div>
-          <div class="glass fcard reveal reveal-delay-2"><div class="fcard-glow"></div><div class="fcard-icon"><i class="fas fa-handshake"></i></div><h3>STRATEGIC PARTNERSHIPS</h3><p>A network built on two decades of trust. We leverage deep-rooted relationships with premier venues, top-tier vendors, and industry-leading brands across Sri Lanka to secure the best resources for every project.</p></div>
-          <div class="glass fcard reveal reveal-delay-4"><div class="fcard-glow"></div><div class="fcard-icon"><i class="fas fa-bolt"></i></div><h3>RELIABLE EXECUTION</h3><p>Precision in every detail. From rigorous timelines and technical rehearsals to flawless on-site setup, we prioritize operational excellence — delivering a world-class experience on day one, every time.</p></div>
+          <div class="glass fcard reveal"><div class="fcard-glow"></div><div class="fcard-icon"><i class="fas fa-lightbulb"></i></div><h3>CREATIVE DIRECTION</h3><p>We architect the narrative of your event — designing the overarching theme, audience flow, and atmospheric mood to craft immersive moments that align with your brand's vision.</p></div>
+          <div class="glass fcard reveal reveal-delay-2"><div class="fcard-glow"></div><div class="fcard-icon"><i class="fas fa-handshake"></i></div><h3>STRATEGIC PARTNERSHIPS</h3><p>A network built on two decades of trust. We leverage deep-rooted relationships with premier venues, top-tier vendors, and industry-leading brands across Sri Lanka.</p></div>
+          <div class="glass fcard reveal reveal-delay-4"><div class="fcard-glow"></div><div class="fcard-icon"><i class="fas fa-bolt"></i></div><h3>RELIABLE EXECUTION</h3><p>Precision in every detail. From rigorous timelines and technical rehearsals to flawless on-site setup — delivering a world-class experience on day one, every time.</p></div>
         </div>
       </div>
     </section>
 
+    <!-- ABOUT STRIP -->
+    <section class="home-about">
+      <div class="wrap">
+        <div class="home-about-inner">
+          <div class="home-about-visual reveal">
+            <div class="home-about-imgs">
+              <div class="home-about-img" style="margin-top:40px"><img src="assets/rusiri-1.jpeg" alt="Live Event"/></div>
+              <div class="home-about-img"><img src="assets/rusiri-2.jpeg" alt="Production Crew"/></div>
+            </div>
+            <div class="home-about-badge glass">
+              <div class="num">20+</div>
+              <div class="lbl">Years of Excellence</div>
+            </div>
+          </div>
+          <div class="home-about-text reveal reveal-delay-2">
+            <div class="sh-eyebrow" style="margin-bottom:16px">Who We Are</div>
+            <h2>360° EVENT<br><span style="color:var(--accent2)">PRODUCTION</span></h2>
+            <p>Operating as a specialized subsidiary of <strong>Centigradz Pvt Ltd</strong>, Centination Entertainment PVT Ltd has built a legacy on strategic partnerships with leading blue-chip corporations, state institutions, and global sporting organizations.</p>
+            <p>From the initial creative brief to the final curtain call, we integrate in-house creative, audio, and advanced technology divisions to deliver experiences that redefine industry benchmarks.</p>
+            <div class="home-about-pills">
+              <span class="home-pill">Corporate Events</span>
+              <span class="home-pill">Award Ceremonies</span>
+              <span class="home-pill">Gala Dinners</span>
+              <span class="home-pill">Audio Production</span>
+              <span class="home-pill">Brand Activations</span>
+              <span class="home-pill">Technical Solutions</span>
+            </div>
+            <a class="btn btn-ghost" href="#" data-page="about"><i class="fas fa-arrow-right"></i> Read Our Story</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES PREVIEW -->
+    <section class="home-services">
+      <div class="wrap">
+        <div class="home-services-header">
+          <div class="sh" style="margin-bottom:0">
+            <div class="sh-eyebrow">What We Do</div>
+            <h2>OUR<br>SERVICES</h2>
+          </div>
+          <a class="btn btn-ghost" href="#" data-page="services" style="align-self:flex-end"><i class="fas fa-arrow-right"></i> View All</a>
+        </div>
+        <div class="home-services-grid">
+          <div class="hsrv-card reveal"><div class="hsrv-icon"><i class="fas fa-building"></i></div><h4>Corporate Events</h4><p>High-impact conferences, seminars, and corporate gatherings with flawless brand integration.</p></div>
+          <div class="hsrv-card reveal reveal-delay-1"><div class="hsrv-icon"><i class="fas fa-trophy"></i></div><h4>Award Ceremonies</h4><p>High-end stage production, choreography and sophisticated lighting for prestigious recognition events.</p></div>
+          <div class="hsrv-card reveal reveal-delay-2"><div class="hsrv-icon"><i class="fas fa-rocket"></i></div><h4>Product Launches</h4><p>Creative storytelling with high-impact production to make your brand enter the market with a bang.</p></div>
+          <div class="hsrv-card reveal reveal-delay-3"><div class="hsrv-icon"><i class="fas fa-microchip"></i></div><h4>Technical Solutions</h4><p>Massive LED displays, intelligent lighting and interactive digital integration for unforgettable environments.</p></div>
+          <div class="hsrv-card reveal"><div class="hsrv-icon"><i class="fas fa-utensils"></i></div><h4>Gala Dinners</h4><p>Bespoke luxury decor, fine dining coordination, and premium entertainment for elite gatherings.</p></div>
+          <div class="hsrv-card reveal reveal-delay-1"><div class="hsrv-icon"><i class="fas fa-volume-high"></i></div><h4>Audio Production</h4><p>State-of-the-art sound engineering and immersive soundscapes for any venue size.</p></div>
+          <div class="hsrv-card reveal reveal-delay-2"><div class="hsrv-icon"><i class="fas fa-bullhorn"></i></div><h4>Brand Activations</h4><p>Interactive experiential marketing that drives direct consumer engagement and brand loyalty.</p></div>
+          <div class="hsrv-card reveal reveal-delay-3"><div class="hsrv-icon"><i class="fas fa-wand-magic-sparkles"></i></div><h4>Thematic Parties</h4><p>Immersive custom decor and themed entertainment for any celebration or private occasion.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NUMBERS BAND -->
+    <section class="numbers-band">
+      <div class="wrap">
+        <div class="numbers-inner">
+          <div class="num-item reveal"><div class="num-val" data-count2="80" data-suffix2="+">80+</div><div class="num-label">Events Produced</div></div>
+          <div class="num-item reveal reveal-delay-1"><div class="num-val" data-count2="100" data-suffix2="+">100+</div><div class="num-label">Satisfied Clients</div></div>
+          <div class="num-item reveal reveal-delay-2"><div class="num-val" data-count2="20" data-suffix2="+">20+</div><div class="num-label">Years Experience</div></div>
+          <div class="num-item reveal reveal-delay-3"><div class="num-val" data-count2="11" data-suffix2="">11</div><div class="num-label">Services Offered</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS PREVIEW -->
+    <section class="home-projects">
+      <div class="wrap">
+        <div class="home-projects-header">
+          <div class="sh" style="margin-bottom:0">
+            <div class="sh-eyebrow">Recent Work</div>
+            <h2>FEATURED<br>PROJECTS</h2>
+          </div>
+          <a class="btn btn-ghost" href="#" data-page="projects" style="align-self:flex-end"><i class="fas fa-arrow-right"></i> All Projects</a>
+        </div>
+        <div class="home-proj-grid">
+          <div class="home-proj-card glass reveal" style="cursor:none" data-page="projects">
+            <div class="home-proj-card-img-bg" style="position:absolute;inset:0;background-image:url('assets/rusiri-1.jpeg');background-size:cover;background-position:center;filter:saturate(.85) brightness(.65);transition:transform .5s,filter .4s;"></div>
+            <div class="home-proj-overlay"></div>
+            <div class="home-proj-info">
+              <span class="home-proj-tag">Concert</span>
+              <b>Rusiri: CentigradZ Live</b>
+              <span>360° Concert Production</span>
+            </div>
+          </div>
+          <div class="home-proj-card glass reveal reveal-delay-2" style="cursor:none" data-page="projects">
+            <div class="home-proj-card-img-bg" style="position:absolute;inset:0;background-image:url('assets/edu-1.jpeg');background-size:cover;background-position:center;filter:saturate(.85) brightness(.65);transition:transform .5s,filter .4s;"></div>
+            <div class="home-proj-overlay"></div>
+            <div class="home-proj-info">
+              <span class="home-proj-tag">CSR</span>
+              <b>Empowering Education</b>
+              <span>Community Initiative</span>
+            </div>
+          </div>
+          <div class="home-proj-card glass reveal reveal-delay-4" style="cursor:none" data-page="projects">
+            <div class="home-proj-card-img-bg" style="position:absolute;inset:0;background-image:url('assets/rusiri-2.jpeg');background-size:cover;background-position:center;filter:saturate(.85) brightness(.65);transition:transform .5s,filter .4s;"></div>
+            <div class="home-proj-overlay"></div>
+            <div class="home-proj-info">
+              <span class="home-proj-tag">Award Ceremony</span>
+              <b>Excellence Awards Night</b>
+              <span>Premium Stage Production</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
     <section class="cta-band">
       <div class="wrap">
         <div class="glass cta-band-inner reveal">
@@ -519,7 +629,7 @@
     </section>
   </main>
 
-  <!-- ===== ABOUT ===== -->
+  <!-- ===================== ABOUT ===================== -->
   <main id="page-about" class="page">
     <div class="page-hero">
       <div class="page-hero-bg" style="background-image:url('assets/rusiri-1.jpeg')"></div>
@@ -539,11 +649,11 @@
           <h2>BUILT FOR THE<br><span style="color:var(--accent2);">STAGE.</span></h2>
           <p>With over <strong>20 years of excellence</strong>, Centination Entertainment Pvt Ltd provides a complete <strong>360° service experience</strong>, integrating in-house creative, audio, and advanced technology divisions to lead projects from initial concept to flawless execution.</p>
           <p>Operating as a specialized subsidiary of <strong>Centigradz Pvt Ltd</strong>, this premier Sri Lankan event management and production powerhouse has built a legacy on strategic partnerships with leading <strong>blue-chip corporations</strong>, state institutions, and global sporting organizations.</p>
-          <p>We consistently deliver national and international events that redefine industry benchmarks — from corporate gatherings to private celebrations, we handle everything so you don't have to.</p>
+          <p>We consistently deliver national and international events that redefine industry benchmarks.</p>
           <div class="value-list">
-            <div class="glass value-item"><div class="vi-icon"><i class="fas fa-lightbulb"></i></div><div class="vi-text"><b>Creative Direction</b><span>We architect the narrative of your event — theme, audience flow, atmospheric mood, and immersive moments that resonate with every attendee.</span></div></div>
-            <div class="glass value-item"><div class="vi-icon"><i class="fas fa-people-group"></i></div><div class="vi-text"><b>Strategic Partnerships</b><span>Deep-rooted relationships with premier venues, top-tier vendors, and industry-leading brands built on two decades of trust.</span></div></div>
-            <div class="glass value-item"><div class="vi-icon"><i class="fas fa-bolt"></i></div><div class="vi-text"><b>Reliable Execution</b><span>Rigorous timelines, technical rehearsals, flawless on-site setup — we deliver world-class experiences on day one, every time.</span></div></div>
+            <div class="glass value-item"><div class="vi-icon"><i class="fas fa-lightbulb"></i></div><div class="vi-text"><b>Creative Direction</b><span>We architect the narrative of your event — theme, audience flow, and immersive moments that resonate.</span></div></div>
+            <div class="glass value-item"><div class="vi-icon"><i class="fas fa-people-group"></i></div><div class="vi-text"><b>Strategic Partnerships</b><span>Deep-rooted relationships with premier venues, vendors, and industry-leading brands built over two decades.</span></div></div>
+            <div class="glass value-item"><div class="vi-icon"><i class="fas fa-bolt"></i></div><div class="vi-text"><b>Reliable Execution</b><span>Rigorous timelines, technical rehearsals, flawless on-site setup — world-class on day one, every time.</span></div></div>
           </div>
         </div>
       </div>
@@ -556,111 +666,37 @@
     </div>
   </main>
 
-  <!-- ===== SERVICES ===== -->
+  <!-- ===================== SERVICES ===================== -->
   <main id="page-services" class="page">
     <div class="page-hero">
       <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=1400&q=60')"></div>
       <div class="page-hero-overlay"></div>
       <div class="wrap">
-        <div class="sh anim-up"><div class="sh-eyebrow">What We Do</div><h2>SERVICES<br>WE OFFER</h2><p>At Centination Entertainment, we blend creative vision with technical precision to deliver world-class event solutions — managing every detail so your vision becomes an unforgettable reality.</p></div>
+        <div class="sh anim-up"><div class="sh-eyebrow">What We Do</div><h2>SERVICES<br>WE OFFER</h2><p>At Centination Entertainment, we blend creative vision with technical precision to deliver world-class event solutions.</p></div>
       </div>
     </div>
     <div class="wrap">
       <div class="services-grid" style="padding-top:20px">
-
-        <!-- Featured: Corporate Events -->
         <div class="glass srv-card featured reveal">
           <div>
             <div class="srv-num">01</div>
             <h3>Corporate Events</h3>
-            <p>We deliver polished, high-impact corporate events that reflect your brand identity. From boardroom seminars to large-scale conferences, our team manages every logistical and creative detail to ensure a seamless, professional experience that leaves a lasting impression on every attendee.</p>
+            <p>We deliver polished, high-impact corporate events that reflect your brand identity. From boardroom seminars to large-scale conferences, our team manages every logistical and creative detail to ensure a seamless, professional experience.</p>
             <div class="srv-tags"><span class="srv-tag">Conferences</span><span class="srv-tag">Seminars</span><span class="srv-tag">Team Events</span><span class="srv-tag">Brand Integration</span><span class="srv-tag">AV Setup</span><span class="srv-tag">MC Direction</span></div>
           </div>
           <div class="srv-visual"><img src="assets/IMG_4908.PNG" alt="Corporate Events" loading="lazy"/></div>
         </div>
-
-        <!-- Product Launches -->
-        <div class="glass srv-card reveal">
-          <div class="srv-num">02</div>
-          <h3>Product Launches</h3>
-          <p>Make a powerful market entry with our innovative product launch solutions. We combine creative storytelling with high-impact production to capture audience attention, generate media buzz, and ensure your new brand or product trends instantly.</p>
-          <div class="srv-tags"><span class="srv-tag">Creative Storytelling</span><span class="srv-tag">Stage Design</span><span class="srv-tag">Media Integration</span><span class="srv-tag">Brand Reveal</span></div>
-        </div>
-
-        <!-- Award Ceremonies -->
-        <div class="glass srv-card reveal reveal-delay-2">
-          <div class="srv-num">03</div>
-          <h3>Award Ceremonies</h3>
-          <p>Celebrate excellence with prestige and flair. We specialize in high-end stage production, flawless choreography, and sophisticated lighting to create an atmosphere of honor, making every recognition moment an unforgettable experience for winners and guests.</p>
-          <div class="srv-tags"><span class="srv-tag">Stage Production</span><span class="srv-tag">Choreography</span><span class="srv-tag">Lighting Design</span><span class="srv-tag">VIP Coordination</span></div>
-        </div>
-
-        <!-- Gala Dinners -->
-        <div class="glass srv-card reveal">
-          <div class="srv-num">04</div>
-          <h3>Gala Dinners</h3>
-          <p>Exude elegance with our bespoke gala dinner services. From luxurious decor and fine dining coordination to premium entertainment, we curate high-profile evening experiences designed to impress VIP guests and foster meaningful corporate and social connections.</p>
-          <div class="srv-tags"><span class="srv-tag">Luxury Decor</span><span class="srv-tag">Fine Dining</span><span class="srv-tag">Entertainment</span><span class="srv-tag">VIP Management</span></div>
-        </div>
-
-        <!-- Audio Production -->
-        <div class="glass srv-card reveal reveal-delay-2">
-          <div class="srv-num">05</div>
-          <h3>Audio Production</h3>
-          <p>Experience sonic perfection with our professional audio services. Utilizing state-of-the-art equipment and expert sound engineering, we provide crystal-clear audio reinforcement, professional recording, and immersive soundscapes tailored for any venue size or broadcast requirement.</p>
-          <div class="srv-tags"><span class="srv-tag">Sound Engineering</span><span class="srv-tag">Live Reinforcement</span><span class="srv-tag">Recording</span><span class="srv-tag">Broadcast</span></div>
-        </div>
-
-        <!-- Academic & Professional Events -->
-        <div class="glass srv-card reveal">
-          <div class="srv-num">06</div>
-          <h3>Academic & Professional Events</h3>
-          <p>We bring order and prestige to scholarly gatherings. Our team handles the intricate logistics of university graduations, research symposiums, and professional workshops, ensuring a dignified environment that respects academic traditions and facilitates intellectual exchange.</p>
-          <div class="srv-tags"><span class="srv-tag">Graduations</span><span class="srv-tag">Symposiums</span><span class="srv-tag">Workshops</span><span class="srv-tag">Logistics</span></div>
-        </div>
-
-        <!-- Venue Logistics & Travel -->
-        <div class="glass srv-card reveal reveal-delay-2">
-          <div class="srv-num">07</div>
-          <h3>Venue Logistics & Travel Coordination</h3>
-          <p>Leave the complex planning to us. We secure premium venues and manage end-to-end travel logistics — including guest transportation, accommodation, and on-site coordination — ensuring a smooth transition for all attendees from arrival to departure.</p>
-          <div class="srv-tags"><span class="srv-tag">Venue Sourcing</span><span class="srv-tag">Transportation</span><span class="srv-tag">Accommodation</span><span class="srv-tag">On-Site Coordination</span></div>
-        </div>
-
-        <!-- Marketing, PR & Brand Activation -->
-        <div class="glass srv-card reveal">
-          <div class="srv-num">08</div>
-          <h3>Marketing, PR & Brand Activation</h3>
-          <p>Amplify your brand voice through strategic storytelling. We offer integrated marketing and public relations solutions that build credibility, manage your public image, and create authentic connections between your brand and its target audience.</p>
-          <div class="srv-tags"><span class="srv-tag">Integrated Marketing</span><span class="srv-tag">PR Management</span><span class="srv-tag">Brand Strategy</span><span class="srv-tag">Media Relations</span></div>
-        </div>
-
-        <!-- Technical Solutions -->
-        <div class="glass srv-card reveal reveal-delay-2">
-          <div class="srv-num">09</div>
-          <h3>Technical Solutions</h3>
-          <p>Power your event with cutting-edge technology. From massive LED displays and intelligent lighting systems to interactive digital integration, we provide the technical backbone necessary to create modern, high-energy environments that leave a lasting impression.</p>
-          <div class="srv-tags"><span class="srv-tag">LED Displays</span><span class="srv-tag">Intelligent Lighting</span><span class="srv-tag">Digital Integration</span><span class="srv-tag">AV Systems</span></div>
-        </div>
-
-        <!-- Thematic Parties -->
-        <div class="glass srv-card reveal">
-          <div class="srv-num">10</div>
-          <h3>Thematic Parties</h3>
-          <p>Transform your vision into an immersive reality. Whether it's a vintage gala or a futuristic celebration, we handle creative conceptualization, custom decor, and themed entertainment to provide a unique, high-energy atmosphere for any occasion.</p>
-          <div class="srv-tags"><span class="srv-tag">Creative Concepts</span><span class="srv-tag">Custom Decor</span><span class="srv-tag">Themed Entertainment</span><span class="srv-tag">Immersive Design</span></div>
-        </div>
-
-        <!-- Brand Activations -->
-        <div class="glass srv-card reveal reveal-delay-2">
-          <div class="srv-num">11</div>
-          <h3>Brand Activations</h3>
-          <p>Bridge the gap between your brand and consumers. We design interactive, high-energy experiences that encourage direct engagement, driving brand loyalty and consumer awareness through creative experiential marketing and live on-site promotional activations.</p>
-          <div class="srv-tags"><span class="srv-tag">Experiential Marketing</span><span class="srv-tag">Live Activations</span><span class="srv-tag">Consumer Engagement</span><span class="srv-tag">Brand Loyalty</span></div>
-        </div>
-
+        <div class="glass srv-card reveal"><div class="srv-num">02</div><h3>Product Launches</h3><p>Make a powerful market entry with our innovative product launch solutions. We combine creative storytelling with high-impact production to capture audience attention and generate media buzz.</p><div class="srv-tags"><span class="srv-tag">Creative Storytelling</span><span class="srv-tag">Stage Design</span><span class="srv-tag">Media Integration</span><span class="srv-tag">Brand Reveal</span></div></div>
+        <div class="glass srv-card reveal reveal-delay-2"><div class="srv-num">03</div><h3>Award Ceremonies</h3><p>Celebrate excellence with prestige and flair. We specialize in high-end stage production, flawless choreography, and sophisticated lighting to make every recognition moment unforgettable.</p><div class="srv-tags"><span class="srv-tag">Stage Production</span><span class="srv-tag">Choreography</span><span class="srv-tag">Lighting Design</span><span class="srv-tag">VIP Coordination</span></div></div>
+        <div class="glass srv-card reveal"><div class="srv-num">04</div><h3>Gala Dinners</h3><p>Exude elegance with our bespoke gala dinner services. From luxurious decor and fine dining coordination to premium entertainment for high-profile VIP evenings.</p><div class="srv-tags"><span class="srv-tag">Luxury Decor</span><span class="srv-tag">Fine Dining</span><span class="srv-tag">Entertainment</span><span class="srv-tag">VIP Management</span></div></div>
+        <div class="glass srv-card reveal reveal-delay-2"><div class="srv-num">05</div><h3>Audio Production</h3><p>Experience sonic perfection with state-of-the-art equipment and expert sound engineering — crystal-clear audio reinforcement and immersive soundscapes for any venue.</p><div class="srv-tags"><span class="srv-tag">Sound Engineering</span><span class="srv-tag">Live Reinforcement</span><span class="srv-tag">Recording</span><span class="srv-tag">Broadcast</span></div></div>
+        <div class="glass srv-card reveal"><div class="srv-num">06</div><h3>Academic & Professional Events</h3><p>University graduations, research symposiums, and professional workshops — we bring order and prestige to scholarly gatherings with meticulous attention to tradition.</p><div class="srv-tags"><span class="srv-tag">Graduations</span><span class="srv-tag">Symposiums</span><span class="srv-tag">Workshops</span><span class="srv-tag">Logistics</span></div></div>
+        <div class="glass srv-card reveal reveal-delay-2"><div class="srv-num">07</div><h3>Venue Logistics & Travel Coordination</h3><p>We secure premium venues and manage end-to-end travel logistics — guest transportation, accommodation, and on-site coordination from arrival to departure.</p><div class="srv-tags"><span class="srv-tag">Venue Sourcing</span><span class="srv-tag">Transportation</span><span class="srv-tag">Accommodation</span><span class="srv-tag">On-Site Coordination</span></div></div>
+        <div class="glass srv-card reveal"><div class="srv-num">08</div><h3>Marketing, PR & Brand Activation</h3><p>Amplify your brand voice through strategic storytelling — integrated marketing and PR solutions that build credibility and create authentic connections with your audience.</p><div class="srv-tags"><span class="srv-tag">Integrated Marketing</span><span class="srv-tag">PR Management</span><span class="srv-tag">Brand Strategy</span><span class="srv-tag">Media Relations</span></div></div>
+        <div class="glass srv-card reveal reveal-delay-2"><div class="srv-num">09</div><h3>Technical Solutions</h3><p>Massive LED displays, intelligent lighting systems, and interactive digital integration — the technical backbone for modern, high-energy environments.</p><div class="srv-tags"><span class="srv-tag">LED Displays</span><span class="srv-tag">Intelligent Lighting</span><span class="srv-tag">Digital Integration</span><span class="srv-tag">AV Systems</span></div></div>
+        <div class="glass srv-card reveal"><div class="srv-num">10</div><h3>Thematic Parties</h3><p>From vintage galas to futuristic celebrations — creative conceptualization, custom decor, and themed entertainment for a unique, high-energy atmosphere.</p><div class="srv-tags"><span class="srv-tag">Creative Concepts</span><span class="srv-tag">Custom Decor</span><span class="srv-tag">Themed Entertainment</span><span class="srv-tag">Immersive Design</span></div></div>
+        <div class="glass srv-card reveal reveal-delay-2"><div class="srv-num">11</div><h3>Brand Activations</h3><p>Interactive, high-energy experiences that drive direct consumer engagement, brand loyalty, and consumer awareness through experiential marketing.</p><div class="srv-tags"><span class="srv-tag">Experiential Marketing</span><span class="srv-tag">Live Activations</span><span class="srv-tag">Consumer Engagement</span><span class="srv-tag">Brand Loyalty</span></div></div>
       </div>
-
       <div class="process">
         <div class="sh reveal"><div class="sh-eyebrow">How We Work</div><h2>OUR<br>PROCESS</h2></div>
         <div class="process-line">
@@ -673,108 +709,144 @@
     </div>
   </main>
 
-  <!-- ===== PROJECTS ===== -->
-<main id="page-projects" class="page">
-  <div class="page-hero">
-    <div class="page-hero-bg" style="background-image:url('assets/rusiri-2.jpeg')"></div>
-    <div class="page-hero-overlay"></div>
-    <div class="wrap">
-      <div class="sh anim-up"><div class="sh-eyebrow">Portfolio</div><h2>OUR<br>PROJECTS</h2><p>A curated showcase of our work. Click any project to preview.</p></div>
-    </div>
-  </div>
-  <div class="wrap" style="padding-top:20px">
-    <div class="filter-bar">
-      <button class="fchip active" data-filter="all">Recent Projects</button>
-      <!-- <button class="fchip" data-filter="concert">Concerts</button>
-      <button class="fchip" data-filter="csr">CSR / Community</button> -->
-    </div>
-    <div class="projects-masonry" id="gallery">
-
-      <!-- PROJECT 1: Rusiri Concert -->
-      <div class="proj-card glass s8 reveal" data-type="concert"
-           data-title="Rusiri: The CentigradZ Live Experience"
-           data-sub="CENTINATION delivered a complete 360° event management solution for this landmark concert. From the initial creative vision and stage design to the final technical execution, we managed every detail to ensure a high-energy, flawless, and truly unforgettable live experience.">
-        <div class="proj-swiper">
-          <div class="proj-slides">
-            <div class="proj-slide proj-img active" style="background-image:url('assets/rusiri-1.jpeg')"></div>
-            <div class="proj-slide proj-img" style="background-image:url('assets/rusiri-2.jpeg')"></div>
-          </div>
-          <!-- Swipe arrows -->
-          <button class="proj-arrow proj-arrow-prev" aria-label="Previous photo"><i class="fas fa-chevron-left"></i></button>
-          <button class="proj-arrow proj-arrow-next" aria-label="Next photo"><i class="fas fa-chevron-right"></i></button>
-          <!-- Dots -->
-          <div class="proj-dots">
-            <span class="proj-dot active"></span>
-            <span class="proj-dot"></span>
-          </div>
-          <!-- Photo counter -->
-          <div class="proj-counter"><span class="proj-counter-cur">1</span> / <span class="proj-counter-tot">2</span></div>
-        </div>
-        <div class="proj-base-overlay"></div>
-        <div class="proj-overlay"></div>
-        <div class="proj-cap">
-          <div><b>Rusiri: The CentigradZ Live Experience</b><span>Concert • 360° event delivery</span></div>
-          <div class="proj-badge">Concert</div>
-        </div>
-        <div class="proj-border"></div>
-      </div>
-
-      <!-- PROJECT 2: Education CSR -->
-      <div class="proj-card glass s4 reveal reveal-delay-2" data-type="csr"
-           data-title="Empowering the Future of Sri Lankan Education"
-           data-sub="At CENTINATION, we believe that the heart of a nation lies in its students. We are deeply committed to uplifting the educational landscape of Sri Lanka by providing more than just supplies — we provide opportunity. From restorative relief to sustainable support, we take full ownership of every initiative to ensure the next generation has the tools they need to lead.">
-        <div class="proj-swiper">
-          <div class="proj-slides">
-            <div class="proj-slide proj-img active" style="background-image:url('assets/edu-1.jpeg')"></div>
-            <div class="proj-slide proj-img" style="background-image:url('assets/edu-2.jpeg')"></div>
-          </div>
-          <button class="proj-arrow proj-arrow-prev" aria-label="Previous photo"><i class="fas fa-chevron-left"></i></button>
-          <button class="proj-arrow proj-arrow-next" aria-label="Next photo"><i class="fas fa-chevron-right"></i></button>
-          <div class="proj-dots">
-            <span class="proj-dot active"></span>
-            <span class="proj-dot"></span>
-          </div>
-          <div class="proj-counter"><span class="proj-counter-cur">1</span> / <span class="proj-counter-tot">2</span></div>
-        </div>
-        <div class="proj-base-overlay"></div>
-        <div class="proj-overlay"></div>
-        <div class="proj-cap">
-          <div><b>Empowering Sri Lankan Education</b><span>CSR • Education support</span></div>
-          <div class="proj-badge">CSR</div>
-        </div>
-        <div class="proj-border"></div>
-      </div>
-
-    </div>
-  </div>
-</main>
-
-  <!-- ===== CLIENTS ===== -->
-  <main id="page-clients" class="page">
+  <!-- ===================== PROJECTS ===================== -->
+  <main id="page-projects" class="page">
     <div class="page-hero">
-      <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?auto=format&fit=crop&w=1400&q=60')"></div>
+      <div class="page-hero-bg" style="background-image:url('assets/rusiri-2.jpeg')"></div>
       <div class="page-hero-overlay"></div>
       <div class="wrap">
-        <div class="sh anim-up"><div class="sh-eyebrow">Testimonials</div><h2>WHAT CLIENTS<br>SAY</h2><p>Real feedback from the people who trust us with their most important moments.</p></div>
+        <div class="sh anim-up"><div class="sh-eyebrow">Portfolio</div><h2>OUR<br>PROJECTS</h2><p>A curated showcase of our work — photos on the left, story on the right.</p></div>
       </div>
     </div>
-    <div class="wrap" style="padding-top:20px">
-      <div class="testimonials-grid">
-        <div class="glass tcard reveal"><div class="tcard-quote">CENTINATION handled our event timeline perfectly. Every detail, every transition — smooth and professional.</div><div class="tcard-author"><div class="tcard-avatar">EO</div><div class="tcard-info"><b>Event Organizer</b><span>Colombo, Sri Lanka</span></div><div class="tcard-rating"><div class="stars">★★★★★</div></div></div></div>
-        <div class="glass tcard reveal reveal-delay-2"><div class="tcard-quote">Very professional team. They understood our brand style immediately and made the product reveal feel premium.</div><div class="tcard-author"><div class="tcard-avatar">BM</div><div class="tcard-info"><b>Brand Manager</b><span>Corporate Client</span></div><div class="tcard-rating"><div class="stars">★★★★★</div></div></div></div>
-        <div class="glass tcard reveal reveal-delay-4"><div class="tcard-quote">Great coordination from start to finish. Clear communication with artists and vendors, solid planning throughout.</div><div class="tcard-author"><div class="tcard-avatar">PP</div><div class="tcard-info"><b>Production Partner</b><span>Sri Lanka</span></div><div class="tcard-rating"><div class="stars">★★★★★</div></div></div></div>
-        <div class="glass tcard reveal"><div class="tcard-quote">The technical solutions elevated the entire event. Our guests could not stop talking about the production quality.</div><div class="tcard-author"><div class="tcard-avatar">CD</div><div class="tcard-info"><b>Corporate Director</b><span>Colombo</span></div><div class="tcard-rating"><div class="stars">★★★★★</div></div></div></div>
-        <div class="glass tcard reveal reveal-delay-2"><div class="tcard-quote">First time working with a production team this organized. They had backup plans for everything — truly 360° service.</div><div class="tcard-author"><div class="tcard-avatar">FM</div><div class="tcard-info"><b>Festival Manager</b><span>Kandy</span></div><div class="tcard-rating"><div class="stars">★★★★★</div></div></div></div>
-        <div class="glass tcard reveal reveal-delay-4"><div class="tcard-quote">Attention to detail was extraordinary — highly recommend for premium corporate events and award ceremonies.</div><div class="tcard-author"><div class="tcard-avatar">HR</div><div class="tcard-info"><b>HR Director</b><span>Corporate</span></div><div class="tcard-rating"><div class="stars">★★★★★</div></div></div></div>
+    <div class="wrap" style="padding-top:20px; padding-bottom:20px">
+      <div class="filter-bar">
+        <button class="fchip active" data-filter="all">All Projects</button>
+        <button class="fchip" data-filter="concert">Concerts</button>
+        <button class="fchip" data-filter="award">Award Ceremonies</button>
+        <button class="fchip" data-filter="csr">CSR / Community</button>
       </div>
-      <div class="logo-cloud reveal">
-        <p>Trusted by organisations across Sri Lanka</p>
-        <div class="logo-row"><div class="logo-item">NEXUS</div><div class="logo-item">PRISM</div><div class="logo-item">ARCO</div><div class="logo-item">VALENT</div><div class="logo-item">ORBIS</div><div class="logo-item">STRAND</div></div>
+
+      <!-- ── PROJECT 1: Rusiri Concert ── -->
+      <div class="proj-entry reveal" data-type="concert">
+        <div class="proj-photos">
+          <!-- Photo A -->
+          <div class="proj-photo-wrap">
+            <div class="proj-photo-swiper">
+              <div class="proj-photo-slides">
+                <div class="proj-photo-slide active" style="background-image:url('assets/rusiri-1.jpeg')"></div>
+                <div class="proj-photo-slide" style="background-image:url('assets/rusiri-2.jpeg')"></div>
+              </div>
+              <button class="pps-arrow pps-prev" aria-label="Prev"><i class="fas fa-chevron-left"></i></button>
+              <button class="pps-arrow pps-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+              <div class="pps-dots"><span class="pps-dot active"></span><span class="pps-dot"></span></div>
+            </div>
+          </div>
+          <!-- Photo B -->
+          <div class="proj-photo-wrap">
+            <div class="proj-photo-swiper">
+              <div class="proj-photo-slides">
+                <div class="proj-photo-slide active" style="background-image:url('assets/rusiri-2.jpeg')"></div>
+                <div class="proj-photo-slide" style="background-image:url('assets/rusiri-1.jpeg')"></div>
+              </div>
+              <button class="pps-arrow pps-prev" aria-label="Prev"><i class="fas fa-chevron-left"></i></button>
+              <button class="pps-arrow pps-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+              <div class="pps-dots"><span class="pps-dot active"></span><span class="pps-dot"></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="proj-desc">
+          <div class="proj-desc-eyebrow">Concert Production</div>
+          <h3>RUSIRI: THE CENTINATIONZ LIVE EXPERIENCE</h3>
+          <p>CENTINATION delivered a complete 360° event management solution for this landmark concert. From the initial creative vision and stage design to the final technical execution, we managed every detail — lighting direction, sound engineering, crowd flow, and artist coordination — to ensure a high-energy, flawless, and truly unforgettable live experience.</p>
+          <div class="proj-desc-tags">
+            <span class="proj-desc-tag">Stage Design</span>
+            <span class="proj-desc-tag">Lighting Direction</span>
+            <span class="proj-desc-tag">Audio Production</span>
+            <span class="proj-desc-tag">Artist Coordination</span>
+            <span class="proj-desc-tag">360° Production</span>
+          </div>
+          <a class="proj-desc-link" href="#" data-page="contact">Enquire about this service <i class="fas fa-arrow-right"></i></a>
+        </div>
       </div>
+
+      <!-- ── PROJECT 2: Award Ceremony ── -->
+      <div class="proj-entry reveal" data-type="award">
+        <div class="proj-photos">
+          <div class="proj-photo-wrap">
+            <div class="proj-photo-swiper">
+              <div class="proj-photo-slides">
+                <!-- Replace with real award ceremony images when available -->
+                <div class="proj-photo-slide active" style="background-image:url('assets/rusiri-1.jpeg')"></div>
+              </div>
+            </div>
+          </div>
+          <div class="proj-photo-wrap">
+            <div class="proj-photo-swiper">
+              <div class="proj-photo-slides">
+                <div class="proj-photo-slide active" style="background-image:url('assets/rusiri-2.jpeg')"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="proj-desc">
+          <div class="proj-desc-eyebrow">Award Ceremony</div>
+          <h3>EXCELLENCE AWARDS NIGHT</h3>
+          <p>An evening of prestige and precision. CENTINATION conceptualized and executed a full-scale award ceremony from the ground up — designing a sophisticated stage, managing immaculate choreography, and orchestrating seamless presenter and recipient transitions. Every lighting cue, every musical interlude, and every visual element was designed to elevate the moment of recognition into something truly memorable for both honorees and guests.</p>
+          <div class="proj-desc-tags">
+            <span class="proj-desc-tag">Stage Production</span>
+            <span class="proj-desc-tag">Choreography</span>
+            <span class="proj-desc-tag">Lighting Design</span>
+            <span class="proj-desc-tag">VIP Coordination</span>
+            <span class="proj-desc-tag">MC Direction</span>
+          </div>
+          <a class="proj-desc-link" href="#" data-page="contact">Plan your award ceremony <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- ── PROJECT 3: Education CSR ── -->
+      <div class="proj-entry reveal" data-type="csr">
+        <div class="proj-photos">
+          <div class="proj-photo-wrap">
+            <div class="proj-photo-swiper">
+              <div class="proj-photo-slides">
+                <div class="proj-photo-slide active" style="background-image:url('assets/edu-1.jpeg')"></div>
+                <div class="proj-photo-slide" style="background-image:url('assets/edu-2.jpeg')"></div>
+              </div>
+              <button class="pps-arrow pps-prev" aria-label="Prev"><i class="fas fa-chevron-left"></i></button>
+              <button class="pps-arrow pps-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+              <div class="pps-dots"><span class="pps-dot active"></span><span class="pps-dot"></span></div>
+            </div>
+          </div>
+          <div class="proj-photo-wrap">
+            <div class="proj-photo-swiper">
+              <div class="proj-photo-slides">
+                <div class="proj-photo-slide active" style="background-image:url('assets/edu-2.jpeg')"></div>
+                <div class="proj-photo-slide" style="background-image:url('assets/edu-1.jpeg')"></div>
+              </div>
+              <button class="pps-arrow pps-prev" aria-label="Prev"><i class="fas fa-chevron-left"></i></button>
+              <button class="pps-arrow pps-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+              <div class="pps-dots"><span class="pps-dot active"></span><span class="pps-dot"></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="proj-desc">
+          <div class="proj-desc-eyebrow">CSR / Community Initiative</div>
+          <h3>EMPOWERING SRI LANKAN EDUCATION</h3>
+          <p>At CENTINATION, we believe that the heart of a nation lies in its students. We are deeply committed to uplifting the educational landscape of Sri Lanka — providing not just supplies, but opportunity. From restorative relief efforts to sustained support programs, we take full ownership of every community initiative to ensure the next generation has the tools they need to lead, grow, and inspire.</p>
+          <div class="proj-desc-tags">
+            <span class="proj-desc-tag">Community Outreach</span>
+            <span class="proj-desc-tag">Education Support</span>
+            <span class="proj-desc-tag">CSR Initiative</span>
+            <span class="proj-desc-tag">Sustainable Impact</span>
+          </div>
+          <a class="proj-desc-link" href="#" data-page="contact">Partner with us on CSR <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
     </div>
   </main>
 
-  <!-- ===== CONTACT ===== -->
+  <!-- ===================== CONTACT ===================== -->
   <main id="page-contact" class="page">
     <div class="page-hero">
       <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1478147427282-58a87a433049?auto=format&fit=crop&w=1400&q=60')"></div>
@@ -798,18 +870,7 @@
               <div class="form-group"><label for="fservice">Service Desired *</label>
                 <select id="fservice" name="service" required>
                   <option value="">Select a service</option>
-                  <option>Corporate Events</option>
-                  <option>Product Launch</option>
-                  <option>Award Ceremony</option>
-                  <option>Gala Dinner</option>
-                  <option>Audio Production</option>
-                  <option>Academic & Professional Events</option>
-                  <option>Venue Logistics & Travel Coordination</option>
-                  <option>Marketing, PR & Brand Activation</option>
-                  <option>Technical Solutions</option>
-                  <option>Thematic Party</option>
-                  <option>Brand Activation</option>
-                  <option>Full Event Production</option>
+                  <option>Corporate Events</option><option>Product Launch</option><option>Award Ceremony</option><option>Gala Dinner</option><option>Audio Production</option><option>Academic & Professional Events</option><option>Venue Logistics & Travel Coordination</option><option>Marketing, PR & Brand Activation</option><option>Technical Solutions</option><option>Thematic Party</option><option>Brand Activation</option><option>Full Event Production</option>
                 </select>
               </div>
             </div>
@@ -825,10 +886,7 @@
           </form>
         </div>
         <div class="glass info-panel reveal reveal-delay-2">
-          <div>
-            <h3>CENTINATION</h3>
-            <p>Centination Entertainment PVT Ltd — Sri Lanka's premier event management and production powerhouse. From creative design and technical production to seamless delivery, we handle everything.</p>
-          </div>
+          <div><h3>CENTINATION</h3><p>Centination Entertainment PVT Ltd — Sri Lanka's premier event management and production powerhouse. From creative design and technical production to seamless delivery, we handle everything.</p></div>
           <div class="info-items">
             <div class="info-item"><div class="info-icon"><i class="fas fa-location-dot"></i></div><div><b>Address</b><span>30 Old Kesbewa Road, Nugegoda, Sri Lanka</span></div></div>
             <div class="info-item"><div class="info-icon"><i class="fas fa-envelope"></i></div><div><b>Email</b><span>info@centination.com</span></div></div>
@@ -857,36 +915,12 @@
           <img src="assets/logo.png" class="footer-logo" alt="Centination Logo"/>
           <p class="footer-desc">Centination Entertainment PVT Ltd — providing a complete 360° service experience across Sri Lanka. From initial concept to flawless execution, we redefine industry benchmarks.</p>
           <div class="footer-social">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-youtube"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a>
           </div>
         </div>
-        <div class="footer-col">
-          <h4>Quick Links</h4>
-          <a href="#" data-page="home">Home</a>
-          <a href="#" data-page="about">About</a>
-          <a href="#" data-page="services">Services</a>
-          <a href="#" data-page="projects">Projects</a>
-          <a href="#" data-page="contact">Contact</a>
-        </div>
-        <div class="footer-col">
-          <h4>Services</h4>
-          <a href="#">Corporate Events</a>
-          <a href="#">Product Launches</a>
-          <a href="#">Award Ceremonies</a>
-          <a href="#">Gala Dinners</a>
-          <a href="#">Audio Production</a>
-          <a href="#">Brand Activations</a>
-          <a href="#">Technical Solutions</a>
-        </div>
-        <div class="footer-col">
-          <h4>Contact</h4>
-          <p><i class="fas fa-map-marker-alt"></i>30 Old Kesbewa Road, Nugegoda</p>
-          <p><i class="fas fa-phone"></i>+94 77 664 8680</p>
-          <p><i class="fas fa-envelope"></i>info@centination.com</p>
-        </div>
+        <div class="footer-col"><h4>Quick Links</h4><a href="#" data-page="home">Home</a><a href="#" data-page="about">About</a><a href="#" data-page="services">Services</a><a href="#" data-page="projects">Projects</a><a href="#" data-page="contact">Contact</a></div>
+        <div class="footer-col"><h4>Services</h4><a href="#">Corporate Events</a><a href="#">Product Launches</a><a href="#">Award Ceremonies</a><a href="#">Gala Dinners</a><a href="#">Audio Production</a><a href="#">Brand Activations</a><a href="#">Technical Solutions</a></div>
+        <div class="footer-col"><h4>Contact</h4><p><i class="fas fa-map-marker-alt"></i>30 Old Kesbewa Road, Nugegoda</p><p><i class="fas fa-phone"></i>+94 77 664 8680</p><p><i class="fas fa-envelope"></i>info@centination.com</p></div>
       </div>
       <div class="footer-bottom"><p>© <span id="yr"></span> Centination Entertainment PVT Ltd. A subsidiary of Centigradz Pvt Ltd. All rights reserved.</p></div>
     </div>
@@ -908,23 +942,18 @@
   let mx=innerWidth/2,my=innerHeight/2,rx=mx,ry=my,tx=mx,ty=my;
   addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
   (function aC(){rx+=(mx-rx)*.14;ry+=(my-ry)*.14;tx+=(mx-tx)*.07;ty+=(my-ty)*.07;dot.style.left=mx+'px';dot.style.top=my+'px';ring.style.left=rx+'px';ring.style.top=ry+'px';trail.style.left=tx+'px';trail.style.top=ty+'px';requestAnimationFrame(aC);})();
-  document.querySelectorAll('a,button,.fchip,.proj-card').forEach(el=>{
+  document.querySelectorAll('a,button,.fchip,.home-proj-card,.hsrv-card').forEach(el=>{
     el.addEventListener('mouseenter',()=>{ring.style.width='56px';ring.style.height='56px';ring.style.borderColor='rgba(255,29,53,.8)';dot.style.width='4px';dot.style.height='4px';});
     el.addEventListener('mouseleave',()=>{ring.style.width='38px';ring.style.height='38px';ring.style.borderColor='rgba(255,29,53,.65)';dot.style.width='8px';dot.style.height='8px';});
   });
 
-  // ── SMOKE CANVAS ────────────────────────────────────────────────
+  // ── SMOKE ───────────────────────────────────────────────────────
   const smokeCanvas=document.getElementById('smokeCanvas');
   const sctx=smokeCanvas.getContext('2d');
   let smokePs=[],smokeOn=false;
   function resizeSmoke(){const h=smokeCanvas.parentElement;smokeCanvas.width=h?h.offsetWidth:innerWidth;smokeCanvas.height=h?h.offsetHeight:innerHeight;}
   addEventListener('resize',resizeSmoke);
-  class SmokePuff{
-    constructor(){this.reset();}
-    reset(){const w=smokeCanvas.width,h=smokeCanvas.height;this.x=Math.random()*w;this.y=h+30;this.sz=Math.random()*100+60;this.op=0;this.top=Math.random()*.13+.04;this.vx=(Math.random()-.5)*.7;this.vy=-(Math.random()*1.1+.4);this.rot=Math.random()*Math.PI*2;this.rs=(Math.random()-.5)*.005;this.gr=Math.random()*.7+.4;this.life=0;this.ml=Math.random()*190+130;const b=175+Math.floor(Math.random()*40);this.r=b;this.g=b-10;this.b=b+15;}
-    update(){this.life++;this.x+=this.vx;this.y+=this.vy;this.sz+=this.gr;this.rot+=this.rs;const h=this.ml/2;if(this.life<h*.28)this.op+=this.top/(this.ml*.28);else if(this.life>h*1.5)this.op-=this.top/(this.ml*.5);this.op=Math.max(0,Math.min(this.top,this.op));if(this.life>=this.ml)this.reset();}
-    draw(){sctx.save();sctx.translate(this.x,this.y);sctx.rotate(this.rot);const g=sctx.createRadialGradient(0,0,0,0,0,this.sz);g.addColorStop(0,`rgba(${this.r},${this.g},${this.b},${this.op})`);g.addColorStop(.6,`rgba(${this.r},${this.g},${this.b},${this.op*.28})`);g.addColorStop(1,`rgba(${this.r},${this.g},${this.b},0)`);sctx.fillStyle=g;sctx.beginPath();sctx.ellipse(0,0,this.sz,this.sz*.62,0,0,Math.PI*2);sctx.fill();sctx.restore();}
-  }
+  class SmokePuff{constructor(){this.reset();}reset(){const w=smokeCanvas.width,h=smokeCanvas.height;this.x=Math.random()*w;this.y=h+30;this.sz=Math.random()*100+60;this.op=0;this.top=Math.random()*.13+.04;this.vx=(Math.random()-.5)*.7;this.vy=-(Math.random()*1.1+.4);this.rot=Math.random()*Math.PI*2;this.rs=(Math.random()-.5)*.005;this.gr=Math.random()*.7+.4;this.life=0;this.ml=Math.random()*190+130;const b=175+Math.floor(Math.random()*40);this.r=b;this.g=b-10;this.b=b+15;}update(){this.life++;this.x+=this.vx;this.y+=this.vy;this.sz+=this.gr;this.rot+=this.rs;const h=this.ml/2;if(this.life<h*.28)this.op+=this.top/(this.ml*.28);else if(this.life>h*1.5)this.op-=this.top/(this.ml*.5);this.op=Math.max(0,Math.min(this.top,this.op));if(this.life>=this.ml)this.reset();}draw(){sctx.save();sctx.translate(this.x,this.y);sctx.rotate(this.rot);const g=sctx.createRadialGradient(0,0,0,0,0,this.sz);g.addColorStop(0,`rgba(${this.r},${this.g},${this.b},${this.op})`);g.addColorStop(.6,`rgba(${this.r},${this.g},${this.b},${this.op*.28})`);g.addColorStop(1,`rgba(${this.r},${this.g},${this.b},0)`);sctx.fillStyle=g;sctx.beginPath();sctx.ellipse(0,0,this.sz,this.sz*.62,0,0,Math.PI*2);sctx.fill();sctx.restore();}}
   function initSmoke(){smokePs=[];for(let i=0;i<24;i++){const p=new SmokePuff();p.life=Math.floor(Math.random()*p.ml);p.y=smokeCanvas.height-(p.life*Math.abs(p.vy));smokePs.push(p);}}
   function animSmoke(){if(!smokeOn)return;sctx.clearRect(0,0,smokeCanvas.width,smokeCanvas.height);smokePs.forEach(p=>{p.update();p.draw();});requestAnimationFrame(animSmoke);}
   function startSmoke(){if(!smokeOn){smokeOn=true;resizeSmoke();initSmoke();animSmoke();}}
@@ -957,96 +986,68 @@
   backTop.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
 
   // ── REVEAL ──────────────────────────────────────────────────────
-  const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+  const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:.08,rootMargin:'0px 0px -30px 0px'});
   function triggerReveal(container=document){container.querySelectorAll('.reveal').forEach(el=>{if(!el.classList.contains('visible'))io.observe(el);});}
   triggerReveal();
 
-  // ── GALLERY FILTER ──────────────────────────────────────────────
+  // ── PROJECT FILTER ──────────────────────────────────────────────
   document.querySelectorAll('.fchip').forEach(chip=>{
     chip.addEventListener('click',()=>{
       document.querySelectorAll('.fchip').forEach(c=>c.classList.remove('active'));
       chip.classList.add('active');
       const f=chip.dataset.filter;
-      document.querySelectorAll('.proj-card').forEach(card=>{
-        card.style.display=(f==='all'||card.dataset.type===f)?'':'none';
+      document.querySelectorAll('.proj-entry').forEach(entry=>{
+        entry.style.display=(f==='all'||entry.dataset.type===f)?'':'none';
       });
     });
   });
 
-  // ── SWIPER ──────────────────────────────────────────────────────
-  document.querySelectorAll('.proj-card').forEach(card=>{
-    const slides  = Array.from(card.querySelectorAll('.proj-slide'));
-    const dots    = Array.from(card.querySelectorAll('.proj-dot'));
-    const curEl   = card.querySelector('.proj-counter-cur');
-    const btnPrev = card.querySelector('.proj-arrow-prev');
-    const btnNext = card.querySelector('.proj-arrow-next');
-    if(slides.length < 2) return;
-
-    let current = 0;
-
-    function goTo(next, direction){
-      if(next===current) return;
-      const prev=current;
-      current=next;
-      slides[prev].classList.add(direction==='next'?'slide-out-left':'slide-out-right');
-      slides[prev].classList.remove('active');
-      slides[current].classList.add(direction==='next'?'slide-in-right':'slide-in-left');
-      slides[current].offsetWidth; // force reflow
-      slides[current].classList.remove('slide-in-right','slide-in-left');
-      slides[current].classList.add('active');
-      setTimeout(()=>{ slides[prev].classList.remove('slide-out-left','slide-out-right'); },580);
-      dots.forEach((d,i)=>d.classList.toggle('active',i===current));
-      if(curEl) curEl.textContent=current+1;
+  // ── PROJECT PHOTO SWIPER ────────────────────────────────────────
+  document.querySelectorAll('.proj-photo-wrap').forEach(wrap=>{
+    const swiper=wrap.querySelector('.proj-photo-swiper');
+    if(!swiper) return;
+    const slides=Array.from(swiper.querySelectorAll('.proj-photo-slide'));
+    const dots=Array.from(swiper.querySelectorAll('.pps-dot'));
+    const btnPrev=swiper.querySelector('.pps-prev');
+    const btnNext=swiper.querySelector('.pps-next');
+    if(slides.length<2) return;
+    let cur=0;
+    function goTo(n){
+      slides[cur].classList.remove('active');
+      dots[cur]&&dots[cur].classList.remove('active');
+      cur=(n+slides.length)%slides.length;
+      slides[cur].classList.add('active');
+      dots[cur]&&dots[cur].classList.add('active');
     }
+    btnPrev&&btnPrev.addEventListener('click',e=>{e.stopPropagation();goTo(cur-1);});
+    btnNext&&btnNext.addEventListener('click',e=>{e.stopPropagation();goTo(cur+1);});
+    dots.forEach((d,i)=>d.addEventListener('click',e=>{e.stopPropagation();goTo(i);}));
+    let tx=0;
+    wrap.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;},{passive:true});
+    wrap.addEventListener('touchend',e=>{const d=tx-e.changedTouches[0].clientX;if(Math.abs(d)>40)goTo(d>0?cur+1:cur-1);});
+  });
 
-    btnPrev.addEventListener('click',e=>{ e.stopPropagation(); goTo((current-1+slides.length)%slides.length,'prev'); });
-    btnNext.addEventListener('click',e=>{ e.stopPropagation(); goTo((current+1)%slides.length,'next'); });
-    dots.forEach((dot,i)=>{ dot.addEventListener('click',e=>{ e.stopPropagation(); goTo(i,i>current?'next':'prev'); }); });
-
-    let touchStartX=0;
-    card.addEventListener('touchstart',e=>{ touchStartX=e.touches[0].clientX; },{passive:true});
-    card.addEventListener('touchend',e=>{
-      const diff=touchStartX-e.changedTouches[0].clientX;
-      if(Math.abs(diff)>40) goTo(diff>0?(current+1)%slides.length:(current-1+slides.length)%slides.length,diff>0?'next':'prev');
-    });
+  // ── HOME PROJ CARD HOVER ────────────────────────────────────────
+  document.querySelectorAll('.home-proj-card').forEach(card=>{
+    const bg=card.querySelector('.home-proj-card-img-bg');
+    if(!bg) return;
+    card.addEventListener('mouseenter',()=>{bg.style.transform='scale(1.06)';bg.style.filter='saturate(1) brightness(.75)';});
+    card.addEventListener('mouseleave',()=>{bg.style.transform='';bg.style.filter='saturate(.85) brightness(.65)';});
   });
 
   // ── MODAL ───────────────────────────────────────────────────────
-  const modal     = document.getElementById('modal');
-  const modalImg  = document.getElementById('modalImg');
-  const modalTitle= document.getElementById('modalTitle');
-  const modalDesc = document.getElementById('modalDesc');
-
-  document.querySelectorAll('.proj-card').forEach(card=>{
-    card.addEventListener('click',e=>{
-      if(e.target.closest('.proj-arrow')||e.target.closest('.proj-dots')) return;
-      const activeSlide=card.querySelector('.proj-slide.active');
-      const img=activeSlide?activeSlide.style.backgroundImage.replace(/url\(['"]?|['"]?\)/g,''):'';
-      modalImg.style.backgroundImage=`url('${img}')`;
-      modalTitle.textContent=card.dataset.title||'Project';
-      modalDesc.textContent =card.dataset.sub  ||'';
-      modal.classList.add('open');
-      document.body.style.overflow='hidden';
-    });
-  });
-
-  function closeModal(){ modal.classList.remove('open'); document.body.style.overflow=''; }
+  const modal=document.getElementById('modal'),modalImg=document.getElementById('modalImg'),modalTitle=document.getElementById('modalTitle'),modalDesc=document.getElementById('modalDesc');
+  function closeModal(){modal.classList.remove('open');document.body.style.overflow='';}
   document.getElementById('modalClose').addEventListener('click',closeModal);
-  modal.addEventListener('click',e=>{ if(e.target===modal) closeModal(); });
-  addEventListener('keydown',e=>{ if(e.key==='Escape') closeModal(); });
+  modal.addEventListener('click',e=>{if(e.target===modal)closeModal();});
+  addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 
   // ── CONTACT FORM ────────────────────────────────────────────────
-  const leadForm  =document.getElementById('leadForm');
-  const formSuccess=document.getElementById('formSuccess');
-  const formError =document.getElementById('formError');
-  const submitBtn =document.getElementById('submitBtn');
+  const leadForm=document.getElementById('leadForm'),formSuccess=document.getElementById('formSuccess'),formError=document.getElementById('formError'),submitBtn=document.getElementById('submitBtn');
   leadForm.addEventListener('submit',async e=>{
     e.preventDefault();submitBtn.disabled=true;submitBtn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Sending...';
     formSuccess.style.display='none';formError.style.display='none';
-    try{
-      const resp=await fetch(leadForm.action,{method:'POST',body:new FormData(leadForm),headers:{Accept:'application/json'}});
-      if(resp.ok){formSuccess.style.display='flex';leadForm.reset();}else{formError.style.display='flex';}
-    }catch(err){formError.style.display='flex';}
+    try{const resp=await fetch(leadForm.action,{method:'POST',body:new FormData(leadForm),headers:{Accept:'application/json'}});if(resp.ok){formSuccess.style.display='flex';leadForm.reset();}else{formError.style.display='flex';}}catch(err){formError.style.display='flex';}
     submitBtn.disabled=false;submitBtn.innerHTML='<i class="fas fa-paper-plane"></i> Send Message';
     setTimeout(()=>{formSuccess.style.display='none';formError.style.display='none';},6000);
   });
@@ -1059,23 +1060,15 @@
   // ── FOOTER YEAR ─────────────────────────────────────────────────
   document.getElementById('yr').textContent=new Date().getFullYear();
 
-  // ── TYPING EFFECT ───────────────────────────────────────────────
+  // ── TYPING ──────────────────────────────────────────────────────
   const typingEl=document.getElementById('typingText');
   const typeWords=["CREATIVE","UNIQUE","EXPERIENCES"];
   let w=0,c=0,del=false;
-  function runTyping(){
-    const word=typeWords[w];
-    if(!del){typingEl.textContent=word.slice(0,c+1);c++;if(c===word.length){del=true;setTimeout(runTyping,1100);return;}}
-    else{typingEl.textContent=word.slice(0,c-1);c--;if(c===0){del=false;w=(w+1)%typeWords.length;}}
-    setTimeout(runTyping,del?60:120);
-  }
+  function runTyping(){const word=typeWords[w];if(!del){typingEl.textContent=word.slice(0,c+1);c++;if(c===word.length){del=true;setTimeout(runTyping,1100);return;}}else{typingEl.textContent=word.slice(0,c-1);c--;if(c===0){del=false;w=(w+1)%typeWords.length;}}setTimeout(runTyping,del?60:120);}
   runTyping();
 
-  // ── COUNTER ─────────────────────────────────────────────────────
-  function animateCounter(el){
-    const target=Number(el.dataset.count||"0"),suffix=el.dataset.suffix||'',dur=1800,s=performance.now();
-    (function f(now){const p=Math.min(1,(now-s)/dur);el.textContent=Math.floor(target*(0.15+0.85*p))+suffix;if(p<1)requestAnimationFrame(f);})(s);
-  }
+  // ── COUNTER (hero stats) ─────────────────────────────────────────
+  function animateCounter(el){const target=Number(el.dataset.count||"0"),suffix=el.dataset.suffix||'',dur=1800,s=performance.now();(function f(now){const p=Math.min(1,(now-s)/dur);el.textContent=Math.floor(target*(0.15+0.85*p))+suffix;if(p<1)requestAnimationFrame(f);})(s);}
   const statObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){animateCounter(e.target);statObs.unobserve(e.target);}});},{threshold:.6});
   document.querySelectorAll('.hstat-num').forEach(el=>statObs.observe(el));
 
@@ -1086,15 +1079,10 @@
   let bgIndex=0,usingA=true;
   function setLayer(el,src){el.style.backgroundImage=`url('${src}')`;}
   setLayer(heroBgA,heroImages[0]);heroBgA.classList.add('active');
-  setInterval(()=>{
-    bgIndex=(bgIndex+1)%heroImages.length;
-    if(usingA){setLayer(heroBgB,heroImages[bgIndex]);heroBgB.classList.add('active');heroBgA.classList.remove('active');}
-    else{setLayer(heroBgA,heroImages[bgIndex]);heroBgA.classList.add('active');heroBgB.classList.remove('active');}
-    usingA=!usingA;
-  },6500);
+  setInterval(()=>{bgIndex=(bgIndex+1)%heroImages.length;if(usingA){setLayer(heroBgB,heroImages[bgIndex]);heroBgB.classList.add('active');heroBgA.classList.remove('active');}else{setLayer(heroBgA,heroImages[bgIndex]);heroBgA.classList.add('active');heroBgB.classList.remove('active');}usingA=!usingA;},6500);
 
   // ── RIGHT CLICK BLOCK ───────────────────────────────────────────
   document.addEventListener("contextmenu",e=>e.preventDefault());
-</script>
+  </script>
 </body>
 </html>

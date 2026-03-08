@@ -846,32 +846,85 @@
       <div class="contact-layout">
 
         <!-- FORM -->
-        <div class="glass form-panel reveal">
-          <form id="leadForm" novalidate>
-            <div class="form-row">
-              <div class="form-group"><label for="fname">Your Name *</label><input type="text" id="fname" name="name" placeholder="Enter your name" required/></div>
-              <div class="form-group"><label for="femail">Email Address *</label><input type="email" id="femail" name="email" placeholder="your@email.com" required/></div>
-            </div>
-            <div class="form-row">
-              <div class="form-group"><label for="fphone">Phone (optional)</label><input type="tel" id="fphone" name="phone" placeholder="+94 ..."/></div>
-              <div class="form-group"><label for="fservice">Service Desired *</label>
-                <select id="fservice" name="service" required>
-                  <option value="">Select a service</option>
-                  <option>Corporate Events</option><option>Product Launch</option><option>Award Ceremony</option><option>Gala Dinner</option><option>Audio Production</option><option>Academic & Professional Events</option><option>Venue Logistics & Travel Coordination</option><option>Marketing, PR & Brand Activation</option><option>Technical Solutions</option><option>Thematic Party</option><option>Brand Activation</option><option>Full Event Production</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-group"><label for="fsubject">Subject *</label><input type="text" id="fsubject" name="subject" placeholder="e.g. Corporate gala dinner for 200 guests, March 2026" required/></div>
-            <div class="form-group"><label for="fmessage">Your Message *</label><textarea id="fmessage" name="message" placeholder="Tell us your event date, venue, audience size, and what you need." required></textarea></div>
-            <p class="form-note"><i class="fas fa-lock" style="color:var(--accent2);margin-right:6px"></i>Submissions go directly to our team at info@centination.com. We respond within 24 hours on business days.</p>
-            <div class="form-actions">
-              <button type="submit" class="btn btn-red" id="submitBtn"><i class="fas fa-paper-plane"></i> Send Message</button>
-              <button type="button" class="btn btn-ghost" id="copyWA"><i class="fab fa-whatsapp"></i> Copy for WhatsApp</button>
-            </div>
-            <div class="form-success" id="formSuccess"><i class="fas fa-circle-check"></i> Message sent! We'll contact you at info@centination.com within 24 hours.</div>
-            <div class="form-error" id="formError"><i class="fas fa-circle-exclamation"></i> Something went wrong. Please email us directly at <a href="mailto:info@centination.com" style="color:var(--accent2);text-decoration:underline">info@centination.com</a></div>
-          </form>
-        </div>
+        <form id="leadForm" action="https://formsubmit.co/info@centination.com" method="POST">
+  <input type="hidden" name="_subject" value="New Event Enquiry - CENTINATION Website">
+  <input type="hidden" name="_template" value="table">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_next" value="https://centination.netlify.app/?form=success">
+  <input type="hidden" name="_url" value="https://centination.netlify.app/">
+
+  <div class="form-row">
+    <div class="form-group">
+      <label for="fname">Your Name *</label>
+      <input type="text" id="fname" name="name" placeholder="Enter your name" required>
+    </div>
+
+    <div class="form-group">
+      <label for="femail">Email Address *</label>
+      <input type="email" id="femail" name="email" placeholder="your@email.com" required>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label for="fphone">Phone (optional)</label>
+      <input type="tel" id="fphone" name="phone" placeholder="+94 ...">
+    </div>
+
+    <div class="form-group">
+      <label for="fservice">Service Desired *</label>
+      <select id="fservice" name="service" required>
+        <option value="">Select a service</option>
+        <option>Corporate Events</option>
+        <option>Product Launch</option>
+        <option>Award Ceremony</option>
+        <option>Gala Dinner</option>
+        <option>Audio Production</option>
+        <option>Academic & Professional Events</option>
+        <option>Venue Logistics & Travel Coordination</option>
+        <option>Marketing, PR & Brand Activation</option>
+        <option>Technical Solutions</option>
+        <option>Thematic Party</option>
+        <option>Brand Activation</option>
+        <option>Full Event Production</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="fsubject">Subject *</label>
+    <input type="text" id="fsubject" name="subject" placeholder="e.g. Corporate gala dinner for 200 guests, March 2026" required>
+  </div>
+
+  <div class="form-group">
+    <label for="fmessage">Your Message *</label>
+    <textarea id="fmessage" name="message" placeholder="Tell us your event date, venue, audience size, and what you need." required></textarea>
+  </div>
+
+  <input type="text" name="_honey" style="display:none">
+
+  <p class="form-note">
+    <i class="fas fa-lock" style="color:var(--accent2);margin-right:6px"></i>
+    Submissions go directly to our team at info@centination.com. We respond within 24 hours on business days.
+  </p>
+
+  <div class="form-actions">
+    <button type="submit" class="btn btn-red" id="submitBtn">
+      <i class="fas fa-paper-plane"></i> Send Message
+    </button>
+    <button type="button" class="btn btn-ghost" id="copyWA">
+      <i class="fab fa-whatsapp"></i> Copy for WhatsApp
+    </button>
+  </div>
+
+  <div class="form-success" id="formSuccess">
+    <i class="fas fa-circle-check"></i> Message sent successfully.
+  </div>
+
+  <div class="form-error" id="formError">
+    <i class="fas fa-circle-exclamation"></i> Something went wrong. Please try again or email us directly.
+  </div>
+</form>
 
         <!-- INFO -->
         <div class="glass info-panel reveal reveal-delay-2">
@@ -1013,86 +1066,86 @@
     });
   });
 
-  // ── CONTACT FORM — sends to info@centination.com via Email.js ──
-  const leadForm=document.getElementById('leadForm');
-  const formSuccess=document.getElementById('formSuccess');
-  const formError=document.getElementById('formError');
-  const submitBtn=document.getElementById('submitBtn');
+  // // ── CONTACT FORM — sends to info@centination.com via Email.js ──
+  // const leadForm=document.getElementById('leadForm');
+  // const formSuccess=document.getElementById('formSuccess');
+  // const formError=document.getElementById('formError');
+  // const submitBtn=document.getElementById('submitBtn');
 
-  // We use a mailto: fallback + fetch to a free email relay (Web3Forms)
-  // Web3Forms is free, no signup needed, delivers to any email
-  const WEB3_ACCESS_KEY = ''; // Leave blank — form falls back to mailto if no key set
+  // // We use a mailto: fallback + fetch to a free email relay (Web3Forms)
+  // // Web3Forms is free, no signup needed, delivers to any email
+  // const WEB3_ACCESS_KEY = ''; // Leave blank — form falls back to mailto if no key set
 
-  async function submitForm(data){
-    // Try Web3Forms if access key provided
-    if(WEB3_ACCESS_KEY){
-      const body=JSON.stringify({
-        access_key: WEB3_ACCESS_KEY,
-        subject: `New Event Enquiry — ${data.subject}`,
-        from_name: data.name,
-        reply_to: data.email,
-        name: data.name,
-        email: data.email,
-        phone: data.phone||'Not provided',
-        service: data.service,
-        subject_field: data.subject,
-        message: data.message,
-        recipient: 'info@centination.com'
-      });
-      const r=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body});
-      const json=await r.json();
-      if(json.success)return{ok:true};
-      throw new Error(json.message||'Failed');
-    }
-    // Fallback: open mailto link
-    const body=`Name: ${data.name}%0AEmail: ${data.email}%0APhone: ${data.phone||'Not provided'}%0AService: ${data.service}%0ASubject: ${data.subject}%0A%0AMessage:%0A${data.message}`;
-    window.location.href=`mailto:info@centination.com?subject=New Event Enquiry — ${encodeURIComponent(data.subject)}&body=${body}`;
-    return{ok:true,mailto:true};
-  }
+  // async function submitForm(data){
+  //   // Try Web3Forms if access key provided
+  //   if(WEB3_ACCESS_KEY){
+  //     const body=JSON.stringify({
+  //       access_key: WEB3_ACCESS_KEY,
+  //       subject: `New Event Enquiry — ${data.subject}`,
+  //       from_name: data.name,
+  //       reply_to: data.email,
+  //       name: data.name,
+  //       email: data.email,
+  //       phone: data.phone||'Not provided',
+  //       service: data.service,
+  //       subject_field: data.subject,
+  //       message: data.message,
+  //       recipient: 'info@centination.com'
+  //     });
+  //     const r=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body});
+  //     const json=await r.json();
+  //     if(json.success)return{ok:true};
+  //     throw new Error(json.message||'Failed');
+  //   }
+  //   // Fallback: open mailto link
+  //   const body=`Name: ${data.name}%0AEmail: ${data.email}%0APhone: ${data.phone||'Not provided'}%0AService: ${data.service}%0ASubject: ${data.subject}%0A%0AMessage:%0A${data.message}`;
+  //   window.location.href=`mailto:info@centination.com?subject=New Event Enquiry — ${encodeURIComponent(data.subject)}&body=${body}`;
+  //   return{ok:true,mailto:true};
+  // }
 
-  if(leadForm){
-    leadForm.addEventListener('submit',async e=>{
-      e.preventDefault();
-      formSuccess.style.display='none';
-      formError.style.display='none';
+  // if(leadForm){
+  //   leadForm.addEventListener('submit',async e=>{
+  //     e.preventDefault();
+  //     formSuccess.style.display='none';
+  //     formError.style.display='none';
 
-      // Basic validation
-      const req=['name','email','service','subject','message'];
-      let valid=true;
-      req.forEach(f=>{const el=leadForm.querySelector(`[name="${f}"]`);if(el&&!el.value.trim()){el.style.borderColor='rgba(255,29,53,.6)';valid=false;}else if(el){el.style.borderColor='';}});
-      if(!valid){formError.innerHTML='<i class="fas fa-circle-exclamation"></i> Please fill in all required fields.';formError.style.display='flex';return;}
+  //     // Basic validation
+  //     const req=['name','email','service','subject','message'];
+  //     let valid=true;
+  //     req.forEach(f=>{const el=leadForm.querySelector(`[name="${f}"]`);if(el&&!el.value.trim()){el.style.borderColor='rgba(255,29,53,.6)';valid=false;}else if(el){el.style.borderColor='';}});
+  //     if(!valid){formError.innerHTML='<i class="fas fa-circle-exclamation"></i> Please fill in all required fields.';formError.style.display='flex';return;}
 
-      submitBtn.disabled=true;
-      submitBtn.innerHTML='<i class="fas fa-spinner" style="animation:spin 1s linear infinite"></i> Sending…';
+  //     submitBtn.disabled=true;
+  //     submitBtn.innerHTML='<i class="fas fa-spinner" style="animation:spin 1s linear infinite"></i> Sending…';
 
-      const fd=new FormData(leadForm);
-      const data={name:fd.get('name'),email:fd.get('email'),phone:fd.get('phone'),service:fd.get('service'),subject:fd.get('subject'),message:fd.get('message')};
+  //     const fd=new FormData(leadForm);
+  //     const data={name:fd.get('name'),email:fd.get('email'),phone:fd.get('phone'),service:fd.get('service'),subject:fd.get('subject'),message:fd.get('message')};
 
-      try{
-        const res=await submitForm(data);
-        if(res.mailto){
-          formSuccess.innerHTML='<i class="fas fa-circle-check"></i> Email client opened. Please send the email to complete your enquiry.';
-        }else{
-          formSuccess.innerHTML='<i class="fas fa-circle-check"></i> Message sent to info@centination.com! We\'ll be in touch within 24 hours.';
-        }
-        formSuccess.style.display='flex';
-        leadForm.reset();
-      }catch(err){
-        formError.innerHTML=`<i class="fas fa-circle-exclamation"></i> Couldn't send. Please email us directly at <a href="mailto:info@centination.com" style="color:var(--accent2);text-decoration:underline">info@centination.com</a>`;
-        formError.style.display='flex';
-      }finally{
-        submitBtn.disabled=false;
-        submitBtn.innerHTML='<i class="fas fa-paper-plane"></i> Send Message';
-      }
+  //     try{
+  //       const res=await submitForm(data);
+  //       if(res.mailto){
+  //         formSuccess.innerHTML='<i class="fas fa-circle-check"></i> Email client opened. Please send the email to complete your enquiry.';
+  //       }else{
+  //         formSuccess.innerHTML='<i class="fas fa-circle-check"></i> Message sent to info@centination.com! We\'ll be in touch within 24 hours.';
+  //       }
+  //       formSuccess.style.display='flex';
+  //       leadForm.reset();
+  //     }catch(err){
+  //       formError.innerHTML=`<i class="fas fa-circle-exclamation"></i> Couldn't send. Please email us directly at <a href="mailto:info@centination.com" style="color:var(--accent2);text-decoration:underline">info@centination.com</a>`;
+  //       formError.style.display='flex';
+  //     }finally{
+  //       submitBtn.disabled=false;
+  //       submitBtn.innerHTML='<i class="fas fa-paper-plane"></i> Send Message';
+  //     }
 
-      setTimeout(()=>{formSuccess.style.display='none';formError.style.display='none';},8000);
-    });
+  //     setTimeout(()=>{formSuccess.style.display='none';formError.style.display='none';},8000);
+  //   });
 
-    // Reset field border on input
-    leadForm.querySelectorAll('input,select,textarea').forEach(el=>{
-      el.addEventListener('input',()=>{el.style.borderColor='';});
-    });
-  }
+  //   // Reset field border on input
+  //   leadForm.querySelectorAll('input,select,textarea').forEach(el=>{
+  //     el.addEventListener('input',()=>{el.style.borderColor='';});
+  //   });
+  // }
 
   // ── COPY TO WHATSAPP ───────────────────────────────────────────
   const copyWA=document.getElementById('copyWA');

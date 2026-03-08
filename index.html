@@ -1131,19 +1131,99 @@
   addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 
   // ── CONTACT FORM ────────────────────────────────────────────────
-  const leadForm=document.getElementById('leadForm'),formSuccess=document.getElementById('formSuccess'),formError=document.getElementById('formError'),submitBtn=document.getElementById('submitBtn');
-  leadForm.addEventListener('submit',async e=>{
-    e.preventDefault();submitBtn.disabled=true;submitBtn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Sending...';
-    formSuccess.style.display='none';formError.style.display='none';
-    try{const resp=await fetch(leadForm.action,{method:'POST',body:new FormData(leadForm),headers:{Accept:'application/json'}});if(resp.ok){formSuccess.style.display='flex';leadForm.reset();}else{formError.style.display='flex';}}catch(err){formError.style.display='flex';}
-    submitBtn.disabled=false;submitBtn.innerHTML='<i class="fas fa-paper-plane"></i> Send Message';
-    setTimeout(()=>{formSuccess.style.display='none';formError.style.display='none';},6000);
+const leadForm = document.getElementById('leadForm');
+const formSuccess = document.getElementById('formSuccess');
+const formError = document.getElementById('formError');
+const submitBtn = document.getElementById('submitBtn');
+
+if (leadForm) {
+
+  leadForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    formSuccess.style.display = 'none';
+    formError.style.display = 'none';
+
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+
+    try {
+
+      const formData = new FormData(leadForm);
+
+      const response = await fetch(leadForm.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+
+        formSuccess.style.display = 'flex';
+        leadForm.reset();
+
+      } else {
+
+        const data = await response.json().catch(() => null);
+        console.error("Form submission error:", data);
+        formError.style.display = 'flex';
+
+      }
+
+    } catch (error) {
+
+      console.error("Network error:", error);
+      formError.style.display = 'flex';
+
+    } finally {
+
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+
+    }
+
+    setTimeout(() => {
+      formSuccess.style.display = 'none';
+      formError.style.display = 'none';
+    }, 6000);
+
   });
-  document.getElementById('copyWA').addEventListener('click',()=>{
-    const d=new FormData(leadForm);
-    const msg=`Hello CENTINATION Entertainment\n\nName: ${d.get('name')||'-'}\nEmail: ${d.get('email')||'-'}\nPhone: ${d.get('phone')||'-'}\nService: ${d.get('service')||'-'}\nSubject: ${d.get('subject')||'-'}\nMessage: ${d.get('message')||'-'}`;
-    navigator.clipboard.writeText(msg).then(()=>alert('Copied. Paste it into WhatsApp.')).catch(()=>alert('Copy failed. Please copy manually.'));
+
+}
+
+
+// ── COPY TO WHATSAPP ───────────────────────────────────────────
+const copyWA = document.getElementById('copyWA');
+
+if (copyWA) {
+
+  copyWA.addEventListener('click', () => {
+
+    const d = new FormData(leadForm);
+
+    const msg =
+`Hello CENTINATION Entertainment
+
+Name: ${d.get('name') || '-'}
+Email: ${d.get('email') || '-'}
+Phone: ${d.get('phone') || '-'}
+Service: ${d.get('service') || '-'}
+Subject: ${d.get('subject') || '-'}
+Message: ${d.get('message') || '-'}`;
+
+    navigator.clipboard.writeText(msg)
+      .then(() => {
+        alert('Copied. Paste it into WhatsApp.');
+      })
+      .catch(() => {
+        alert('Copy failed. Please copy manually.');
+      });
+
   });
+
+}
 
   // ── FOOTER YEAR ─────────────────────────────────────────────────
   document.getElementById('yr').textContent=new Date().getFullYear();

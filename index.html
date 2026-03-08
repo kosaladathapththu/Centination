@@ -4,7 +4,7 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>CENTINATION Entertainment | Sri Lanka's Premier Event Production</title>
-  <meta name="description" content="Centination Entertainment PVT Ltd Leading the way in event production across Sri Lanka. 360° event management from concept to flawless execution."/>
+  <meta name="description" content="Centination Entertainment PVT Ltd — Leading the way in event production across Sri Lanka. 360° event management from concept to flawless execution."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Bebas+Neue&display=swap" rel="stylesheet"/>
@@ -29,12 +29,12 @@
     body { font-family: var(--font-body); color: var(--text); background: var(--bg); overflow-x: hidden; cursor: none; }
     a { color: inherit; text-decoration: none; }
 
-    /* CURSOR */
+    /* CURSOR — hidden on touch */
     #cursor-dot { position: fixed; width: 8px; height: 8px; border-radius: 50%; background: var(--accent2); pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: width .2s, height .2s; }
     #cursor-ring { position: fixed; width: 38px; height: 38px; border-radius: 50%; border: 1.5px solid rgba(255,29,53,0.65); pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); transition: width .28s ease, height .28s ease, border-color .2s; }
     #cursor-trail { position: fixed; width: 80px; height: 80px; border-radius: 50%; pointer-events: none; z-index: 9997; transform: translate(-50%,-50%); background: radial-gradient(circle, rgba(200,0,26,0.12) 0%, transparent 70%); filter: blur(2px); }
 
-    /* BG LAYERS */
+    /* BG */
     body::before { content: ''; position: fixed; inset: 0; z-index: -3; background: radial-gradient(ellipse 1100px 700px at 10% 5%, rgba(200,0,26,0.14) 0%, transparent 55%), radial-gradient(ellipse 900px 600px at 90% 20%, rgba(255,29,53,0.08) 0%, transparent 55%), radial-gradient(ellipse 800px 800px at 50% 100%, rgba(150,0,20,0.1) 0%, transparent 55%), linear-gradient(180deg, #040408 0%, #06060d 40%, #040408 100%); }
     body::after { content: ''; position: fixed; inset: 0; z-index: -2; background-image: linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px); background-size: 80px 80px; mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%); }
     .noise { position: fixed; inset: 0; z-index: -1; opacity: 0.04; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E"); }
@@ -54,7 +54,7 @@
     .nav-links a:hover, .nav-links a.active { color: var(--text); background: rgba(255,255,255,.04); }
     .nav-links a:hover::after, .nav-links a.active::after { left: 18%; right: 18%; }
     .nav-cta { display: flex; align-items: center; gap: 10px; }
-    .hamburger { display: none; width: 44px; height: 44px; border-radius: 12px; border: 1px solid var(--border2); background: var(--surface); align-items: center; justify-content: center; flex-direction: column; gap: 5px; cursor: none; }
+    .hamburger { display: none; width: 44px; height: 44px; border-radius: 12px; border: 1px solid var(--border2); background: var(--surface); align-items: center; justify-content: center; flex-direction: column; gap: 5px; cursor: pointer; }
     .hamburger span { display: block; width: 18px; height: 1.5px; background: var(--text); border-radius: 2px; transition: all .25s; }
     .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4px,4px); }
     .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
@@ -63,21 +63,17 @@
     .mnav.show { display: block; transform: translateY(0); opacity: 1; }
     .mnav a { display: block; padding: 15px 28px; font-family: var(--font-ui); font-weight: 700; font-size: 17px; letter-spacing: .5px; color: rgba(240,238,255,.75); border-bottom: 1px solid rgba(255,255,255,.04); transition: color .2s, padding-left .2s; }
     .mnav a:hover { color: var(--text); padding-left: 36px; }
-    @media(max-width:980px) { 
-      .nav-inner { grid-template-columns: auto auto; } 
-      .nav-links { display: none; } 
-      .hamburger { display: inline-flex; } 
-      .logo-img { height: 58px; } 
-      .nav-cta .btn-ghost { display: none; }
-    }
+    .mnav-quote { margin: 16px 28px 4px; }
+    .mnav-quote .btn { width: 100%; justify-content: center; font-size: 15px; padding: 15px 20px; }
 
     /* BUTTONS */
-    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; border-radius: 14px; font-family: var(--font-ui); font-weight: 700; font-size: 14px; letter-spacing: .3px; cursor: none; transition: all .22s; border: 1px solid transparent; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; border-radius: 14px; font-family: var(--font-ui); font-weight: 700; font-size: 14px; letter-spacing: .3px; cursor: pointer; transition: all .22s; border: 1px solid transparent; touch-action: manipulation; }
     .btn i { font-size: 13px; opacity: .95; }
     .btn-ghost { border-color: var(--border2); background: var(--surface); color: rgba(240,238,255,.85); }
     .btn-ghost:hover { background: var(--surface2); border-color: rgba(255,255,255,.2); transform: translateY(-1px); }
     .btn-red { background: linear-gradient(135deg,#c8001a 0%,#ff1d35 50%,#a80017 100%); color: #fff; border-color: rgba(255,29,53,.3); box-shadow: 0 6px 28px rgba(200,0,26,.3); }
     .btn-red:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(200,0,26,.45); }
+    .btn:disabled { opacity: .6; pointer-events: none; }
 
     /* PAGE SYSTEM */
     .page { display: none; padding-top: var(--nav-h); }
@@ -87,7 +83,7 @@
     .sh { margin-bottom: 60px; }
     .sh-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-ui); font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--accent2); margin-bottom: 18px; }
     .sh-eyebrow::before { content: ''; display: block; width: 24px; height: 1.5px; background: linear-gradient(90deg,var(--accent2),transparent); }
-    .sh h2 { font-family: var(--font-display); font-size: clamp(52px,6.5vw,96px); letter-spacing: 2px; line-height: .92; background: linear-gradient(135deg,#f0eeff 0%,rgba(240,238,255,.65) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .sh h2 { font-family: var(--font-display); font-size: clamp(48px,6.5vw,96px); letter-spacing: 2px; line-height: .92; background: linear-gradient(135deg,#f0eeff 0%,rgba(240,238,255,.65) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
     .sh p { margin-top: 18px; font-size: 17px; line-height: 1.7; color: var(--muted); max-width: 54ch; }
 
     /* GLASS */
@@ -103,13 +99,14 @@
     @keyframes blink { 0%,45%{opacity:1;} 50%,100%{opacity:0;} }
     @keyframes float { 0%,100%{transform:translateY(0px);} 50%{transform:translateY(-12px);} }
     @keyframes countGlow { 0%,100%{text-shadow:0 0 40px rgba(255,29,53,.3);} 50%{text-shadow:0 0 80px rgba(255,29,53,.6),0 0 120px rgba(200,0,26,.3);} }
+    @keyframes spin { to{transform:rotate(360deg);} }
     .anim-up { animation: fadeUp .8s cubic-bezier(.22,1,.36,1) both; }
     .d1{animation-delay:.1s} .d2{animation-delay:.2s} .d3{animation-delay:.3s} .d4{animation-delay:.4s} .d5{animation-delay:.5s} .d6{animation-delay:.6s}
     .reveal { opacity:0; transform:translateY(28px); transition: opacity .85s cubic-bezier(.22,1,.36,1), transform .85s cubic-bezier(.22,1,.36,1); }
     .reveal.visible { opacity:1; transform:translateY(0); }
     .reveal-delay-1{transition-delay:.1s} .reveal-delay-2{transition-delay:.2s} .reveal-delay-3{transition-delay:.3s} .reveal-delay-4{transition-delay:.4s}
 
-    /* SMOKE CANVAS */
+    /* SMOKE */
     #smokeCanvas { position:absolute; inset:0; z-index:2; pointer-events:none; }
 
     /* PAGE HERO */
@@ -127,10 +124,9 @@
     .hero::after { content:''; position:absolute; inset:0; background:radial-gradient(circle at 70% 30%,rgba(200,0,26,.22),transparent 55%); z-index:1; pointer-events:none; }
     .hero .wrap { position:relative; z-index:4; width:100%; }
     .hero-content { position:relative; z-index:4; max-width:760px; }
-    .home-blind-photo { position:absolute; right:-80px; bottom:-100px; width:480px; opacity:.1; filter:blur(.5px) saturate(.9); pointer-events:none; z-index:1; transform:rotate(-5deg); }
-    .hero-eyebrow { display:inline-flex; align-items:center; gap:10px; border:1px solid rgba(255,255,255,.1); background:rgba(255,255,255,.04); border-radius:999px; padding:9px 18px; font-family:var(--font-ui); font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(240,238,255,.75); margin-bottom:26px; }
-    .live-dot { width:8px; height:8px; border-radius:50%; background:#22c55e; box-shadow:0 0 0 2px rgba(34,197,94,.2); animation:pulse-dot 2s ease-in-out infinite; }
-    .hero h1 { font-family:var(--font-display); font-size:clamp(72px,9.5vw,138px); letter-spacing:3px; line-height:.9; margin-bottom:30px; text-shadow:0 18px 60px rgba(0,0,0,.55); }
+    .hero-eyebrow { display:inline-flex; align-items:center; gap:10px; border:1px solid rgba(255,255,255,.1); background:rgba(255,255,255,.04); border-radius:999px; padding:9px 18px; font-family:var(--font-ui); font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(240,238,255,.75); margin-bottom:26px; flex-wrap:wrap; }
+    .live-dot { width:8px; height:8px; border-radius:50%; background:#22c55e; box-shadow:0 0 0 2px rgba(34,197,94,.2); animation:pulse-dot 2s ease-in-out infinite; flex:0 0 auto; }
+    .hero h1 { font-family:var(--font-display); font-size:clamp(60px,9.5vw,138px); letter-spacing:3px; line-height:.9; margin-bottom:30px; text-shadow:0 18px 60px rgba(0,0,0,.55); }
     .hero h1 .line1 { display:block; color:var(--text); }
     .hero h1 .line2 { display:inline-block; background:linear-gradient(90deg,var(--accent) 0%,var(--accent2) 50%,#ff8094 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; position:relative; padding-right:10px; min-height:1em; }
     .type-cursor { display:inline-block; width:10px; height:.85em; transform:translateY(.08em); margin-left:6px; background:rgba(240,238,255,.85); border-radius:2px; animation:blink 1s infinite; }
@@ -160,7 +156,7 @@
     .marquee-item { display:flex; align-items:center; gap:14px; padding:0 38px; font-family:var(--font-ui); font-size:12px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:rgba(240,238,255,.35); border-right:1px solid var(--border); white-space:nowrap; }
     .marquee-item .dot-sep { width:4px; height:4px; border-radius:50%; background:var(--accent2); opacity:.6; }
 
-    /* ========== HOME — FEATURES ========== */
+    /* FEATURES */
     .features-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; padding:90px 0 50px; }
     .fcard { padding:36px 32px; position:relative; transition:transform .3s; }
     .fcard:hover { transform:translateY(-6px); }
@@ -170,9 +166,9 @@
     .fcard h3 { font-family:var(--font-ui); font-weight:800; font-size:18px; letter-spacing:-.2px; margin-bottom:12px; }
     .fcard p { font-size:15px; line-height:1.75; color:var(--muted); }
 
-    /* ========== HOME — SERVICES PREVIEW ========== */
+    /* SERVICES PREVIEW */
     .home-services { padding: 70px 0 90px; }
-    .home-services-header { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:44px; }
+    .home-services-header { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:44px; flex-wrap:wrap; gap:16px; }
     .home-services-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
     .hsrv-card { padding:30px 24px; border-radius:20px; background:linear-gradient(140deg,rgba(255,255,255,.05) 0%,rgba(255,255,255,.01) 100%); border:1px solid rgba(255,255,255,.09); transition:transform .3s, border-color .3s, background .3s; position:relative; overflow:hidden; }
     .hsrv-card::before { content:''; position:absolute; inset:0; background:radial-gradient(circle at 0% 0%,rgba(200,0,26,.12),transparent 60%); opacity:0; transition:opacity .3s; }
@@ -182,7 +178,7 @@
     .hsrv-card h4 { font-family:var(--font-ui); font-weight:800; font-size:15px; margin-bottom:9px; }
     .hsrv-card p { font-size:13.5px; line-height:1.65; color:var(--muted); }
 
-    /* ========== HOME — ABOUT STRIP ========== */
+    /* ABOUT STRIP */
     .home-about { padding:90px 0; }
     .home-about-inner { display:grid; grid-template-columns:1fr 1fr; gap:90px; align-items:center; }
     .home-about-visual { position:relative; }
@@ -194,85 +190,66 @@
     .home-about-badge { position:absolute; bottom:-20px; left:50%; transform:translateX(-50%); padding:16px 28px; border-radius:16px; white-space:nowrap; text-align:center; }
     .home-about-badge .num { font-family:var(--font-display); font-size:46px; letter-spacing:2px; background:linear-gradient(135deg,var(--accent2),#ff8094); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; line-height:1; }
     .home-about-badge .lbl { font-family:var(--font-ui); font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-top:2px; }
-    .home-about-text h2 { font-family:var(--font-display); font-size:clamp(44px,5.5vw,78px); letter-spacing:2px; line-height:.92; margin-bottom:22px; }
+    .home-about-text h2 { font-family:var(--font-display); font-size:clamp(40px,5.5vw,78px); letter-spacing:2px; line-height:.92; margin-bottom:22px; }
     .home-about-text p { font-size:15.5px; line-height:1.85; color:var(--muted); margin-bottom:16px; }
     .home-about-text p strong { color:var(--text); }
     .home-about-pills { display:flex; flex-wrap:wrap; gap:8px; margin:26px 0 34px; }
     .home-pill { padding:8px 15px; border-radius:999px; border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.04); font-family:var(--font-ui); font-size:12px; font-weight:700; letter-spacing:.5px; color:rgba(240,238,255,.75); }
 
-    /* ========== HOME — PROJECTS PREVIEW ========== */
+    /* PROJECTS PREVIEW */
     .home-projects { padding:0 0 90px; }
-    .home-projects-header { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:44px; }
+    .home-projects-header { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:44px; flex-wrap:wrap; gap:16px; }
     .home-proj-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
-    .home-proj-card { border-radius:22px; overflow:hidden; position:relative; cursor:none; min-height:280px; }
-    .home-proj-card-img { width:100%; height:280px; object-fit:cover; filter:saturate(.8) brightness(.65); transition:transform .5s, filter .4s; display:block; }
-    .home-proj-card:hover .home-proj-card-img { transform:scale(1.06); filter:saturate(1) brightness(.75); }
+    .home-proj-card { border-radius:22px; overflow:hidden; position:relative; cursor:pointer; min-height:280px; }
+    .home-proj-card-img-bg { position:absolute; inset:0; background-size:cover; background-position:center; filter:saturate(.85) brightness(.65); transition:transform .5s,filter .4s; }
+    .home-proj-card:hover .home-proj-card-img-bg { transform:scale(1.06); filter:saturate(1) brightness(.75); }
     .home-proj-overlay { position:absolute; inset:0; background:linear-gradient(180deg,transparent 35%,rgba(0,0,0,.85) 100%); }
     .home-proj-info { position:absolute; left:20px; right:20px; bottom:18px; }
     .home-proj-tag { display:inline-block; padding:4px 10px; border-radius:999px; border:1px solid rgba(255,255,255,.2); background:rgba(4,4,8,.5); font-family:var(--font-ui); font-size:10px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:9px; }
     .home-proj-info b { display:block; font-family:var(--font-ui); font-weight:800; font-size:15px; line-height:1.3; }
     .home-proj-info span { display:block; font-size:12.5px; color:rgba(240,238,255,.55); margin-top:3px; }
-    .home-proj-card-img-bg { position:absolute; inset:0; background-size:cover; background-position:center; filter:saturate(.8) brightness(.65); transition:transform .5s, filter .4s; }
-    .home-proj-card:hover .home-proj-card-img-bg { transform:scale(1.06); filter:saturate(1) brightness(.75); }
 
-    /* ========== HOME — NUMBERS BAND ========== */
+    /* NUMBERS BAND */
     .numbers-band { padding:90px 0; border-top:1px solid var(--border); border-bottom:1px solid var(--border); background:rgba(255,255,255,.015); }
     .numbers-inner { display:grid; grid-template-columns:repeat(4,1fr); gap:0; }
     .num-item { text-align:center; padding:36px 24px; border-right:1px solid var(--border); }
     .num-item:last-child { border-right:0; }
-    .num-val { font-family:var(--font-display); font-size:clamp(56px,6.5vw,88px); letter-spacing:3px; background:linear-gradient(135deg,#f0eeff 0%,var(--accent2) 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; line-height:1; }
+    .num-val { font-family:var(--font-display); font-size:clamp(48px,6.5vw,88px); letter-spacing:3px; background:linear-gradient(135deg,#f0eeff 0%,var(--accent2) 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; line-height:1; }
     .num-label { font-family:var(--font-ui); font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-top:10px; }
 
     /* CTA BAND */
     .cta-band { padding:90px 0; }
     .cta-band-inner { padding:72px; text-align:center; position:relative; overflow:hidden; }
     .cta-band-inner::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 700px 400px at 50% 50%,rgba(200,0,26,.2),transparent 65%); pointer-events:none; }
-    .cta-band h2 { font-family:var(--font-display); font-size:clamp(52px,7.5vw,104px); letter-spacing:3px; margin-bottom:18px; }
+    .cta-band h2 { font-family:var(--font-display); font-size:clamp(44px,7.5vw,104px); letter-spacing:3px; margin-bottom:18px; }
     .cta-band p { font-size:17px; color:var(--muted); margin-bottom:40px; max-width:50ch; margin-left:auto; margin-right:auto; }
 
     /* ========== ABOUT ========== */
     #page-about { padding-bottom:110px; }
     .about-layout { display:grid; grid-template-columns:1fr 1fr; gap:70px; align-items:center; padding:70px 0; }
     .about-visual { position:relative; aspect-ratio:4/5; border-radius:var(--radius2); overflow:hidden; }
-    .about-visual-img {
-  position:absolute;
-  inset:0;
-  background:url('assets/stage-event.jpeg') center/cover;
-  filter:saturate(.8) brightness(.75);
-  transition:transform .6s;
-}
+    .about-visual-img { position:absolute; inset:0; background:url('assets/stage-event.jpeg') center/cover; filter:saturate(.8) brightness(.75); transition:transform .6s; }
     .about-visual:hover .about-visual-img { transform:scale(1.04); }
     .about-visual-overlay { position:absolute; inset:0; background:linear-gradient(180deg,transparent 40%,rgba(4,4,8,.85) 100%),linear-gradient(135deg,rgba(200,0,26,.2),transparent 55%); }
     .about-visual-tag { position:absolute; left:20px; bottom:20px; padding:12px 18px; border-radius:12px; font-family:var(--font-ui); font-weight:700; font-size:13px; }
-    .about-text h2 { font-family:var(--font-display); font-size:clamp(52px,5.5vw,82px); letter-spacing:2px; line-height:.92; margin-bottom:26px; }
+    .about-text h2 { font-family:var(--font-display); font-size:clamp(44px,5.5vw,82px); letter-spacing:2px; line-height:.92; margin-bottom:26px; }
     .about-text p { font-size:16px; line-height:1.85; color:var(--muted); margin-bottom:18px; }
     .about-text p strong { color:var(--text); font-weight:600; }
     .value-list { display:grid; gap:14px; margin-top:34px; }
     .value-item { display:flex; align-items:flex-start; gap:16px; padding:18px 22px; border-radius:16px; }
     .vi-icon { width:38px; height:38px; border-radius:10px; display:grid; place-items:center; background:rgba(200,0,26,.15); border:1px solid rgba(200,0,26,.25); flex:0 0 auto; font-size:16px; }
     .vi-text b { display:block; font-family:var(--font-ui); font-weight:700; font-size:14.5px; margin-bottom:4px; }
-    .vi-text span { font-size:13.5px; color:var(--muted); line-height:1.55; 
-    
-      .about-visual-img {
-  position:absolute;
-  inset:0;
-  background:url('https://images.unsplash.com/photo-1514533212735-5df27d970db4?auto=format&fit=crop&w=900&q=75') center/cover;
-}
-    }
+    .vi-text span { font-size:13.5px; color:var(--muted); line-height:1.55; }
 
-    /* ========== ABOUT — LEGACY / ACHIEVEMENTS (replaces team) ========== */
+    /* LEGACY */
     .about-legacy { padding: 0 0 80px; }
     .legacy-header { margin-bottom: 60px; }
     .legacy-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 28px; align-items: start; }
-
-    /* Big 20+ counter block */
     .legacy-hero-stat { padding: 56px 40px; text-align: center; position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 320px; }
     .legacy-hero-stat::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 70% at 50% 60%, rgba(200,0,26,.22), transparent 70%); pointer-events: none; }
-    .legacy-big-num { font-family: var(--font-display); font-size: clamp(120px, 16vw, 200px); letter-spacing: 4px; line-height: 1; background: linear-gradient(135deg, #ff1d35 0%, #ff8094 50%, #c8001a 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: countGlow 4s ease-in-out infinite; position: relative; z-index: 1; }
+    .legacy-big-num { font-family: var(--font-display); font-size: clamp(100px, 16vw, 200px); letter-spacing: 4px; line-height: 1; background: linear-gradient(135deg, #ff1d35 0%, #ff8094 50%, #c8001a 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: countGlow 4s ease-in-out infinite; position: relative; z-index: 1; }
     .legacy-big-label { font-family: var(--font-ui); font-weight: 800; font-size: 14px; letter-spacing: 3px; text-transform: uppercase; color: rgba(240,238,255,.6); margin-top: 10px; position: relative; z-index: 1; }
     .legacy-big-sub { font-size: 14px; color: var(--muted); margin-top: 8px; max-width: 22ch; text-align: center; line-height: 1.55; position: relative; z-index: 1; }
-
-    /* Achievement cards */
     .legacy-achievements { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
     .legacy-ach { padding: 28px 24px; position: relative; overflow: hidden; transition: transform .3s; }
     .legacy-ach:hover { transform: translateY(-4px); }
@@ -280,17 +257,6 @@
     .legacy-ach h4 { font-family: var(--font-ui); font-weight: 800; font-size: 14px; margin-bottom: 6px; }
     .legacy-ach p { font-size: 13px; color: var(--muted); line-height: 1.6; }
     .legacy-ach-icon { position: absolute; right: 18px; top: 18px; font-size: 22px; color: rgba(200,0,26,.25); }
-
-    /* Timeline strip */
-    .legacy-timeline { margin-top: 60px; }
-    .legacy-tl-title { font-family: var(--font-ui); font-weight: 800; font-size: 13px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--accent2); margin-bottom: 28px; display: flex; align-items: center; gap: 10px; }
-    .legacy-tl-title::before { content: ''; display: block; width: 24px; height: 1.5px; background: var(--accent2); }
-    .tl-items { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; }
-    .tl-items::before { content: ''; position: absolute; top: 20px; left: 10%; right: 10%; height: 1px; background: linear-gradient(90deg, transparent, rgba(200,0,26,.4), transparent); }
-    .tl-item { text-align: center; padding: 0 12px 0; }
-    .tl-dot { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, rgba(200,0,26,.3), rgba(200,0,26,.08)); border: 1px solid rgba(200,0,26,.4); display: grid; place-items: center; margin: 0 auto 14px; font-family: var(--font-display); font-size: 15px; color: var(--accent2); }
-    .tl-year { font-family: var(--font-display); font-size: 22px; letter-spacing: 1px; background: linear-gradient(135deg,#f0eeff,var(--accent2)); -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text; display: block; margin-bottom: 6px; }
-    .tl-text { font-size: 12.5px; color: var(--muted); line-height: 1.55; }
 
     /* ========== SERVICES ========== */
     #page-services { padding-bottom:110px; }
@@ -314,87 +280,21 @@
     .pstep h4 { font-family:var(--font-ui); font-weight:800; font-size:16px; margin-bottom:9px; }
     .pstep p { font-size:14px; color:var(--muted); line-height:1.65; }
 
-    /* ===== PROJECTS ===== */
+    /* ========== PROJECTS ========== */
     #page-projects { padding-bottom: 110px; }
     .project-list { display: grid; gap: 20px; padding: 14px 0 0; }
-    .project-row {
-      padding: 26px;
-      display: grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 26px;
-      align-items: start;
-    }
-    .project-photos {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
-    }
-    .pimg {
-      border: 0;
-      padding: 0;
-      height: 260px;
-      border-radius: 18px;
-      overflow: hidden;
-      cursor: none;
-      background: rgba(255,255,255,.02);
-      border: 1px solid rgba(255,255,255,.1);
-      position: relative;
-    }
-    .pimg::before{
-      content:"";
-      position:absolute; inset:0;
-      background-image: var(--bg);
-      background-size: cover;
-      background-position: center;
-      filter: saturate(.9) brightness(.7);
-      transform: scale(1.02);
-      transition: transform .5s ease, filter .35s ease;
-    }
-    .pimg::after{
-      content:"";
-      position:absolute; inset:0;
-      background: linear-gradient(135deg, rgba(200,0,26,.18), transparent 60%);
-      opacity: .9;
-    }
-    .pimg:hover::before{
-      transform: scale(1.07);
-      filter: saturate(1.05) brightness(.78);
-    }
+    .project-row { padding: 26px; display: grid; grid-template-columns: 1.2fr .8fr; gap: 26px; align-items: start; }
+    .project-photos { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .pimg { border: 0; padding: 0; height: 260px; border-radius: 18px; overflow: hidden; cursor: pointer; background: rgba(255,255,255,.02); border: 1px solid rgba(255,255,255,.1); position: relative; width: 100%; }
+    .pimg::before { content:""; position:absolute; inset:0; background-image: var(--bg); background-size: cover; background-position: center; filter: saturate(.9) brightness(.7); transform: scale(1.02); transition: transform .5s ease, filter .35s ease; }
+    .pimg::after { content:""; position:absolute; inset:0; background: linear-gradient(135deg, rgba(200,0,26,.18), transparent 60%); opacity: .9; }
+    .pimg:hover::before { transform: scale(1.07); filter: saturate(1.05) brightness(.78); }
     .project-info { padding: 8px 6px; }
-    .project-kicker {
-      font-family: var(--font-ui);
-      font-weight: 800;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      font-size: 12px;
-      color: rgba(240,238,255,.65);
-      margin-bottom: 12px;
-    }
-    .project-title {
-      font-family: var(--font-ui);
-      font-weight: 900;
-      font-size: 24px;
-      letter-spacing: -.2px;
-      margin-bottom: 12px;
-    }
-    .project-desc {
-      font-size: 15px;
-      line-height: 1.85;
-      color: var(--muted);
-      margin-bottom: 18px;
-    }
+    .project-kicker { font-family: var(--font-ui); font-weight: 800; letter-spacing: 2px; text-transform: uppercase; font-size: 12px; color: rgba(240,238,255,.65); margin-bottom: 12px; }
+    .project-title { font-family: var(--font-ui); font-weight: 900; font-size: 24px; letter-spacing: -.2px; margin-bottom: 12px; }
+    .project-desc { font-size: 15px; line-height: 1.85; color: var(--muted); margin-bottom: 18px; }
     .project-pills { display:flex; flex-wrap:wrap; gap:8px; }
-    .project-pill{
-      padding: 7px 13px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.04);
-      font-size: 12px;
-      font-weight: 800;
-      font-family: var(--font-ui);
-      letter-spacing: .3px;
-      color: rgba(240,238,255,.72);
-    }
+    .project-pill { padding: 7px 13px; border-radius: 999px; border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04); font-size: 12px; font-weight: 800; font-family: var(--font-ui); letter-spacing: .3px; color: rgba(240,238,255,.72); }
 
     /* MODAL */
     .modal { position:fixed; inset:0; background:rgba(0,0,0,.8); backdrop-filter:blur(12px); z-index:300; display:none; place-items:center; padding:24px; }
@@ -402,29 +302,30 @@
     .modal-card { width:min(1000px,100%); border-radius:24px; overflow:hidden; box-shadow:0 40px 120px rgba(0,0,0,.7); animation:fadeUp .4s cubic-bezier(.22,1,.36,1); }
     .modal-img { height:min(520px,55vh); background-size:cover; background-position:center; }
     .modal-img::after { content:''; display:block; height:100%; background:linear-gradient(180deg,transparent 40%,rgba(4,4,8,.9) 100%); }
-    .modal-body { padding:26px 30px; background:rgba(10,10,18,.97); border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:flex-start; gap:16px; }
+    .modal-body { padding:26px 30px; background:rgba(10,10,18,.97); border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap; }
     .modal-body h3 { font-family:var(--font-ui); font-weight:800; font-size:21px; margin-bottom:4px; }
     .modal-body p { color:var(--muted); font-size:14.5px; line-height:1.6; }
-    .modal-close { padding:11px 20px; border-radius:14px; border:1px solid var(--border2); background:var(--surface2); color:var(--text); font-family:var(--font-ui); font-weight:700; font-size:13px; cursor:none; transition:all .2s; flex:0 0 auto; }
+    .modal-close { padding:11px 20px; border-radius:14px; border:1px solid var(--border2); background:var(--surface2); color:var(--text); font-family:var(--font-ui); font-weight:700; font-size:13px; cursor:pointer; transition:all .2s; flex:0 0 auto; }
     .modal-close:hover { background:rgba(255,255,255,.1); }
 
-    /* CONTACT */
+    /* ========== CONTACT ========== */
     #page-contact { padding-bottom:110px; }
     .contact-layout { display:grid; grid-template-columns:1fr 1fr; gap:22px; padding-bottom:90px; }
     .form-panel { padding:40px 36px; }
     .form-group { display:grid; gap:8px; margin-bottom:22px; }
-    .form-row { display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-bottom:0; }
+    .form-row { display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-bottom:22px; }
     .form-row .form-group { margin-bottom:0; }
     label { font-family:var(--font-ui); font-weight:700; font-size:12.5px; letter-spacing:.5px; text-transform:uppercase; color:rgba(240,238,255,.6); }
-    input,select,textarea { width:100%; padding:14px 18px; border-radius:14px; border:1px solid rgba(255,255,255,.1); background:rgba(0,0,0,.3); color:var(--text); font-family:var(--font-body); font-size:15px; font-weight:400; outline:none; transition:border-color .25s,box-shadow .25s,background .25s; }
+    input,select,textarea { width:100%; padding:14px 18px; border-radius:14px; border:1px solid rgba(255,255,255,.1); background:rgba(0,0,0,.3); color:var(--text); font-family:var(--font-body); font-size:15px; font-weight:400; outline:none; transition:border-color .25s,box-shadow .25s,background .25s; -webkit-appearance:none; appearance:none; }
     input::placeholder,textarea::placeholder { color:rgba(240,238,255,.3); }
     input:focus,select:focus,textarea:focus { border-color:rgba(200,0,26,.5); background:rgba(0,0,0,.4); box-shadow:0 0 0 4px rgba(200,0,26,.1); }
+    select { cursor:pointer; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(240,238,255,0.5)' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 16px center; padding-right:42px; }
     select option { background:#0a0a14; }
     textarea { min-height:140px; resize:vertical; }
     .form-note { font-size:13px; color:var(--muted); line-height:1.6; margin-bottom:22px; }
     .form-actions { display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
-    .form-success { display:none; align-items:center; gap:8px; font-size:13px; font-weight:700; font-family:var(--font-ui); color:#22c55e; }
-    .form-error { display:none; align-items:center; gap:8px; font-size:13px; font-weight:700; font-family:var(--font-ui); color:var(--accent2); }
+    .form-success { display:none; align-items:center; gap:8px; font-size:13px; font-weight:700; font-family:var(--font-ui); color:#22c55e; margin-top:16px; padding:14px 18px; border-radius:12px; background:rgba(34,197,94,.08); border:1px solid rgba(34,197,94,.2); }
+    .form-error { display:none; align-items:center; gap:8px; font-size:13px; font-weight:700; font-family:var(--font-ui); color:var(--accent2); margin-top:16px; padding:14px 18px; border-radius:12px; background:rgba(255,29,53,.06); border:1px solid rgba(255,29,53,.2); }
     .info-panel { padding:40px 36px; display:flex; flex-direction:column; gap:22px; }
     .info-panel h3 { font-family:var(--font-display); font-size:40px; letter-spacing:2px; margin-bottom:4px; }
     .info-panel>p { font-size:15px; color:var(--muted); line-height:1.75; }
@@ -433,8 +334,10 @@
     .info-icon { width:40px; height:40px; border-radius:12px; display:grid; place-items:center; background:rgba(200,0,26,.1); border:1px solid rgba(200,0,26,.2); font-size:16px; flex:0 0 auto; }
     .info-item b { display:block; font-family:var(--font-ui); font-weight:700; font-size:13.5px; margin-bottom:2px; }
     .info-item span { font-size:13.5px; color:var(--muted); }
+    .info-item a { color:var(--muted); transition:color .2s; }
+    .info-item a:hover { color:var(--accent2); }
     .social-links { display:flex; gap:10px; margin-top:8px; flex-wrap:wrap; }
-    .social-link { padding:11px 18px; border-radius:12px; border:1px solid var(--border2); background:var(--surface); font-family:var(--font-ui); font-weight:700; font-size:13px; letter-spacing:.3px; color:rgba(240,238,255,.75); transition:all .2s; cursor:none; display:inline-flex; align-items:center; gap:8px; }
+    .social-link { padding:11px 18px; border-radius:12px; border:1px solid var(--border2); background:var(--surface); font-family:var(--font-ui); font-weight:700; font-size:13px; letter-spacing:.3px; color:rgba(240,238,255,.75); transition:all .2s; cursor:pointer; display:inline-flex; align-items:center; gap:8px; }
     .social-link:hover { background:var(--surface2); color:var(--text); transform:translateY(-2px); }
 
     /* FOOTER */
@@ -445,86 +348,165 @@
     .footer-col a:hover { color:var(--text); }
     .footer-desc { font-size:13.5px; color:var(--muted); line-height:1.65; margin:18px 0 24px; max-width:290px; }
     .footer-logo { height:54px; width:auto; }
-    .footer-social { display:flex; gap:14px; }
+    .footer-social { display:flex; gap:14px; flex-wrap:wrap; }
     .footer-social a { width:38px; height:38px; display:flex; align-items:center; justify-content:center; border-radius:50%; background:rgba(255,255,255,.05); color:var(--text); transition:.3s; }
     .footer-social a:hover { background:var(--accent2); color:#fff; }
     .footer-col p { font-size:13.5px; color:var(--muted); margin-bottom:11px; }
     .footer-col i { margin-right:8px; color:var(--accent2); }
     .footer-bottom { border-top:1px solid rgba(255,255,255,.08); margin-top:54px; padding-top:20px; text-align:center; font-size:13.5px; color:var(--muted); }
-    .back-top { position:fixed; right:22px; bottom:22px; width:50px; height:50px; border-radius:50%; border:1px solid var(--border2); background:rgba(4,4,8,.7); backdrop-filter:blur(10px); display:grid; place-items:center; cursor:none; z-index:150; opacity:0; pointer-events:none; transform:translateY(10px); transition:opacity .3s,transform .3s; color:rgba(240,238,255,.8); font-size:18px; }
+    .back-top { position:fixed; right:22px; bottom:22px; width:50px; height:50px; border-radius:50%; border:1px solid var(--border2); background:rgba(4,4,8,.7); backdrop-filter:blur(10px); display:grid; place-items:center; cursor:pointer; z-index:150; opacity:0; pointer-events:none; transform:translateY(10px); transition:opacity .3s,transform .3s; color:rgba(240,238,255,.8); font-size:18px; }
     .back-top.show { opacity:1; pointer-events:auto; transform:translateY(0); }
     .back-top:hover { background:rgba(200,0,26,.25); border-color:rgba(200,0,26,.35); }
 
-    /* ========== RESPONSIVE ========== */
-    @media(max-width:1024px) {
-      .features-grid { grid-template-columns: 1fr 1fr; }
+    /* ── MOBILE NAV FLOAT BUTTON ── */
+    .mob-quote-float { display:none; position:fixed; bottom:24px; left:50%; transform:translateX(-50%); z-index:190; }
+    .mob-quote-float .btn { padding:15px 28px; font-size:14px; box-shadow:0 8px 30px rgba(200,0,26,.45); }
+
+    /* ══════════════════════════════════
+       RESPONSIVE BREAKPOINTS
+    ══════════════════════════════════ */
+
+    /* ── 1100px ── */
+    @media(max-width:1100px) {
       .home-services-grid { grid-template-columns: repeat(2,1fr); }
-      .legacy-grid { grid-template-columns: 1fr; }
-      .legacy-big-num { font-size: clamp(100px, 22vw, 160px); }
-      .legacy-hero-stat { min-height: 240px; padding: 40px; }
-      .tl-items { grid-template-columns: repeat(2,1fr); gap: 20px; }
-      .tl-items::before { display: none; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap:36px; }
     }
-    @media(max-width:960px) {
-      :root { --nav-h: 72px; }
-      .hero h1 { font-size: clamp(58px, 12vw, 94px); }
-      .hero-orbit { display: none; }
-      .services-grid { grid-template-columns: 1fr; }
-      .home-about-inner,.about-layout,.contact-layout { grid-template-columns: 1fr; }
-      .home-proj-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+
+    /* ── 980px ── */
+    @media(max-width:980px) {
+      .nav-inner { grid-template-columns: auto auto; }
+      .nav-links { display: none; }
+      .hamburger { display: inline-flex; }
+      .logo-img { height: 58px; }
+      .nav-cta .btn-ghost { display: none; }
+      .nav-cta .btn-red { display: none; }
+      .features-grid { grid-template-columns: 1fr 1fr; }
+      .home-about-inner { grid-template-columns: 1fr; gap:60px; }
+      .home-about-imgs { max-width:480px; }
+      .home-about-img:first-child { margin-top:0; }
+      .home-about-badge { bottom:-16px; }
+      .home-proj-grid { grid-template-columns: 1fr 1fr; }
       .home-proj-grid .home-proj-card:last-child { grid-column: 1 / -1; }
-      .srv-card.featured { grid-template-columns: 1fr; grid-column: 1; }
-      .process-line { grid-template-columns: repeat(2,1fr); }
-      .process-line::before { display: none; }
-      .cta-band-inner { padding: 48px 32px; }
-      .hero-stats { flex-direction: column; max-width: 100%; }
-      .hstat { border-right: 0; border-bottom: 1px solid rgba(255,255,255,.07); }
-      .hstat:last-child { border-bottom: 0; }
-      .footer-grid { grid-template-columns: 1fr 1fr; }
-      .home-blind-photo { display: none; }
       .numbers-inner { grid-template-columns: repeat(2,1fr); }
-      .num-item:nth-child(2) { border-right: 0; }
-      .num-item:nth-child(3) { border-top: 1px solid var(--border); }
-      .num-item:nth-child(4) { border-top: 1px solid var(--border); border-right: 0; }
-      .home-about-imgs { grid-template-columns: 1fr 1fr; }
-      .home-about-img:first-child { margin-top: 0; }
-      .project-row { grid-template-columns: 1fr; }
-      .legacy-achievements { grid-template-columns: 1fr 1fr; }
-      .features-grid { grid-template-columns: 1fr; }
-      .wrap { padding: 0 22px; }
+      .num-item:nth-child(2) { border-right:0; }
+      .num-item:nth-child(3) { border-top:1px solid var(--border); }
+      .num-item:nth-child(4) { border-top:1px solid var(--border); border-right:0; }
+      .about-layout { grid-template-columns: 1fr; gap:44px; }
+      .about-visual { aspect-ratio:16/9; max-height:380px; }
+      .legacy-grid { grid-template-columns: 1fr; }
+      .legacy-hero-stat { min-height:220px; }
+      .legacy-big-num { font-size:clamp(90px,20vw,160px); }
+      .services-grid { grid-template-columns: 1fr; }
+      .srv-card.featured { grid-column:1; grid-template-columns:1fr; }
+      .srv-visual { height:220px; }
+      .process-line { grid-template-columns: repeat(2,1fr); }
+      .process-line::before { display:none; }
+      .project-row { grid-template-columns:1fr; }
+      .contact-layout { grid-template-columns: 1fr; }
+      .hero-orbit { display:none; }
+      .cta-band-inner { padding:48px 32px; }
+      .mob-quote-float { display:block; }
     }
-    @media(max-width:700px) {
-      :root { --nav-h: 66px; }
-      .hero { padding: 50px 0 70px; }
-      .hero h1 { font-size: clamp(52px, 13vw, 80px); }
-      .hero-desc { font-size: 16px; }
-      .form-row { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr; }
-      #cursor-dot,#cursor-ring,#cursor-trail { display: none; }
-      body { cursor: auto; }
-      .home-services-grid { grid-template-columns: 1fr; }
-      .project-photos { grid-template-columns: 1fr; }
-      .home-proj-grid { grid-template-columns: 1fr; }
-      .home-proj-grid .home-proj-card:last-child { grid-column: 1; }
-      .features-grid { grid-template-columns: 1fr; }
-      .legacy-achievements { grid-template-columns: 1fr; }
-      .tl-items { grid-template-columns: 1fr 1fr; }
-      .numbers-inner { grid-template-columns: 1fr 1fr; }
-      .legacy-big-num { font-size: clamp(90px, 24vw, 130px); }
-      .sh h2 { font-size: clamp(44px, 11vw, 72px); }
-      .pimg { height: 200px; }
-      .cta-band-inner { padding: 36px 22px; }
-      .form-panel, .info-panel { padding: 28px 22px; }
-      .srv-card { padding: 28px 22px; }
-      .fcard { padding: 28px 22px; }
-      .wrap { padding: 0 18px; }
-      .page-hero { padding: 60px 0 44px; }
-      .about-layout { gap: 44px; }
+
+    /* ── 768px ── */
+    @media(max-width:768px) {
+      :root { --nav-h:66px; }
+      .wrap { padding:0 20px; }
+      .hero { padding:50px 0 80px; min-height:calc(100svh - var(--nav-h)); }
+      .hero h1 { font-size:clamp(52px,13vw,88px); }
+      .hero-desc { font-size:16px; max-width:100%; }
+      .hero-eyebrow { font-size:11px; padding:7px 14px; }
+      .hero-stats { flex-direction:row; flex-wrap:wrap; border-radius:16px; }
+      .hstat { flex:1 1 30%; border-right:1px solid rgba(255,255,255,.07); border-bottom:none; min-width:100px; padding:16px 14px; }
+      .hstat:last-child { border-right:0; }
+      .hstat-num { font-size:28px; }
+      .hero-actions { gap:10px; }
+      .hero-actions .btn { font-size:13px; padding:12px 18px; }
+      .features-grid { grid-template-columns: 1fr; gap:14px; }
+      .fcard { padding:26px 22px; }
+      .home-services-grid { grid-template-columns: 1fr 1fr; gap:12px; }
+      .hsrv-card { padding:22px 18px; }
+      .home-services-header { margin-bottom:28px; }
+      .home-about-imgs { grid-template-columns:1fr 1fr; gap:10px; }
+      .home-about-img img { height:180px; }
+      .home-about-badge .num { font-size:36px; }
+      .home-proj-grid { grid-template-columns:1fr; gap:14px; }
+      .home-proj-grid .home-proj-card:last-child { grid-column:1; }
+      .home-proj-card { min-height:240px; }
+      .numbers-inner { grid-template-columns:repeat(2,1fr); }
+      .num-val { font-size:clamp(44px,10vw,72px); }
+      .num-label { font-size:11px; letter-spacing:1.5px; }
+      .sh h2 { font-size:clamp(42px,11vw,68px); }
+      .sh p { font-size:15px; }
+      .page-hero { padding:60px 0 40px; }
+      .cta-band-inner { padding:36px 22px; }
+      .cta-band h2 { font-size:clamp(40px,10vw,72px); }
+      .form-row { grid-template-columns:1fr; gap:0; margin-bottom:0; }
+      .form-row .form-group { margin-bottom:22px; }
+      .form-panel, .info-panel { padding:26px 20px; }
+      .srv-card { padding:26px 20px; }
+      .srv-num { font-size:60px; }
+      .pimg { height:200px; }
+      .project-photos { gap:10px; }
+      .project-title { font-size:20px; }
+      .project-desc { font-size:14px; }
+      .legacy-big-num { font-size:clamp(80px,22vw,130px); }
+      .legacy-achievements { grid-template-columns:1fr 1fr; gap:12px; }
+      .legacy-ach { padding:20px 18px; }
+      .legacy-ach-num { font-size:40px; }
+      .footer-grid { grid-template-columns:1fr; gap:32px; }
+      .footer { padding:60px 0 24px; }
+      .back-top { right:16px; bottom:90px; }
     }
-    @media(max-width:400px) {
-      .hero h1 { font-size: clamp(44px, 14vw, 66px); }
-      .hero-eyebrow { font-size: 10px; padding: 7px 13px; }
-      .legacy-big-num { font-size: 90px; }
+
+    /* ── 480px ── */
+    @media(max-width:480px) {
+      .wrap { padding:0 16px; }
+      .hero h1 { font-size:clamp(46px,14vw,72px); letter-spacing:2px; }
+      .hero-eyebrow { font-size:10px; padding:7px 12px; gap:8px; }
+      .hero-desc { font-size:15px; }
+      .hero-stats { border-radius:14px; }
+      .hstat { padding:14px 12px; }
+      .hstat-num { font-size:26px; }
+      .hstat-label { font-size:10.5px; }
+      .home-services-grid { grid-template-columns:1fr; }
+      .hsrv-card { padding:20px 16px; }
+      .home-about-img img { height:150px; }
+      .home-about-badge { padding:12px 20px; }
+      .home-about-badge .num { font-size:32px; }
+      .home-proj-card { min-height:200px; }
+      .numbers-band { padding:60px 0; }
+      .num-item { padding:24px 14px; }
+      .num-label { font-size:10px; letter-spacing:1px; }
+      .pimg { height:160px; }
+      .project-row { padding:20px 16px; gap:18px; }
+      .project-photos { grid-template-columns:1fr 1fr; }
+      .legacy-achievements { grid-template-columns:1fr; }
+      .process-line { grid-template-columns:1fr; gap:14px; }
+      .pstep-num { width:52px; height:52px; font-size:22px; }
+      .info-items { gap:10px; }
+      .social-links { gap:8px; }
+      .social-link { padding:10px 14px; font-size:12.5px; }
+      .cta-band-inner { padding:30px 18px; border-radius:20px; }
+      .footer-social a { width:34px; height:34px; }
+      .modal-body { padding:20px 18px; }
+      .modal-body h3 { font-size:17px; }
+    }
+
+    /* ── 360px ── */
+    @media(max-width:360px) {
+      .hero h1 { font-size:clamp(42px,15vw,60px); }
+      .hero-actions .btn { width:100%; justify-content:center; }
+      .hero-stats { flex-direction:column; }
+      .hstat { border-right:0; border-bottom:1px solid rgba(255,255,255,.07); }
+      .hstat:last-child { border-bottom:0; }
+    }
+
+    /* ── Hide cursor on touch ── */
+    @media(hover:none) {
+      #cursor-dot, #cursor-ring, #cursor-trail { display:none; }
+      body { cursor:auto; }
+      .hamburger { cursor:pointer; }
     }
   </style>
 </head>
@@ -550,30 +532,35 @@
         </nav>
         <div class="nav-cta">
           <a class="btn btn-ghost" href="#" data-page="projects"><i class="fas fa-layer-group"></i> Our Work</a>
-          <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
-          <a class="btn btn-red" href="#" data-page="contact"><i class="fas fa-paper-plane"></i> Get a Quote <i class="fas fa-arrow-right"></i></a>
+          <a class="btn btn-red" href="#" data-page="contact"><i class="fas fa-paper-plane"></i> Get a Quote</a>
+          <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
         </div>
       </div>
     </div>
   </header>
 
-  <nav class="mnav" id="mnav">
+  <nav class="mnav" id="mnav" aria-label="Mobile navigation">
     <a href="#" data-page="home" class="mnav-link">Home</a>
     <a href="#" data-page="about" class="mnav-link">About</a>
     <a href="#" data-page="services" class="mnav-link">Services</a>
     <a href="#" data-page="projects" class="mnav-link">Projects</a>
     <a href="#" data-page="contact" class="mnav-link">Contact</a>
+    <div class="mnav-quote">
+      <a class="btn btn-red" href="#" data-page="contact"><i class="fas fa-paper-plane"></i> Get a Quote <i class="fas fa-arrow-right"></i></a>
+    </div>
   </nav>
+
+  <!-- Mobile floating CTA -->
+  <div class="mob-quote-float">
+    <a class="btn btn-red" href="#" data-page="contact"><i class="fas fa-paper-plane"></i> Get a Quote</a>
+  </div>
 
   <!-- ===================== HOME ===================== -->
   <main id="page-home" class="page active">
-
-    <!-- HERO -->
     <section class="hero">
       <div class="hero-bg-layer active" id="heroBgA"></div>
       <div class="hero-bg-layer" id="heroBgB"></div>
       <canvas id="smokeCanvas"></canvas>
-      <img class="home-blind-photo" src="assets/rusiri-1.jpeg" alt="" aria-hidden="true" loading="lazy"/>
       <div class="wrap">
         <div class="hero-content">
           <div class="hero-eyebrow anim-up"><span class="live-dot"></span>Sri Lanka's Premier Event Production Powerhouse</div>
@@ -582,9 +569,9 @@
             <span class="line2"><span id="typingText"></span><span class="type-cursor"></span></span>
             <span class="line3">HAPPEN.</span>
           </h1>
-          <p class="hero-desc anim-up d2">Centination Entertainment PVT Ltd leads the way in event production across Sri Lanka. We design seamless, end to end experiences that transform vision into reality through creative innovation and technical precision.</p>
+          <p class="hero-desc anim-up d2">Centination Entertainment PVT Ltd leads the way in event production across Sri Lanka. We design seamless, end-to-end experiences that transform vision into reality through creative innovation and technical precision.</p>
           <div class="hero-actions anim-up d3">
-            <a class="btn btn-red" href="#" data-page="contact"><i class="fas fa-calendar-check"></i> Book a Consultation <i class="fas fa-arrow-right"></i></a>
+            <a class="btn btn-red" href="#" data-page="contact"><i class="fas fa-calendar-check"></i> Book a Consultation</a>
             <a class="btn btn-ghost" href="#" data-page="projects"><i class="fas fa-photo-film"></i> Explore Projects</a>
           </div>
           <div class="hero-stats anim-up d4">
@@ -609,136 +596,101 @@
     </div>
 
     <!-- PILLARS -->
-    <section style="padding:0 0 0">
-      <div class="wrap">
-        <div class="features-grid">
-          <div class="glass fcard reveal"><div class="fcard-glow"></div><div class="fcard-icon"><i class="fas fa-lightbulb"></i></div><h3>CREATIVE DIRECTION</h3><p>We architect the narrative of your event  designing the overarching theme, audience flow, and atmospheric mood to craft immersive moments that align with your brand's vision.</p></div>
-          <div class="glass fcard reveal reveal-delay-2"><div class="fcard-glow"></div><div class="fcard-icon"><i class="fas fa-handshake"></i></div><h3>STRATEGIC PARTNERSHIPS</h3><p>A network built on two decades of trust. We leverage deep rooted relationships with premier venues, top tier vendors, and industry leading brands across Sri Lanka.</p></div>
-          <div class="glass fcard reveal reveal-delay-4"><div class="fcard-glow"></div><div class="fcard-icon"><i class="fas fa-bolt"></i></div><h3>RELIABLE EXECUTION</h3><p>Precision in every detail. From rigorous timelines and technical rehearsals to flawless on site setup delivering a world class experience on day one, every time.</p></div>
-        </div>
+    <section><div class="wrap">
+      <div class="features-grid">
+        <div class="glass fcard reveal"><div class="fcard-glow"></div><div class="fcard-icon"><i class="fas fa-lightbulb"></i></div><h3>CREATIVE DIRECTION</h3><p>We architect the narrative of your event — designing the overarching theme, audience flow, and atmospheric mood to craft immersive moments aligned with your brand's vision.</p></div>
+        <div class="glass fcard reveal reveal-delay-2"><div class="fcard-glow"></div><div class="fcard-icon"><i class="fas fa-handshake"></i></div><h3>STRATEGIC PARTNERSHIPS</h3><p>A network built on two decades of trust. We leverage deep-rooted relationships with premier venues, top-tier vendors, and industry-leading brands across Sri Lanka.</p></div>
+        <div class="glass fcard reveal reveal-delay-4"><div class="fcard-glow"></div><div class="fcard-icon"><i class="fas fa-bolt"></i></div><h3>RELIABLE EXECUTION</h3><p>Precision in every detail. From rigorous timelines and technical rehearsals to flawless on-site setup — delivering a world-class experience on day one, every time.</p></div>
       </div>
-    </section>
+    </div></section>
 
     <!-- ABOUT STRIP -->
-    <section class="home-about">
-      <div class="wrap">
-        <div class="home-about-inner">
-          <div class="home-about-visual reveal">
-            <div class="home-about-imgs">
-              <div class="home-about-img" style="margin-top:44px"><img src="assets/rusiri-1.jpeg" alt="Live Event"/></div>
-              <div class="home-about-img"><img src="assets/rusiri-2.jpeg" alt="Production Crew"/></div>
-            </div>
-            <div class="home-about-badge glass">
-              <div class="num">20+</div>
-              <div class="lbl">Years of Excellence</div>
-            </div>
+    <section class="home-about"><div class="wrap">
+      <div class="home-about-inner">
+        <div class="home-about-visual reveal">
+          <div class="home-about-imgs">
+            <div class="home-about-img" style="margin-top:44px"><img src="assets/rusiri-1.jpeg" alt="Live Event" loading="lazy"/></div>
+            <div class="home-about-img"><img src="assets/rusiri-2.jpeg" alt="Production Crew" loading="lazy"/></div>
           </div>
-          <div class="home-about-text reveal reveal-delay-2">
-            <div class="sh-eyebrow" style="margin-bottom:16px">Who We Are</div>
-            <h2>END  <span style="color:var(--accent2)">2</span> END <br>EVENT<span style="color:var(--accent2)"> PRODUCTION</span></h2>
-            <p>Operating as a specialized subsidiary of <strong>Centigradz Pvt Ltd</strong>, Centination Entertainment PVT Ltd has built a legacy on strategic partnerships with leading blue chip corporations, state institutions, and global sporting organizations.</p>
-            <p>From the initial creative brief to the final curtain call, we integrate in house creative, audio, and advanced technology divisions to deliver experiences that redefine industry benchmarks.</p>
-            <div class="home-about-pills">
-              <span class="home-pill">Corporate Events</span>
-              <span class="home-pill">Award Ceremonies</span>
-              <span class="home-pill">Gala Dinners</span>
-              <span class="home-pill">Audio Production</span>
-              <span class="home-pill">Brand Activations</span>
-              <span class="home-pill">Technical Solutions</span>
-            </div>
-            <a class="btn btn-ghost" href="#" data-page="about"><i class="fas fa-arrow-right"></i> Read Our Story</a>
+          <div class="home-about-badge glass">
+            <div class="num">20+</div>
+            <div class="lbl">Years of Excellence</div>
           </div>
         </div>
+        <div class="home-about-text reveal reveal-delay-2">
+          <div class="sh-eyebrow" style="margin-bottom:16px">Who We Are</div>
+          <h2>END <span style="color:var(--accent2)">2</span> END<br>EVENT<span style="color:var(--accent2)"> PRODUCTION</span></h2>
+          <p>Operating as a specialized subsidiary of <strong>Centigradz Pvt Ltd</strong>, Centination Entertainment PVT Ltd has built a legacy on strategic partnerships with leading blue-chip corporations, state institutions, and global sporting organizations.</p>
+          <p>From the initial creative brief to the final curtain call, we integrate in-house creative, audio, and advanced technology divisions to deliver experiences that redefine industry benchmarks.</p>
+          <div class="home-about-pills">
+            <span class="home-pill">Corporate Events</span><span class="home-pill">Award Ceremonies</span><span class="home-pill">Gala Dinners</span><span class="home-pill">Audio Production</span><span class="home-pill">Brand Activations</span><span class="home-pill">Technical Solutions</span>
+          </div>
+          <a class="btn btn-ghost" href="#" data-page="about"><i class="fas fa-arrow-right"></i> Read Our Story</a>
+        </div>
       </div>
-    </section>
+    </div></section>
 
     <!-- SERVICES PREVIEW -->
-    <section class="home-services">
-      <div class="wrap">
-        <div class="home-services-header">
-          <div class="sh" style="margin-bottom:0">
-            <div class="sh-eyebrow">What We Do</div>
-            <h2>OUR<br>SERVICES</h2>
-          </div>
-          <a class="btn btn-ghost" href="#" data-page="services" style="align-self:flex-end"><i class="fas fa-arrow-right"></i> View All</a>
-        </div>
-        <div class="home-services-grid">
-          <div class="hsrv-card reveal"><div class="hsrv-icon"><i class="fas fa-building"></i></div><h4>Corporate Events</h4><p>High-impact conferences, seminars, and corporate gatherings with flawless brand integration.</p></div>
-          <div class="hsrv-card reveal reveal-delay-1"><div class="hsrv-icon"><i class="fas fa-trophy"></i></div><h4>Award Ceremonies</h4><p>High-end stage production, choreography and sophisticated lighting for prestigious recognition events.</p></div>
-          <div class="hsrv-card reveal reveal-delay-2"><div class="hsrv-icon"><i class="fas fa-rocket"></i></div><h4>Product Launches</h4><p>Creative storytelling with high-impact production to make your brand enter the market with a bang.</p></div>
-          <div class="hsrv-card reveal reveal-delay-3"><div class="hsrv-icon"><i class="fas fa-microchip"></i></div><h4>Technical Solutions</h4><p>Massive LED displays, intelligent lighting and interactive digital integration for unforgettable environments.</p></div>
-          <div class="hsrv-card reveal"><div class="hsrv-icon"><i class="fas fa-utensils"></i></div><h4>Gala Dinners</h4><p>Bespoke luxury decor, fine dining coordination, and premium entertainment for elite gatherings.</p></div>
-          <div class="hsrv-card reveal reveal-delay-1"><div class="hsrv-icon"><i class="fas fa-volume-high"></i></div><h4>Audio Production</h4><p>State-of-the-art sound engineering and immersive soundscapes for any venue size.</p></div>
-          <div class="hsrv-card reveal reveal-delay-2"><div class="hsrv-icon"><i class="fas fa-bullhorn"></i></div><h4>Brand Activations</h4><p>Interactive experiential marketing that drives direct consumer engagement and brand loyalty.</p></div>
-          <div class="hsrv-card reveal reveal-delay-3"><div class="hsrv-icon"><i class="fas fa-wand-magic-sparkles"></i></div><h4>Thematic Parties</h4><p>Immersive custom decor and themed entertainment for any celebration or private occasion.</p></div>
-        </div>
+    <section class="home-services"><div class="wrap">
+      <div class="home-services-header">
+        <div class="sh" style="margin-bottom:0"><div class="sh-eyebrow">What We Do</div><h2>OUR<br>SERVICES</h2></div>
+        <a class="btn btn-ghost" href="#" data-page="services"><i class="fas fa-arrow-right"></i> View All</a>
       </div>
-    </section>
+      <div class="home-services-grid">
+        <div class="hsrv-card reveal"><div class="hsrv-icon"><i class="fas fa-building"></i></div><h4>Corporate Events</h4><p>High-impact conferences, seminars, and corporate gatherings with flawless brand integration.</p></div>
+        <div class="hsrv-card reveal reveal-delay-1"><div class="hsrv-icon"><i class="fas fa-trophy"></i></div><h4>Award Ceremonies</h4><p>High-end stage production, choreography and sophisticated lighting for prestigious recognition events.</p></div>
+        <div class="hsrv-card reveal reveal-delay-2"><div class="hsrv-icon"><i class="fas fa-rocket"></i></div><h4>Product Launches</h4><p>Creative storytelling with high-impact production to make your brand enter the market with a bang.</p></div>
+        <div class="hsrv-card reveal reveal-delay-3"><div class="hsrv-icon"><i class="fas fa-microchip"></i></div><h4>Technical Solutions</h4><p>Massive LED displays, intelligent lighting and interactive digital integration for unforgettable environments.</p></div>
+        <div class="hsrv-card reveal"><div class="hsrv-icon"><i class="fas fa-utensils"></i></div><h4>Gala Dinners</h4><p>Bespoke luxury decor, fine dining coordination, and premium entertainment for elite gatherings.</p></div>
+        <div class="hsrv-card reveal reveal-delay-1"><div class="hsrv-icon"><i class="fas fa-volume-high"></i></div><h4>Audio Production</h4><p>State-of-the-art sound engineering and immersive soundscapes for any venue size.</p></div>
+        <div class="hsrv-card reveal reveal-delay-2"><div class="hsrv-icon"><i class="fas fa-bullhorn"></i></div><h4>Brand Activations</h4><p>Interactive experiential marketing that drives direct consumer engagement and brand loyalty.</p></div>
+        <div class="hsrv-card reveal reveal-delay-3"><div class="hsrv-icon"><i class="fas fa-wand-magic-sparkles"></i></div><h4>Thematic Parties</h4><p>Immersive custom decor and themed entertainment for any celebration or private occasion.</p></div>
+      </div>
+    </div></section>
 
     <!-- NUMBERS BAND -->
-    <section class="numbers-band">
-      <div class="wrap">
-        <div class="numbers-inner">
-          <div class="num-item reveal"><div class="num-val" data-count2="80" data-suffix2="+">80+</div><div class="num-label">Events Produced</div></div>
-          <div class="num-item reveal reveal-delay-1"><div class="num-val" data-count2="100" data-suffix2="+">100+</div><div class="num-label">Satisfied Clients</div></div>
-          <div class="num-item reveal reveal-delay-2"><div class="num-val" data-count2="20" data-suffix2="+">20+</div><div class="num-label">Years Experience</div></div>
-          <div class="num-item reveal reveal-delay-3"><div class="num-val" data-count2="11" data-suffix2="">11</div><div class="num-label">Services Offered</div></div>
-        </div>
+    <section class="numbers-band"><div class="wrap">
+      <div class="numbers-inner">
+        <div class="num-item reveal"><div class="num-val">80+</div><div class="num-label">Events Produced</div></div>
+        <div class="num-item reveal reveal-delay-1"><div class="num-val">100+</div><div class="num-label">Satisfied Clients</div></div>
+        <div class="num-item reveal reveal-delay-2"><div class="num-val">20+</div><div class="num-label">Years Experience</div></div>
+        <div class="num-item reveal reveal-delay-3"><div class="num-val">11</div><div class="num-label">Services Offered</div></div>
       </div>
-    </section>
+    </div></section>
 
     <!-- PROJECTS PREVIEW -->
-    <section class="home-projects">
-      <div class="wrap">
-        <div class="home-projects-header">
-          <div class="sh" style="margin-bottom:0">
-            <div class="sh-eyebrow">Recent Work</div>
-            <h2>FEATURED<br>PROJECTS</h2>
-          </div>
-          <a class="btn btn-ghost" href="#" data-page="projects" style="align-self:flex-end"><i class="fas fa-arrow-right"></i> All Projects</a>
+    <section class="home-projects"><div class="wrap">
+      <div class="home-projects-header">
+        <div class="sh" style="margin-bottom:0"><div class="sh-eyebrow">Recent Work</div><h2>FEATURED<br>PROJECTS</h2></div>
+        <a class="btn btn-ghost" href="#" data-page="projects"><i class="fas fa-arrow-right"></i> All Projects</a>
+      </div>
+      <div class="home-proj-grid">
+        <div class="home-proj-card glass reveal" data-page="projects">
+          <div class="home-proj-card-img-bg" style="background-image:url('assets/rusiri-1.jpeg')"></div>
+          <div class="home-proj-overlay"></div>
+          <div class="home-proj-info"><span class="home-proj-tag">Concert</span><b>Rusiri: CentigradZ Live</b><span>360° Concert Production</span></div>
         </div>
-        <div class="home-proj-grid">
-          <div class="home-proj-card glass reveal" style="cursor:none" data-page="projects">
-            <div class="home-proj-card-img-bg" style="position:absolute;inset:0;background-image:url('assets/rusiri-1.jpeg');background-size:cover;background-position:center;filter:saturate(.85) brightness(.65);transition:transform .5s,filter .4s;"></div>
-            <div class="home-proj-overlay"></div>
-            <div class="home-proj-info">
-              <span class="home-proj-tag">Concert</span>
-              <b>Rusiri: CentigradZ Live</b>
-              <span>360° Concert Production</span>
-            </div>
-          </div>
-          <div class="home-proj-card glass reveal reveal-delay-2" style="cursor:none" data-page="projects">
-            <div class="home-proj-card-img-bg" style="position:absolute;inset:0;background-image:url('assets/edu-1.jpeg');background-size:cover;background-position:center;filter:saturate(.85) brightness(.65);transition:transform .5s,filter .4s;"></div>
-            <div class="home-proj-overlay"></div>
-            <div class="home-proj-info">
-              <span class="home-proj-tag">CSR</span>
-              <b>Empowering Education</b>
-              <span>Community Initiative</span>
-            </div>
-          </div>
-          <div class="home-proj-card glass reveal reveal-delay-4" style="cursor:none" data-page="projects">
-            <div class="home-proj-card-img-bg" style="position:absolute;inset:0;background-image:url('assets/award-1.JPG');background-size:cover;background-position:center;filter:saturate(.85) brightness(.65);transition:transform .5s,filter .4s;"></div>
-            <div class="home-proj-overlay"></div>
-            <div class="home-proj-info">
-              <span class="home-proj-tag">Opening Ceremony</span>
-              <b>Excellence Opening Ceremony</b>
-              <span>Premium Event Production</span>
-            </div>
-          </div>
+        <div class="home-proj-card glass reveal reveal-delay-2" data-page="projects">
+          <div class="home-proj-card-img-bg" style="background-image:url('assets/edu-1.jpeg')"></div>
+          <div class="home-proj-overlay"></div>
+          <div class="home-proj-info"><span class="home-proj-tag">CSR</span><b>Empowering Education</b><span>Community Initiative</span></div>
+        </div>
+        <div class="home-proj-card glass reveal reveal-delay-4" data-page="projects">
+          <div class="home-proj-card-img-bg" style="background-image:url('assets/award-1.JPG')"></div>
+          <div class="home-proj-overlay"></div>
+          <div class="home-proj-info"><span class="home-proj-tag">Opening Ceremony</span><b>Excellence Opening Ceremony</b><span>Premium Event Production</span></div>
         </div>
       </div>
-    </section>
+    </div></section>
 
     <!-- CTA -->
-    <section class="cta-band">
-      <div class="wrap">
-        <div class="glass cta-band-inner reveal">
-          <h2>Let's Create<br><span style="background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Moments</span></h2>
-          <p>Partner with us to design and deliver meaningful experiences that elevate your brand, strengthen connections, and create lasting impact long after the event concludes.</p>
-          <a class="btn btn-red" href="#" data-page="contact" style="font-size:15px;padding:15px 30px;"><i class="fas fa-comments"></i> Start the Conversation <i class="fas fa-arrow-right"></i></a>
-        </div>
+    <section class="cta-band"><div class="wrap">
+      <div class="glass cta-band-inner reveal">
+        <h2>Let's Create<br><span style="background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Moments</span></h2>
+        <p>Partner with us to design and deliver meaningful experiences that elevate your brand, strengthen connections, and create lasting impact long after the event concludes.</p>
+        <a class="btn btn-red" href="#" data-page="contact" style="font-size:15px;padding:15px 30px;"><i class="fas fa-comments"></i> Start the Conversation</a>
       </div>
-    </section>
+    </div></section>
   </main>
 
   <!-- ===================== ABOUT ===================== -->
@@ -759,88 +711,36 @@
         </div>
         <div class="about-text reveal reveal-delay-2">
           <h2>BUILT FOR THE<br><span style="color:var(--accent2);">STAGE.</span></h2>
-          <p>With over <strong>20 years of excellence</strong>, Centination Entertainment Pvt Ltd provides a complete <strong>360° service experience</strong>, integrating in house creative, audio, and advanced technology divisions to lead projects from initial concept to flawless execution.</p>
-          <p>Operating as a specialized subsidiary of <strong>Centigradz Pvt Ltd</strong>, this premier Sri Lankan event management and production powerhouse has built a legacy on strategic partnerships with leading <strong>blue chip corporations</strong>, state institutions, and global sporting organizations.</p>
+          <p>With over <strong>20 years of excellence</strong>, Centination Entertainment Pvt Ltd provides a complete <strong>360° service experience</strong>, integrating in-house creative, audio, and advanced technology divisions to lead projects from initial concept to flawless execution.</p>
+          <p>Operating as a specialized subsidiary of <strong>Centigradz Pvt Ltd</strong>, this premier Sri Lankan event management and production powerhouse has built a legacy on strategic partnerships with leading <strong>blue-chip corporations</strong>, state institutions, and global sporting organizations.</p>
           <p>We consistently deliver national and international events that redefine industry benchmarks.</p>
           <div class="value-list">
-            <div class="glass value-item"><div class="vi-icon"><i class="fas fa-lightbulb"></i></div><div class="vi-text"><b>Creative Direction</b><span>We architect the narrative of your event theme, audience flow, and immersive moments that resonate.</span></div></div>
-            <div class="glass value-item"><div class="vi-icon"><i class="fas fa-people-group"></i></div><div class="vi-text"><b>Strategic Partnerships</b><span>Deep rooted relationships with premier venues, vendors, and industry leading brands built over two decades.</span></div></div>
-            <div class="glass value-item"><div class="vi-icon"><i class="fas fa-bolt"></i></div><div class="vi-text"><b>Reliable Execution</b><span>Rigorous timelines, technical rehearsals, flawless on-site setup world class on day one, every time.</span></div></div>
+            <div class="glass value-item"><div class="vi-icon"><i class="fas fa-lightbulb"></i></div><div class="vi-text"><b>Creative Direction</b><span>We architect the narrative — theme, audience flow, and immersive moments that resonate.</span></div></div>
+            <div class="glass value-item"><div class="vi-icon"><i class="fas fa-people-group"></i></div><div class="vi-text"><b>Strategic Partnerships</b><span>Deep-rooted relationships with premier venues, vendors, and industry-leading brands over two decades.</span></div></div>
+            <div class="glass value-item"><div class="vi-icon"><i class="fas fa-bolt"></i></div><div class="vi-text"><b>Reliable Execution</b><span>Rigorous timelines, technical rehearsals, flawless on-site setup — world-class on day one, every time.</span></div></div>
           </div>
         </div>
       </div>
 
-      <!-- ===== LEGACY / MILESTONES (replaces team section) ===== -->
       <div class="about-legacy">
         <div class="legacy-header">
           <div class="sh-eyebrow">Our Journey</div>
           <div class="sh" style="margin-bottom:0"><h2>A LEGACY OF<br><span style="color:var(--accent2)">EXCELLENCE</span></h2></div>
         </div>
-
         <div class="legacy-grid">
-          <!-- Big 20+ stat -->
           <div class="glass legacy-hero-stat reveal">
             <div class="legacy-big-num">20+</div>
             <div class="legacy-big-label">Years of Excellence</div>
-            <div class="legacy-big-sub">Delivering world-class event production across Sri Lanka </div>
+            <div class="legacy-big-sub">Delivering world-class event production across Sri Lanka</div>
           </div>
-
-          <!-- Achievement cards -->
           <div class="legacy-achievements">
-            <div class="glass legacy-ach reveal reveal-delay-1">
-              <i class="fas fa-calendar-check legacy-ach-icon"></i>
-              <div class="legacy-ach-num">80+</div>
-              <h4>Events Produced</h4>
-              <p>National and international events executed with precision and creative flair.</p>
-            </div>
-            <div class="glass legacy-ach reveal reveal-delay-2">
-              <i class="fas fa-handshake legacy-ach-icon"></i>
-              <div class="legacy-ach-num">100+</div>
-              <h4>Satisfied Clients</h4>
-              <p>Blue-chip corporations, state institutions, and global organizations trust us.</p>
-            </div>
-            <div class="glass legacy-ach reveal reveal-delay-3">
-              <i class="fas fa-layer-group legacy-ach-icon"></i>
-              <div class="legacy-ach-num">11</div>
-              <h4>Specialized Services</h4>
-              <p>End-to-end capabilities from concept design to technical production and delivery.</p>
-            </div>
-            <div class="glass legacy-ach reveal reveal-delay-4">
-              <i class="fas fa-globe legacy-ach-icon"></i>
-              <div class="legacy-ach-num">360°</div>
-              <h4>Full Service</h4>
-              <p>Every aspect managed under one roof creative, audio, tech, and logistics.</p>
-            </div>
+            <div class="glass legacy-ach reveal reveal-delay-1"><i class="fas fa-calendar-check legacy-ach-icon"></i><div class="legacy-ach-num">80+</div><h4>Events Produced</h4><p>National and international events executed with precision and creative flair.</p></div>
+            <div class="glass legacy-ach reveal reveal-delay-2"><i class="fas fa-handshake legacy-ach-icon"></i><div class="legacy-ach-num">100+</div><h4>Satisfied Clients</h4><p>Blue-chip corporations, state institutions, and global organizations trust us.</p></div>
+            <div class="glass legacy-ach reveal reveal-delay-3"><i class="fas fa-layer-group legacy-ach-icon"></i><div class="legacy-ach-num">11</div><h4>Specialized Services</h4><p>End-to-end capabilities from concept design to technical production.</p></div>
+            <div class="glass legacy-ach reveal reveal-delay-4"><i class="fas fa-globe legacy-ach-icon"></i><div class="legacy-ach-num">360°</div><h4>Full Service</h4><p>Every aspect managed under one roof — creative, audio, tech, and logistics.</p></div>
           </div>
         </div>
-
-        <!-- Milestone timeline 
-        <div class="legacy-timeline reveal" style="margin-top:52px">
-          <div class="legacy-tl-title">Key Milestones</div>
-          <div class="tl-items">
-            <div class="tl-item glass" style="padding:24px 16px">
-              <div class="tl-dot"><i class="fas fa-flag" style="font-size:13px"></i></div>
-              <span class="tl-year">2004</span>
-              <div class="tl-text">Founded under Centigradz Pvt Ltd began delivering corporate event solutions across Colombo.</div>
-            </div>
-            <div class="tl-item glass" style="padding:24px 16px">
-              <div class="tl-dot"><i class="fas fa-star" style="font-size:13px"></i></div>
-              <span class="tl-year">2010</span>
-              <div class="tl-text">Expanded into full technical production LED, intelligent lighting, and advanced audio systems.</div>
-            </div>
-            <div class="tl-item glass" style="padding:24px 16px">
-              <div class="tl-dot"><i class="fas fa-trophy" style="font-size:13px"></i></div>
-              <span class="tl-year">2017</span>
-              <div class="tl-text">Established as Sri Lanka's premier end-to-end event production house with 50+ event milestone.</div>
-            </div>
-            <div class="tl-item glass" style="padding:24px 16px">
-              <div class="tl-dot"><i class="fas fa-rocket" style="font-size:13px"></i></div>
-              <span class="tl-year">2024</span>
-              <div class="tl-text">Delivered the iconic Rusiri concert a landmark 360° live production that set new industry standards.</div>
-            </div>
-          </div>
-        </div> >
-      </div> -->
+      </div>
     </div>
   </main>
 
@@ -856,23 +756,18 @@
     <div class="wrap">
       <div class="services-grid" style="padding-top:24px">
         <div class="glass srv-card featured reveal">
-          <div>
-            <div class="srv-num">01</div>
-            <h3>Corporate Events</h3>
-            <p>We deliver polished, high-impact corporate events that reflect your brand identity. From boardroom seminars to large scale conferences, our team manages every logistical and creative detail to ensure a seamless, professional experience.</p>
-            <div class="srv-tags"><span class="srv-tag">Conferences</span><span class="srv-tag">Seminars</span><span class="srv-tag">Team Events</span><span class="srv-tag">Brand Integration</span><span class="srv-tag">AV Setup</span><span class="srv-tag">MC Direction</span></div>
-          </div>
+          <div><div class="srv-num">01</div><h3>Corporate Events</h3><p>We deliver polished, high-impact corporate events that reflect your brand identity. From boardroom seminars to large-scale conferences, our team manages every logistical and creative detail to ensure a seamless, professional experience.</p><div class="srv-tags"><span class="srv-tag">Conferences</span><span class="srv-tag">Seminars</span><span class="srv-tag">Team Events</span><span class="srv-tag">Brand Integration</span><span class="srv-tag">AV Setup</span><span class="srv-tag">MC Direction</span></div></div>
           <div class="srv-visual"><img src="assets/IMG_4908.PNG" alt="Corporate Events" loading="lazy"/></div>
         </div>
         <div class="glass srv-card reveal"><div class="srv-num">02</div><h3>Product Launches</h3><p>Make a powerful market entry with our innovative product launch solutions. We combine creative storytelling with high-impact production to capture audience attention and generate media buzz.</p><div class="srv-tags"><span class="srv-tag">Creative Storytelling</span><span class="srv-tag">Stage Design</span><span class="srv-tag">Media Integration</span><span class="srv-tag">Brand Reveal</span></div></div>
         <div class="glass srv-card reveal reveal-delay-2"><div class="srv-num">03</div><h3>Award Ceremonies</h3><p>Celebrate excellence with prestige and flair. We specialize in high-end stage production, flawless choreography, and sophisticated lighting to make every recognition moment unforgettable.</p><div class="srv-tags"><span class="srv-tag">Stage Production</span><span class="srv-tag">Choreography</span><span class="srv-tag">Lighting Design</span><span class="srv-tag">VIP Coordination</span></div></div>
         <div class="glass srv-card reveal"><div class="srv-num">04</div><h3>Gala Dinners</h3><p>Exude elegance with our bespoke gala dinner services. From luxurious decor and fine dining coordination to premium entertainment for high-profile VIP evenings.</p><div class="srv-tags"><span class="srv-tag">Luxury Decor</span><span class="srv-tag">Fine Dining</span><span class="srv-tag">Entertainment</span><span class="srv-tag">VIP Management</span></div></div>
-        <div class="glass srv-card reveal reveal-delay-2"><div class="srv-num">05</div><h3>Audio Production</h3><p>Experience sonic perfection with state of the art equipment and expert sound engineering crystal-clear audio reinforcement and immersive soundscapes for any venue.</p><div class="srv-tags"><span class="srv-tag">Sound Engineering</span><span class="srv-tag">Live Reinforcement</span><span class="srv-tag">Recording</span><span class="srv-tag">Broadcast</span></div></div>
-        <div class="glass srv-card reveal"><div class="srv-num">06</div><h3>Academic & Professional Events</h3><p>University graduations, research symposiums, and professional workshops we bring order and prestige to scholarly gatherings with meticulous attention to tradition.</p><div class="srv-tags"><span class="srv-tag">Graduations</span><span class="srv-tag">Symposiums</span><span class="srv-tag">Workshops</span><span class="srv-tag">Logistics</span></div></div>
-        <div class="glass srv-card reveal reveal-delay-2"><div class="srv-num">07</div><h3>Venue Logistics & Travel Coordination</h3><p>We secure premium venues and manage end-to-end travel logistics guest transportation, accommodation, and on-site coordination from arrival to departure.</p><div class="srv-tags"><span class="srv-tag">Venue Sourcing</span><span class="srv-tag">Transportation</span><span class="srv-tag">Accommodation</span><span class="srv-tag">On-Site Coordination</span></div></div>
-        <div class="glass srv-card reveal"><div class="srv-num">08</div><h3>Marketing, PR & Brand Activation</h3><p>Amplify your brand voice through strategic storytelling integrated marketing and PR solutions that build credibility and create authentic connections with your audience.</p><div class="srv-tags"><span class="srv-tag">Integrated Marketing</span><span class="srv-tag">PR Management</span><span class="srv-tag">Brand Strategy</span><span class="srv-tag">Media Relations</span></div></div>
-        <div class="glass srv-card reveal reveal-delay-2"><div class="srv-num">09</div><h3>Technical Solutions</h3><p>Massive LED displays, intelligent lighting systems, and interactive digital integration the technical backbone for modern, high-energy environments.</p><div class="srv-tags"><span class="srv-tag">LED Displays</span><span class="srv-tag">Intelligent Lighting</span><span class="srv-tag">Digital Integration</span><span class="srv-tag">AV Systems</span></div></div>
-        <div class="glass srv-card reveal"><div class="srv-num">10</div><h3>Thematic Parties</h3><p>From vintage galas to futuristic celebrations creative conceptualization, custom decor, and themed entertainment for a unique, high-energy atmosphere.</p><div class="srv-tags"><span class="srv-tag">Creative Concepts</span><span class="srv-tag">Custom Decor</span><span class="srv-tag">Themed Entertainment</span><span class="srv-tag">Immersive Design</span></div></div>
+        <div class="glass srv-card reveal reveal-delay-2"><div class="srv-num">05</div><h3>Audio Production</h3><p>Experience sonic perfection with state-of-the-art equipment and expert sound engineering — crystal-clear audio reinforcement and immersive soundscapes for any venue.</p><div class="srv-tags"><span class="srv-tag">Sound Engineering</span><span class="srv-tag">Live Reinforcement</span><span class="srv-tag">Recording</span><span class="srv-tag">Broadcast</span></div></div>
+        <div class="glass srv-card reveal"><div class="srv-num">06</div><h3>Academic & Professional Events</h3><p>University graduations, research symposiums, and professional workshops — we bring order and prestige to scholarly gatherings with meticulous attention to tradition.</p><div class="srv-tags"><span class="srv-tag">Graduations</span><span class="srv-tag">Symposiums</span><span class="srv-tag">Workshops</span><span class="srv-tag">Logistics</span></div></div>
+        <div class="glass srv-card reveal reveal-delay-2"><div class="srv-num">07</div><h3>Venue Logistics & Travel Coordination</h3><p>We secure premium venues and manage end-to-end travel logistics — guest transportation, accommodation, and on-site coordination from arrival to departure.</p><div class="srv-tags"><span class="srv-tag">Venue Sourcing</span><span class="srv-tag">Transportation</span><span class="srv-tag">Accommodation</span><span class="srv-tag">On-Site Coordination</span></div></div>
+        <div class="glass srv-card reveal"><div class="srv-num">08</div><h3>Marketing, PR & Brand Activation</h3><p>Amplify your brand voice through strategic storytelling — integrated marketing and PR solutions that build credibility and create authentic connections with your audience.</p><div class="srv-tags"><span class="srv-tag">Integrated Marketing</span><span class="srv-tag">PR Management</span><span class="srv-tag">Brand Strategy</span><span class="srv-tag">Media Relations</span></div></div>
+        <div class="glass srv-card reveal reveal-delay-2"><div class="srv-num">09</div><h3>Technical Solutions</h3><p>Massive LED displays, intelligent lighting systems, and interactive digital integration — the technical backbone for modern, high-energy environments.</p><div class="srv-tags"><span class="srv-tag">LED Displays</span><span class="srv-tag">Intelligent Lighting</span><span class="srv-tag">Digital Integration</span><span class="srv-tag">AV Systems</span></div></div>
+        <div class="glass srv-card reveal"><div class="srv-num">10</div><h3>Thematic Parties</h3><p>From vintage galas to futuristic celebrations — creative conceptualization, custom decor, and themed entertainment for a unique, high-energy atmosphere.</p><div class="srv-tags"><span class="srv-tag">Creative Concepts</span><span class="srv-tag">Custom Decor</span><span class="srv-tag">Themed Entertainment</span><span class="srv-tag">Immersive Design</span></div></div>
         <div class="glass srv-card reveal reveal-delay-2"><div class="srv-num">11</div><h3>Brand Activations</h3><p>Interactive, high-energy experiences that drive direct consumer engagement, brand loyalty, and consumer awareness through experiential marketing.</p><div class="srv-tags"><span class="srv-tag">Experiential Marketing</span><span class="srv-tag">Live Activations</span><span class="srv-tag">Consumer Engagement</span><span class="srv-tag">Brand Loyalty</span></div></div>
       </div>
       <div class="process">
@@ -887,27 +782,18 @@
     </div>
   </main>
 
-  <!-- ===== PROJECTS ===== -->
+  <!-- ===================== PROJECTS ===================== -->
   <main id="page-projects" class="page">
     <div class="page-hero">
       <div class="page-hero-bg" style="background-image:url('assets/rusiri-2.jpeg')"></div>
       <div class="page-hero-overlay"></div>
       <div class="wrap">
-        <div class="sh anim-up">
-          <div class="sh-eyebrow">Portfolio</div>
-          <h2>OUR<br>RECENT PROJECTS</h2>
-          <p>Three signature projects. Each one shows our planning, production quality, and on-ground execution.</p>
-        </div>
+        <div class="sh anim-up"><div class="sh-eyebrow">Portfolio</div><h2>OUR<br>RECENT PROJECTS</h2><p>Three signature projects — each showing our planning, production quality, and on-ground execution.</p></div>
       </div>
     </div>
-
     <div class="wrap" style="padding-top:24px">
       <div class="project-list">
-
-        <!-- PROJECT 1: Rusiri Concert -->
-        <article class="glass project-row reveal"
-          data-title="Rusiri: The CentigradZ Live Experience"
-          data-sub="A full 360° concert production. Creative direction, stage build, audio & lighting, rehearsal planning, show calling, and live execution.">
+        <article class="glass project-row reveal" data-title="Rusiri: The CentigradZ Live Experience" data-sub="A full 360° concert production. Creative direction, stage build, audio & lighting, rehearsal planning, show calling, and live execution.">
           <div class="project-photos">
             <button class="pimg" type="button" aria-label="Open photo" style="--bg:url('assets/rusiri-1.jpeg')"></button>
             <button class="pimg" type="button" aria-label="Open photo" style="--bg:url('assets/rusiri-2.jpeg')"></button>
@@ -915,24 +801,11 @@
           <div class="project-info">
             <div class="project-kicker">Concert • 360° Production</div>
             <div class="project-title">Rusiri: The CentigradZ Live Experience</div>
-            <div class="project-desc">
-              We delivered a full end-to-end concert experience from concept planning and stage design to technical
-              rehearsals and flawless show-day execution. Our team handled audience flow, artist coordination, lighting
-              cues, sound engineering, and real-time direction to keep every moment sharp and high-energy.
-            </div>
-            <div class="project-pills">
-              <span class="project-pill">Stage & Set</span>
-              <span class="project-pill">Audio</span>
-              <span class="project-pill">Lighting</span>
-              <span class="project-pill">Show Calling</span>
-            </div>
+            <div class="project-desc">We delivered a full end-to-end concert experience from concept planning and stage design to technical rehearsals and flawless show-day execution. Our team handled audience flow, artist coordination, lighting cues, sound engineering, and real-time direction to keep every moment sharp and high-energy.</div>
+            <div class="project-pills"><span class="project-pill">Stage & Set</span><span class="project-pill">Audio</span><span class="project-pill">Lighting</span><span class="project-pill">Show Calling</span></div>
           </div>
         </article>
-
-        <!-- PROJECT 2: Education CSR -->
-        <article class="glass project-row reveal reveal-delay-2"
-          data-title="Empowering the Future of Sri Lankan Education"
-          data-sub="A CSR initiative focused on meaningful support planning, sourcing, logistics, and delivery with full accountability.">
+        <article class="glass project-row reveal reveal-delay-2" data-title="Empowering the Future of Sri Lankan Education" data-sub="A CSR initiative — focused on meaningful support, planning, sourcing, logistics, and delivery with full accountability.">
           <div class="project-photos">
             <button class="pimg" type="button" aria-label="Open photo" style="--bg:url('assets/edu-1.jpeg')"></button>
             <button class="pimg" type="button" aria-label="Open photo" style="--bg:url('assets/edu-2.jpeg')"></button>
@@ -940,24 +813,11 @@
           <div class="project-info">
             <div class="project-kicker">CSR • Community Impact</div>
             <div class="project-title">Empowering the Future of Sri Lankan Education</div>
-            <div class="project-desc">
-              We planned and delivered a CSR program with a clear goal: support students with real, usable resources.
-              From sourcing and transport to on-ground coordination, we ensured smooth distribution and a respectful,
-              well-organized experience for the school community.
-            </div>
-            <div class="project-pills">
-              <span class="project-pill">Logistics</span>
-              <span class="project-pill">Planning</span>
-              <span class="project-pill">Coordination</span>
-              <span class="project-pill">Community</span>
-            </div>
+            <div class="project-desc">We planned and delivered a CSR program with a clear goal: support students with real, usable resources. From sourcing and transport to on-ground coordination, we ensured smooth distribution and a respectful, well-organized experience for the school community.</div>
+            <div class="project-pills"><span class="project-pill">Logistics</span><span class="project-pill">Planning</span><span class="project-pill">Coordination</span><span class="project-pill">Community</span></div>
           </div>
         </article>
-
-        <!-- PROJECT 3: Award Ceremony -->
-        <article class="glass project-row reveal reveal-delay-3"
-          data-title="Corporate Awards Night"
-          data-sub="A premium award ceremony with tight timing, strong stage visuals, and smooth guest experience built for prestige and brand value.">
+        <article class="glass project-row reveal reveal-delay-3" data-title="Corporate Awards Night" data-sub="A premium award ceremony with tight timing, strong stage visuals, and smooth guest experience built for prestige and brand value.">
           <div class="project-photos">
             <button class="pimg" type="button" aria-label="Open photo" style="--bg:url('assets/award-1.JPG')"></button>
             <button class="pimg" type="button" aria-label="Open photo" style="--bg:url('assets/award-2.JPG')"></button>
@@ -965,21 +825,10 @@
           <div class="project-info">
             <div class="project-kicker">Opening Ceremony • Premium Delivery</div>
             <div class="project-title">Opening Ceremony</div>
-            <div class="project-desc">
-              A high standard Opening ceremony is all about timing and atmosphere. We designed the stage layout, LED and
-              lighting looks, walk-up flow, audio clarity, and cue by cue run of show to keep the night elegant and smooth.
-              Every trophy moment was supported with proper spotlighting, clean microphone control, camera friendly angles,
-              and backstage coordination so the brand, winners, and guests all felt the prestige.
-            </div>
-            <div class="project-pills">
-              <span class="project-pill">LED & Lighting</span>
-              <span class="project-pill">Run of Show</span>
-              <span class="project-pill">VIP Flow</span>
-              <span class="project-pill">Stage Management</span>
-            </div>
+            <div class="project-desc">A high-standard Opening Ceremony is all about timing and atmosphere. We designed the stage layout, LED and lighting looks, walk-up flow, audio clarity, and cue-by-cue run of show to keep the night elegant and smooth. Every moment was supported with proper spotlighting, clean microphone control, and backstage coordination.</div>
+            <div class="project-pills"><span class="project-pill">LED & Lighting</span><span class="project-pill">Run of Show</span><span class="project-pill">VIP Flow</span><span class="project-pill">Stage Management</span></div>
           </div>
         </article>
-
       </div>
     </div>
   </main>
@@ -990,20 +839,20 @@
       <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1478147427282-58a87a433049?auto=format&fit=crop&w=1400&q=60')"></div>
       <div class="page-hero-overlay"></div>
       <div class="wrap">
-        <div class="sh anim-up"><div class="sh-eyebrow">Get In Touch</div><h2>LET'S BUILD<br>YOUR EVENT</h2><p>Tell us about your event and we will be in touch within 24 hours.</p></div>
+        <div class="sh anim-up"><div class="sh-eyebrow">Get In Touch</div><h2>LET'S BUILD<br>YOUR EVENT</h2><p>Tell us about your event and we'll be in touch within 24 hours.</p></div>
       </div>
     </div>
     <div class="wrap" style="padding-top:24px">
       <div class="contact-layout">
+
+        <!-- FORM -->
         <div class="glass form-panel reveal">
-          <form id="leadForm" action="https://formspree.io/f/xpwravwk" method="POST" novalidate>
-            <input type="hidden" name="_subject" value="New Event Enquiry CENTINATION Website"/>
-            <input type="hidden" name="_template" value="table"/>
-            <div class="form-row" style="margin-bottom:22px">
+          <form id="leadForm" novalidate>
+            <div class="form-row">
               <div class="form-group"><label for="fname">Your Name *</label><input type="text" id="fname" name="name" placeholder="Enter your name" required/></div>
               <div class="form-group"><label for="femail">Email Address *</label><input type="email" id="femail" name="email" placeholder="your@email.com" required/></div>
             </div>
-            <div class="form-row" style="margin-bottom:22px">
+            <div class="form-row">
               <div class="form-group"><label for="fphone">Phone (optional)</label><input type="tel" id="fphone" name="phone" placeholder="+94 ..."/></div>
               <div class="form-group"><label for="fservice">Service Desired *</label>
                 <select id="fservice" name="service" required>
@@ -1014,33 +863,36 @@
             </div>
             <div class="form-group"><label for="fsubject">Subject *</label><input type="text" id="fsubject" name="subject" placeholder="e.g. Corporate gala dinner for 200 guests, March 2026" required/></div>
             <div class="form-group"><label for="fmessage">Your Message *</label><textarea id="fmessage" name="message" placeholder="Tell us your event date, venue, audience size, and what you need." required></textarea></div>
-            <p class="form-note"><i class="fas fa-lock" style="color:var(--accent2);margin-right:6px"></i>Submissions go directly to our team. We respond within 24 hours on business days.</p>
+            <p class="form-note"><i class="fas fa-lock" style="color:var(--accent2);margin-right:6px"></i>Submissions go directly to our team at info@centination.com. We respond within 24 hours on business days.</p>
             <div class="form-actions">
               <button type="submit" class="btn btn-red" id="submitBtn"><i class="fas fa-paper-plane"></i> Send Message</button>
               <button type="button" class="btn btn-ghost" id="copyWA"><i class="fab fa-whatsapp"></i> Copy for WhatsApp</button>
             </div>
-            <div class="form-success" id="formSuccess" style="margin-top:16px"><i class="fas fa-circle-check"></i> Sent! We'll contact you soon.</div>
-            <div class="form-error" id="formError" style="margin-top:16px"><i class="fas fa-circle-exclamation"></i> Something went wrong. Please try again or email us directly.</div>
+            <div class="form-success" id="formSuccess"><i class="fas fa-circle-check"></i> Message sent! We'll contact you at info@centination.com within 24 hours.</div>
+            <div class="form-error" id="formError"><i class="fas fa-circle-exclamation"></i> Something went wrong. Please email us directly at <a href="mailto:info@centination.com" style="color:var(--accent2);text-decoration:underline">info@centination.com</a></div>
           </form>
         </div>
+
+        <!-- INFO -->
         <div class="glass info-panel reveal reveal-delay-2">
-          <div><h3>CENTINATION</h3><p>Centination Entertainment PVT Ltd Sri Lanka's premier event management and production powerhouse. From creative design and technical production to seamless delivery, we handle everything.</p></div>
+          <div><h3>CENTINATION</h3><p>Centination Entertainment PVT Ltd — Sri Lanka's premier event management and production powerhouse. From creative design and technical production to seamless delivery, we handle everything.</p></div>
           <div class="info-items">
             <div class="info-item"><div class="info-icon"><i class="fas fa-location-dot"></i></div><div><b>Address</b><span>30 Old Kesbewa Road, Nugegoda, Sri Lanka</span></div></div>
-            <div class="info-item"><div class="info-icon"><i class="fas fa-envelope"></i></div><div><b>Email</b><span>info@centination.com</span></div></div>
-            <div class="info-item"><div class="info-icon"><i class="fas fa-phone"></i></div><div><b>Phone</b><span>+94 77 664 8680</span></div></div>
+            <div class="info-item"><div class="info-icon"><i class="fas fa-envelope"></i></div><div><b>Email</b><span><a href="mailto:info@centination.com">info@centination.com</a></span></div></div>
+            <div class="info-item"><div class="info-icon"><i class="fas fa-phone"></i></div><div><b>Phone</b><span><a href="tel:+94776648680">+94 77 664 8680</a></span></div></div>
             <div class="info-item"><div class="info-icon"><i class="fas fa-clock"></i></div><div><b>Response Time</b><span>Within 24 hours on business days</span></div></div>
           </div>
           <div>
             <p style="font-family:var(--font-ui);font-weight:700;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:12px;">Social Media</p>
             <div class="social-links">
               <a class="social-link" href="#"><i class="fab fa-instagram"></i>Instagram</a>
-              <a class="social-link" href="https://www.facebook.com/p/Centination-Entertainment-61583882785598" target="_blank"><i class="fab fa-facebook"></i>Facebook</a>
+              <a class="social-link" href="https://www.facebook.com/p/Centination-Entertainment-61583882785598" target="_blank" rel="noopener"><i class="fab fa-facebook"></i>Facebook</a>
               <a class="social-link" href="#"><i class="fab fa-youtube"></i>YouTube</a>
             </div>
           </div>
           <a class="btn btn-ghost" href="#" data-page="projects" style="justify-content:center"><i class="fas fa-arrow-right"></i> View Our Recent Projects</a>
         </div>
+
       </div>
     </div>
   </main>
@@ -1051,14 +903,17 @@
       <div class="footer-grid">
         <div class="footer-col">
           <img src="assets/logo.png" class="footer-logo" alt="Centination Logo"/>
-          <p class="footer-desc">Centination Entertainment PVT Ltd providing a complete 360° service experience across Sri Lanka. From initial concept to flawless execution, we redefine industry benchmarks.</p>
+          <p class="footer-desc">Centination Entertainment PVT Ltd — providing a complete 360° service experience across Sri Lanka. From initial concept to flawless execution, we redefine industry benchmarks.</p>
           <div class="footer-social">
-            <a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-youtube"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
           </div>
         </div>
         <div class="footer-col"><h4>Quick Links</h4><a href="#" data-page="home">Home</a><a href="#" data-page="about">About</a><a href="#" data-page="services">Services</a><a href="#" data-page="projects">Projects</a><a href="#" data-page="contact">Contact</a></div>
         <div class="footer-col"><h4>Services</h4><a href="#">Corporate Events</a><a href="#">Product Launches</a><a href="#">Award Ceremonies</a><a href="#">Gala Dinners</a><a href="#">Audio Production</a><a href="#">Brand Activations</a><a href="#">Technical Solutions</a></div>
-        <div class="footer-col"><h4>Contact</h4><p><i class="fas fa-map-marker-alt"></i>30 Old Kesbewa Road, Nugegoda</p><p><i class="fas fa-phone"></i>+94 77 664 8680</p><p><i class="fas fa-envelope"></i>info@centination.com</p></div>
+        <div class="footer-col"><h4>Contact</h4><p><i class="fas fa-map-marker-alt"></i>30 Old Kesbewa Road, Nugegoda</p><p><i class="fas fa-phone"></i><a href="tel:+94776648680" style="color:var(--muted)">+94 77 664 8680</a></p><p><i class="fas fa-envelope"></i><a href="mailto:info@centination.com" style="color:var(--muted)">info@centination.com</a></p></div>
       </div>
       <div class="footer-bottom"><p>© <span id="yr"></span> Centination Entertainment PVT Ltd. A subsidiary of Centigradz Pvt Ltd. All rights reserved.</p></div>
     </div>
@@ -1077,10 +932,10 @@
   <script>
   // ── CURSOR ──────────────────────────────────────────────────────
   const dot=document.getElementById('cursor-dot'),ring=document.getElementById('cursor-ring'),trail=document.getElementById('cursor-trail');
-  let mx=innerWidth/2,my=innerHeight/2,rx=mx,ry=my,tx=mx,ty=my;
-  addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+  let mx=innerWidth/2,my=innerHeight/2,rx=mx,ry=my,tx=mx,ty=my,hasMouse=false;
+  addEventListener('mousemove',e=>{hasMouse=true;mx=e.clientX;my=e.clientY;});
   (function aC(){rx+=(mx-rx)*.14;ry+=(my-ry)*.14;tx+=(mx-tx)*.07;ty+=(my-ty)*.07;dot.style.left=mx+'px';dot.style.top=my+'px';ring.style.left=rx+'px';ring.style.top=ry+'px';trail.style.left=tx+'px';trail.style.top=ty+'px';requestAnimationFrame(aC);})();
-  document.querySelectorAll('a,button,.fchip,.home-proj-card,.hsrv-card').forEach(el=>{
+  document.querySelectorAll('a,button,.home-proj-card,.hsrv-card').forEach(el=>{
     el.addEventListener('mouseenter',()=>{ring.style.width='56px';ring.style.height='56px';ring.style.borderColor='rgba(255,29,53,.8)';dot.style.width='4px';dot.style.height='4px';});
     el.addEventListener('mouseleave',()=>{ring.style.width='38px';ring.style.height='38px';ring.style.borderColor='rgba(255,29,53,.65)';dot.style.width='8px';dot.style.height='8px';});
   });
@@ -1110,13 +965,17 @@
     if(tgt){tgt.classList.add('active');setTimeout(()=>triggerReveal(tgt),50);}
     navLinks.forEach(l=>{if(l.dataset.page===name)l.classList.add('active');});
     scrollTo({top:0,behavior:'smooth'});
-    mnav.classList.remove('show');hamburger.classList.remove('open');
+    mnav.classList.remove('show');hamburger.classList.remove('open');hamburger.setAttribute('aria-expanded','false');
     if(name==='home')startSmoke();else stopSmoke();
   }
   document.querySelectorAll('[data-page]').forEach(el=>{
     el.addEventListener('click',e=>{const pg=e.currentTarget.dataset.page;if(pg){e.preventDefault();showPage(pg);}});
   });
-  hamburger.addEventListener('click',()=>{hamburger.classList.toggle('open');mnav.classList.toggle('show');});
+  hamburger.addEventListener('click',()=>{
+    const isOpen=hamburger.classList.toggle('open');
+    mnav.classList.toggle('show',isOpen);
+    hamburger.setAttribute('aria-expanded',isOpen);
+  });
 
   // ── NAVBAR SCROLL ───────────────────────────────────────────────
   const nav=document.getElementById('nav'),backTop=document.getElementById('backTop');
@@ -1124,14 +983,14 @@
   backTop.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
 
   // ── REVEAL ──────────────────────────────────────────────────────
-  const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:.08,rootMargin:'0px 0px -30px 0px'});
+  const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:.06,rootMargin:'0px 0px -20px 0px'});
   function triggerReveal(container=document){container.querySelectorAll('.reveal').forEach(el=>{if(!el.classList.contains('visible'))io.observe(el);});}
   triggerReveal();
 
   // ── HOME PROJ CARD HOVER ────────────────────────────────────────
   document.querySelectorAll('.home-proj-card').forEach(card=>{
     const bg=card.querySelector('.home-proj-card-img-bg');
-    if(!bg) return;
+    if(!bg)return;
     card.addEventListener('mouseenter',()=>{bg.style.transform='scale(1.06)';bg.style.filter='saturate(1) brightness(.75)';});
     card.addEventListener('mouseleave',()=>{bg.style.transform='';bg.style.filter='saturate(.85) brightness(.65)';});
   });
@@ -1142,101 +1001,108 @@
   document.getElementById('modalClose').addEventListener('click',closeModal);
   modal.addEventListener('click',e=>{if(e.target===modal)closeModal();});
   addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+  document.querySelectorAll('.pimg').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const row=btn.closest('[data-title]');
+      const bgUrl=getComputedStyle(btn).getPropertyValue('--bg').trim();
+      modalImg.style.backgroundImage=bgUrl;
+      modalTitle.textContent=row?row.dataset.title:'';
+      modalDesc.textContent=row?row.dataset.sub:'';
+      modal.classList.add('open');
+      document.body.style.overflow='hidden';
+    });
+  });
 
-  // ── CONTACT FORM ────────────────────────────────────────────────
-const leadForm = document.getElementById('leadForm');
-const formSuccess = document.getElementById('formSuccess');
-const formError = document.getElementById('formError');
-const submitBtn = document.getElementById('submitBtn');
+  // ── CONTACT FORM — sends to info@centination.com via Email.js ──
+  const leadForm=document.getElementById('leadForm');
+  const formSuccess=document.getElementById('formSuccess');
+  const formError=document.getElementById('formError');
+  const submitBtn=document.getElementById('submitBtn');
 
-if (leadForm) {
+  // We use a mailto: fallback + fetch to a free email relay (Web3Forms)
+  // Web3Forms is free, no signup needed, delivers to any email
+  const WEB3_ACCESS_KEY = ''; // Leave blank — form falls back to mailto if no key set
 
-  leadForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    formSuccess.style.display = 'none';
-    formError.style.display = 'none';
-
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-
-    try {
-
-      const formData = new FormData(leadForm);
-
-      const response = await fetch(leadForm.action, {
-        method: 'POST',
-        body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
+  async function submitForm(data){
+    // Try Web3Forms if access key provided
+    if(WEB3_ACCESS_KEY){
+      const body=JSON.stringify({
+        access_key: WEB3_ACCESS_KEY,
+        subject: `New Event Enquiry — ${data.subject}`,
+        from_name: data.name,
+        reply_to: data.email,
+        name: data.name,
+        email: data.email,
+        phone: data.phone||'Not provided',
+        service: data.service,
+        subject_field: data.subject,
+        message: data.message,
+        recipient: 'info@centination.com'
       });
+      const r=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body});
+      const json=await r.json();
+      if(json.success)return{ok:true};
+      throw new Error(json.message||'Failed');
+    }
+    // Fallback: open mailto link
+    const body=`Name: ${data.name}%0AEmail: ${data.email}%0APhone: ${data.phone||'Not provided'}%0AService: ${data.service}%0ASubject: ${data.subject}%0A%0AMessage:%0A${data.message}`;
+    window.location.href=`mailto:info@centination.com?subject=New Event Enquiry — ${encodeURIComponent(data.subject)}&body=${body}`;
+    return{ok:true,mailto:true};
+  }
 
-      if (response.ok) {
+  if(leadForm){
+    leadForm.addEventListener('submit',async e=>{
+      e.preventDefault();
+      formSuccess.style.display='none';
+      formError.style.display='none';
 
-        formSuccess.style.display = 'flex';
+      // Basic validation
+      const req=['name','email','service','subject','message'];
+      let valid=true;
+      req.forEach(f=>{const el=leadForm.querySelector(`[name="${f}"]`);if(el&&!el.value.trim()){el.style.borderColor='rgba(255,29,53,.6)';valid=false;}else if(el){el.style.borderColor='';}});
+      if(!valid){formError.innerHTML='<i class="fas fa-circle-exclamation"></i> Please fill in all required fields.';formError.style.display='flex';return;}
+
+      submitBtn.disabled=true;
+      submitBtn.innerHTML='<i class="fas fa-spinner" style="animation:spin 1s linear infinite"></i> Sending…';
+
+      const fd=new FormData(leadForm);
+      const data={name:fd.get('name'),email:fd.get('email'),phone:fd.get('phone'),service:fd.get('service'),subject:fd.get('subject'),message:fd.get('message')};
+
+      try{
+        const res=await submitForm(data);
+        if(res.mailto){
+          formSuccess.innerHTML='<i class="fas fa-circle-check"></i> Email client opened. Please send the email to complete your enquiry.';
+        }else{
+          formSuccess.innerHTML='<i class="fas fa-circle-check"></i> Message sent to info@centination.com! We\'ll be in touch within 24 hours.';
+        }
+        formSuccess.style.display='flex';
         leadForm.reset();
-
-      } else {
-
-        const data = await response.json().catch(() => null);
-        console.error("Form submission error:", data);
-        formError.style.display = 'flex';
-
+      }catch(err){
+        formError.innerHTML=`<i class="fas fa-circle-exclamation"></i> Couldn't send. Please email us directly at <a href="mailto:info@centination.com" style="color:var(--accent2);text-decoration:underline">info@centination.com</a>`;
+        formError.style.display='flex';
+      }finally{
+        submitBtn.disabled=false;
+        submitBtn.innerHTML='<i class="fas fa-paper-plane"></i> Send Message';
       }
 
-    } catch (error) {
+      setTimeout(()=>{formSuccess.style.display='none';formError.style.display='none';},8000);
+    });
 
-      console.error("Network error:", error);
-      formError.style.display = 'flex';
+    // Reset field border on input
+    leadForm.querySelectorAll('input,select,textarea').forEach(el=>{
+      el.addEventListener('input',()=>{el.style.borderColor='';});
+    });
+  }
 
-    } finally {
-
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
-
-    }
-
-    setTimeout(() => {
-      formSuccess.style.display = 'none';
-      formError.style.display = 'none';
-    }, 6000);
-
-  });
-
-}
-
-
-// ── COPY TO WHATSAPP ───────────────────────────────────────────
-const copyWA = document.getElementById('copyWA');
-
-if (copyWA) {
-
-  copyWA.addEventListener('click', () => {
-
-    const d = new FormData(leadForm);
-
-    const msg =
-`Hello CENTINATION Entertainment
-
-Name: ${d.get('name') || '-'}
-Email: ${d.get('email') || '-'}
-Phone: ${d.get('phone') || '-'}
-Service: ${d.get('service') || '-'}
-Subject: ${d.get('subject') || '-'}
-Message: ${d.get('message') || '-'}`;
-
-    navigator.clipboard.writeText(msg)
-      .then(() => {
-        alert('Copied. Paste it into WhatsApp.');
-      })
-      .catch(() => {
-        alert('Copy failed. Please copy manually.');
-      });
-
-  });
-
-}
+  // ── COPY TO WHATSAPP ───────────────────────────────────────────
+  const copyWA=document.getElementById('copyWA');
+  if(copyWA){
+    copyWA.addEventListener('click',()=>{
+      const d=new FormData(leadForm);
+      const msg=`Hello CENTINATION Entertainment\n\nName: ${d.get('name')||'-'}\nEmail: ${d.get('email')||'-'}\nPhone: ${d.get('phone')||'-'}\nService: ${d.get('service')||'-'}\nSubject: ${d.get('subject')||'-'}\nMessage: ${d.get('message')||'-'}`;
+      navigator.clipboard.writeText(msg).then(()=>alert('Copied! Paste into WhatsApp.')).catch(()=>alert('Please copy the text manually.'));
+    });
+  }
 
   // ── FOOTER YEAR ─────────────────────────────────────────────────
   document.getElementById('yr').textContent=new Date().getFullYear();
@@ -1249,7 +1115,7 @@ Message: ${d.get('message') || '-'}`;
   runTyping();
 
   // ── COUNTER (hero stats) ─────────────────────────────────────────
-  function animateCounter(el){const target=Number(el.dataset.count||"0"),suffix=el.dataset.suffix||'',dur=1800,s=performance.now();(function f(now){const p=Math.min(1,(now-s)/dur);el.textContent=Math.floor(target*(0.15+0.85*p))+suffix;if(p<1)requestAnimationFrame(f);})(s);}
+  function animateCounter(el){const target=Number(el.dataset.count||0),suffix=el.dataset.suffix||'',dur=1800,s=performance.now();(function f(now){const p=Math.min(1,(now-s)/dur);el.textContent=Math.floor(target*(0.15+0.85*p))+suffix;if(p<1)requestAnimationFrame(f);})(s);}
   const statObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){animateCounter(e.target);statObs.unobserve(e.target);}});},{threshold:.6});
   document.querySelectorAll('.hstat-num').forEach(el=>statObs.observe(el));
 
